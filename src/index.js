@@ -6,6 +6,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { STORE } from './store';
 import { FONT_ASSETS } from './fonts';
+import { StatusBar } from 'expo-status-bar';
 
 // Makes the native splash screen remain visible until hideAsync is called.
 SplashScreen.preventAutoHideAsync();
@@ -39,6 +40,7 @@ export function Main() {
 
   return (
     <Provider store={STORE}>
+      <StatusBar hidden />
       <App onLayout={onLayout} />
     </Provider>
   );
