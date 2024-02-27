@@ -3,7 +3,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { App } from './components/app/app';
 import { Provider } from 'react-redux';
 import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
 import { STORE } from './store';
+import { FONT_ASSETS } from './fonts';
 
 // Makes the native splash screen remain visible until hideAsync is called.
 SplashScreen.preventAutoHideAsync();
@@ -15,6 +17,7 @@ export function Main() {
     async function loadAssets() {
       // Load any fonts, images, assets, and/or make any asynchronous requests
       // before the Splash Screen is hidden
+      await Font.loadAsync(FONT_ASSETS);
       setAppReady(true);
     }
 
