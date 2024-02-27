@@ -8,7 +8,7 @@ import DSeg14ClassicRegular from './dseg-14-classic/dseg-14-classic-regular.ttf'
 import DSeg7ClassicBold from './dseg-7-classic/dseg-7-classic-bold.ttf';
 import DSeg7ClassicBoldItalic from './dseg-7-classic/dseg-7-classic-bold-italic.ttf';
 import DSeg7ClassicItalic from './dseg-7-classic/dseg-7-classic-italic.ttf';
-import DSeg7ClassicLight from './dseg-17classic/dseg-7-classic-light.ttf';
+import DSeg7ClassicLight from './dseg-7-classic/dseg-7-classic-light.ttf';
 import DSeg7ClassicLightItalic from './dseg-7-classic/dseg-7-classic-light-italic.ttf';
 import DSeg7ClassicRegular from './dseg-7-classic/dseg-7-classic-regular.ttf';
 
