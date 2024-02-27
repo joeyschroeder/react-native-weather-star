@@ -28,3 +28,5 @@ This project is licensed under the MIT License - see the [MIT Open Source Initia
 ## Acknowledgments
 
 Hat tip to anyone who's code was used! 🤠
+
+* [DSEG](https://www.keshikan.net/fonts-e.html): DSEG is a free font family, which imitates seven and fourteen segment displays (7SEG, 14SEG).
