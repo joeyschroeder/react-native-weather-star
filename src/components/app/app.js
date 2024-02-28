@@ -5,6 +5,7 @@ import { COLORS } from '../../constants/colors';
 import { FLEX_GAP } from '../../constants/flex-gap';
 import { DateTimeSection } from '../date-time-section/date-time-section';
 import moment from 'moment';
+import { useKeepAwake } from 'expo-keep-awake';
 
 const TIMER_INTERVAL = 1000 * 60;
 
@@ -19,6 +20,8 @@ const styles = StyleSheet.create({
 
 export function App(props) {
   const { onLayout } = props;
+
+  useKeepAwake();
   const [now, setNow] = useState(moment().format('YYYY-MM-DDTHH:MM'));
 
   useEffect(() => {
