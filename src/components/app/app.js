@@ -22,11 +22,11 @@ export function App(props) {
   const { onLayout } = props;
 
   useKeepAwake();
-  const [now, setNow] = useState(moment().format('YYYY-MM-DDTHH:MM'));
+  const [now, setNow] = useState(moment().format());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setNow(moment().format('YYYY-MM-DDTHH:MM'));
+      setNow(moment().format());
     }, TIMER_INTERVAL);
 
     return () => clearInterval(interval);
@@ -35,20 +35,20 @@ export function App(props) {
   return (
     <View style={styles.container} onLayout={onLayout}>
       <DateTimeSection
+        color={COLORS.DANGER}
         label="Destination Time"
         value="1885-01-01T00:00:00"
-        color={COLORS.DANGER}
       />
       <DateTimeSection
-        label="Present Time"
-        value={now}
         blink
         color={COLORS.SUCCESS}
+        label="Present Time"
+        value={now}
       />
       <DateTimeSection
+        color={COLORS.WARNING}
         label="Last Time Departed"
         value="1955-11-05T09:00:00"
-        color={COLORS.WARNING}
       />
     </View>
   );
