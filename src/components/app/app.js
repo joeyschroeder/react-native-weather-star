@@ -1,12 +1,12 @@
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { Section } from '../section/section';
+import React, { useEffect, useState } from 'react';
 import { COLORS } from '../../constants/colors';
 import { FLEX_GAP } from '../../constants/flex-gap';
-import { Date } from '../date/date';
-import { Time } from '../time/time';
-import { DateTime } from '../date-time/date-time';
+import { DateTimeSection } from '../date-time-section/date-time-section';
+import moment from 'moment';
+
+const TIMER_INTERVAL = 1000 * 60;
 
 const styles = StyleSheet.create({
   container: {
@@ -19,19 +19,34 @@ const styles = StyleSheet.create({
 
 export function App(props) {
   const { onLayout } = props;
+  const [now, setNow] = useState(moment().format('YYYY-MM-DDTHH:MM'));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNow(moment().format('YYYY-MM-DDTHH:MM'));
+    }, TIMER_INTERVAL);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <View style={styles.container} onLayout={onLayout}>
-      <Section label="Destination Time">
-        {/* <Date value="1985-10-26" color={COLORS.DANGER} /> */}
-        <DateTime value="1985-10-26T01:21:00" color={COLORS.DANGER} />
-      </Section>
-      <Section label="Present Time">
-        <DateTime value="1985-10-26T01:21:00" color={COLORS.SUCCESS} />
-      </Section>
-      <Section label="Last Time Departed">
-        <DateTime value="1985-10-26T01:21:00" color={COLORS.WARNING} />
-      </Section>
+      <DateTimeSection
+        label="Destination Time"
+        value="1885-01-01T00:00:00"
+        color={COLORS.DANGER}
+      />
+      <DateTimeSection
+        label="Present Time"
+        value={now}
+        blink
+        color={COLORS.SUCCESS}
+      />
+      <DateTimeSection
+        label="Last Time Departed"
+        value="1955-11-05T09:00:00"
+        color={COLORS.WARNING}
+      />
     </View>
   );
 }

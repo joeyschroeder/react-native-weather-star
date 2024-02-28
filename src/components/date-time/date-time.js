@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 });
 
 export function DateTime(props) {
-  const { color, style, value } = props;
+  const { blink, color, style, value } = props;
 
   if (!value) return null;
   const containerStyle = [styles.container, style];
@@ -22,19 +22,21 @@ export function DateTime(props) {
   return (
     <View style={containerStyle}>
       <Date value={value} color={color} />
-      <Time value={value} color={color} />
+      <Time value={value} color={color} blink={blink} />
     </View>
   );
 }
 
 DateTime.propTypes = {
+  blink: PropTypes.bool,
   color: PropTypes.string,
-  value: PropTypes.string,
   style: PropTypes.object,
+  value: PropTypes.string,
 };
 
 DateTime.defaultProps = {
+  blink: undefined,
   color: undefined,
-  value: undefined,
   style: undefined,
+  value: undefined,
 };
