@@ -6,6 +6,9 @@ import { FLEX_GAP } from '../../constants/flex-gap';
 import { DateTimeSection } from '../date-time-section/date-time-section';
 import moment from 'moment';
 import { useKeepAwake } from 'expo-keep-awake';
+import { Settings } from '../settings/settings';
+import { Footer } from '../footer/footer';
+import { BlurView } from 'expo-blur';
 
 const TIMER_INTERVAL = 1000 * 60;
 
@@ -23,6 +26,8 @@ export function App(props) {
 
   useKeepAwake();
   const [now, setNow] = useState(moment().format());
+  const [settingsVisible, setSettingsVisible] = useState(false);
+  const toggleSettingsVisible = () => setSettingsVisible(!settingsVisible);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,24 +38,34 @@ export function App(props) {
   }, []);
 
   return (
-    <View style={styles.container} onLayout={onLayout}>
-      <DateTimeSection
-        color={COLORS.DANGER}
-        label="Destination Time"
-        value="1885-01-01T00:00:00"
-      />
-      <DateTimeSection
-        blink
-        color={COLORS.SUCCESS}
-        label="Present Time"
-        value={now}
-      />
-      <DateTimeSection
-        color={COLORS.WARNING}
-        label="Last Time Departed"
-        value="1955-11-05T09:00:00"
-      />
-    </View>
+    <>
+      <View style={styles.container} onLayout={onLayout}>
+        <DateTimeSection
+          style={{ flex: 1 }}
+          color={COLORS.DANGER}
+          label="Destination Time"
+          value="1885-01-01T00:00:00"
+        />
+        <DateTimeSection
+          style={{ flex: 1 }}
+          blink
+          color={COLORS.SUCCESS}
+          label="Present Time"
+          value={now}
+        />
+        <DateTimeSection
+          style={{ flex: 1 }}
+          color={COLORS.WARNING}
+          label="Last Time Departed"
+          value="1955-11-05T09:00:00"
+        />
+        <Footer onSettingsPress={toggleSettingsVisible} />
+      </View>
+      {settingsVisible && (
+        <BlurView intensity={25} style={StyleSheet.absoluteFill} />
+      )}
+      <Settings visible={settingsVisible} onDismiss={toggleSettingsVisible} />
+    </>
   );
 }
 
