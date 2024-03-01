@@ -9,6 +9,10 @@ import { useKeepAwake } from 'expo-keep-awake';
 import { Settings } from '../settings/settings';
 import { Footer } from '../footer/footer';
 import { BlurView } from 'expo-blur';
+import { Section } from '../section/section';
+import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
+import { SPACER } from '../../constants/spacer';
+import { scaledValue } from '../../utils/scaled-value/scaled-value';
 
 const TIMER_INTERVAL = 1000 * 60;
 
@@ -40,24 +44,61 @@ export function App(props) {
   return (
     <>
       <View style={styles.container} onLayout={onLayout}>
+        <View style={{ flexDirection: 'row', flex: 1, gap: FLEX_GAP }}>
+          <Section label="Temperature" style={{ flex: 1 }}>
+            <View style={{ flexDirection: 'row', gap: SPACER }}>
+              <DigitalValueWithLabel
+                append="°F"
+                label="Current"
+                size={scaledValue(253)}
+                value="60"
+              />
+              <View style={{ gap: SPACER / 2 }}>
+                <DigitalValueWithLabel append="°" label="Hi/lo" value="89" />
+                <DigitalValueWithLabel append="°" value="55" />
+              </View>
+            </View>
+          </Section>
+          <View style={{ gap: FLEX_GAP }}>
+            <Section label="Precip." style={{ flex: 1 }}>
+              <View style={{ gap: SPACER }}>
+                <DigitalValueWithLabel
+                  color={COLORS.INFO}
+                  label="Rain"
+                  value="15"
+                  append="%"
+                />
+                <DigitalValueWithLabel
+                  label="Humidity"
+                  append="%"
+                  value="18"
+                  color={COLORS.INFO}
+                />
+              </View>
+            </Section>
+          </View>
+          <View style={{ gap: FLEX_GAP }}>
+            <Section label="Wind" style={{ flex: 1 }}>
+              <View style={{ gap: SPACER }}>
+                <DigitalValueWithLabel
+                  color={COLORS.WHITE}
+                  label="MPH"
+                  value="15"
+                />
+                <DigitalValueWithLabel
+                  color={COLORS.WHITE}
+                  value="NE"
+                  label="Dir."
+                />
+              </View>
+            </Section>
+          </View>
+        </View>
         <DateTimeSection
-          style={{ flex: 1 }}
-          color={COLORS.DANGER}
-          label="Destination Time"
-          value="1885-01-01T00:00:00"
-        />
-        <DateTimeSection
-          style={{ flex: 1 }}
           blink
-          color={COLORS.SUCCESS}
+          color={COLORS.WHITE}
           label="Present Time"
           value={now}
-        />
-        <DateTimeSection
-          style={{ flex: 1 }}
-          color={COLORS.WARNING}
-          label="Last Time Departed"
-          value="1955-11-05T09:00:00"
         />
         <Footer onSettingsPress={toggleSettingsVisible} />
       </View>

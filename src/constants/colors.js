@@ -9,7 +9,7 @@ export const COLORS = {
   GREY: Color(BLACK_TYPE).lighten(0.3).string(),
   SUCCESS: '#00ffba',
   TRANSPARENT: 'transparent',
-  INFO: '#027095',
+  INFO: '#00c6ff',
   WARNING: '#ffae00',
   WHITE: '#fff',
 };
