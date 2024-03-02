@@ -9,12 +9,13 @@ import { scaledValue } from '../../utils/scaled-value/scaled-value';
 const styles = StyleSheet.create({
   container: {
     flex: 0,
-    paddingHorizontal: SPACER / 2,
-    paddingVertical: SPACER / 4,
+    // paddingHorizontal: SPACER / 2,
+    // paddingVertical: SPACER / 4,
   },
   text: {
     color: COLORS.WHITE,
-    fontFamily: FONTS.SCRIPT.BOLD,
+    // fontFamily: FONTS.SCRIPT.BOLD,
+    fontFamily: FONTS.SANS_SERIF.BOLD,
     fontSize: scaledValue(20),
     textAlign: 'center',
     textTransform: 'uppercase',
@@ -25,7 +26,8 @@ export function Label(props) {
   const { backgroundColor, style, value } = props;
 
   if (!value) return null;
-  const containerStyle = [styles.container, style, { backgroundColor }];
+  const containerStyle = [styles.container, style];
+  // const containerStyle = [styles.container, style, { backgroundColor }];
 
   return (
     <View style={containerStyle}>

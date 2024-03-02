@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     gap: FLEX_GAP,
   },
   primary: {
+    alignItems: 'flex-start',
     flex: 1,
     justifyContent: 'center',
   },
@@ -33,7 +34,7 @@ export function Footer(props) {
 
   return (
     <View style={containerStyle}>
-      <Section style={styles.settings}>
+      {/* <Section style={styles.settings}>
         <Pressable onPress={onSettingsPress}>
           <FontAwesome
             color={COLORS.WHITE}
@@ -41,9 +42,11 @@ export function Footer(props) {
             size={scaledValue(36)}
           />
         </Pressable>
-      </Section>
+      </Section> */}
       <Section style={styles.primary}>
-        <Text style={styles.text}>Alert and or description of next up...</Text>
+        <Text style={styles.text}>
+          Increasing clouds, with a high near 49. South wind around 15 mph.
+        </Text>
       </Section>
     </View>
   );

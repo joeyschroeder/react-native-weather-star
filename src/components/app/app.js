@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { COLORS } from '../../constants/colors';
@@ -13,6 +13,7 @@ import { Section } from '../section/section';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import { SPACER } from '../../constants/spacer';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
+import { Header } from '../header/header';
 
 const TIMER_INTERVAL = 1000 * 60;
 
@@ -44,23 +45,24 @@ export function App(props) {
   return (
     <>
       <View style={styles.container} onLayout={onLayout}>
-        <View style={{ flexDirection: 'row', flex: 1, gap: FLEX_GAP }}>
-          <Section label="Temperature" style={{ flex: 1 }}>
+        <Header station="KMKX" city="Milwaukee" state="WI" />
+        <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
+          <Section style={{ flex: 5 }}>
             <View style={{ flexDirection: 'row', gap: SPACER }}>
               <DigitalValueWithLabel
                 append="°F"
                 label="Current"
-                size={scaledValue(253)}
+                size={scaledValue(240)}
                 value="60"
               />
               <View style={{ gap: SPACER / 2 }}>
-                <DigitalValueWithLabel append="°" label="Hi/lo" value="89" />
-                <DigitalValueWithLabel append="°" value="55" />
+                <DigitalValueWithLabel append="°" label="High" value="89" />
+                <DigitalValueWithLabel append="°" label="Low" value="55" />
               </View>
             </View>
           </Section>
-          <View style={{ gap: FLEX_GAP }}>
-            <Section label="Precip." style={{ flex: 1 }}>
+          <View style={{ gap: FLEX_GAP, flex: 2 }}>
+            <Section style={{ flex: 1 }}>
               <View style={{ gap: SPACER }}>
                 <DigitalValueWithLabel
                   color={COLORS.INFO}
@@ -77,18 +79,18 @@ export function App(props) {
               </View>
             </Section>
           </View>
-          <View style={{ gap: FLEX_GAP }}>
-            <Section label="Wind" style={{ flex: 1 }}>
+          <View style={{ gap: FLEX_GAP, flex: 2 }}>
+            <Section style={{ flex: 1 }}>
               <View style={{ gap: SPACER }}>
                 <DigitalValueWithLabel
                   color={COLORS.WHITE}
-                  label="MPH"
+                  label="Wind MPH"
                   value="15"
                 />
                 <DigitalValueWithLabel
                   color={COLORS.WHITE}
                   value="NE"
-                  label="Dir."
+                  label="Wind Dir."
                 />
               </View>
             </Section>
@@ -96,8 +98,8 @@ export function App(props) {
         </View>
         <DateTimeSection
           blink
+          style={{ flex: 2 }}
           color={COLORS.WHITE}
-          label="Present Time"
           value={now}
         />
         <Footer onSettingsPress={toggleSettingsVisible} />

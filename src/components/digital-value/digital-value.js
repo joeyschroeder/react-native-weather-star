@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     padding: SPACER / 2,
   },
   shadow: {
-    opacity: 0.2,
+    opacity: 0.1,
     position: 'absolute',
   },
   text: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 });
 
 export function DigitalValue(props) {
-  const { color, size, style, value } = props;
+  const { color, size, style, value, minChars } = props;
 
   if (!value) return null;
 
@@ -46,8 +46,23 @@ export function DigitalValue(props) {
   const textStyles = [styles.text, commonTextStyles];
   const shadowStyles = [styles.text, commonTextStyles, styles.shadow];
 
+  const valueLength = value.length;
+  const padding =
+    minChars && valueLength < minChars ? minChars - valueLength : 0;
+  const paddingString = '0'.repeat(padding);
+
   return (
     <View style={containerStyle}>
+      {[...paddingString].map((character, index) => {
+        const key = `${index}`;
+        const padTextStyle = [shadowStyles, { position: 'relative' }];
+
+        return (
+          <View key={key}>
+            <Text style={padTextStyle}>{shadowCharacter}</Text>
+          </View>
+        );
+      })}
       {[...value].map((character, index) => {
         const key = `${character}-${index}`;
 
@@ -63,15 +78,17 @@ export function DigitalValue(props) {
 }
 
 DigitalValue.propTypes = {
-  size: PropTypes.number,
   color: PropTypes.string,
-  value: PropTypes.string,
+  minChars: PropTypes.number,
+  size: PropTypes.number,
   style: PropTypes.object,
+  value: PropTypes.string,
 };
 
 DigitalValue.defaultProps = {
-  size: scaledValue(88),
   color: COLORS.WHITE,
-  value: undefined,
+  minChars: undefined,
+  size: scaledValue(88),
   style: undefined,
+  value: undefined,
 };

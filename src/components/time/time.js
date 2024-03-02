@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 });
 
 export function Time(props) {
-  const { blink, color, style, value } = props;
+  const { blink, color, size, style, value } = props;
 
   if (!value) return null;
   const containerStyle = [styles.container, style];
@@ -53,12 +53,22 @@ export function Time(props) {
   return (
     <View style={containerStyle}>
       <TimePeriod color={color} value={period} />
-      <DigitalValueWithLabel value={hours} label="Hour" color={color} />
+      <DigitalValueWithLabel
+        value={hours}
+        label="Hour"
+        color={color}
+        size={size}
+      />
       <View style={styles.colon}>
         <Light style={styles.topLight} active={active} color={color} />
         <Light color={color} active={active} />
       </View>
-      <DigitalValueWithLabel value={minutes} label="Min" color={color} />
+      <DigitalValueWithLabel
+        value={minutes}
+        label="Min"
+        color={color}
+        size={size}
+      />
     </View>
   );
 }
@@ -66,6 +76,7 @@ export function Time(props) {
 Time.propTypes = {
   blink: PropTypes.bool,
   color: PropTypes.string,
+  size: PropTypes.number,
   style: PropTypes.object,
   value: PropTypes.string,
 };
@@ -73,6 +84,7 @@ Time.propTypes = {
 Time.defaultProps = {
   blink: false,
   color: undefined,
+  size: undefined,
   style: undefined,
   value: undefined,
 };

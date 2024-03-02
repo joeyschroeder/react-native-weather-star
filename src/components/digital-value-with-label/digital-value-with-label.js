@@ -18,8 +18,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
   },
-  label: {
-    marginBottom: SPACER,
+  horizontal: {
+    flexDirection: 'row',
+    gap: SPACER,
   },
   valueContainer: {
     flexDirection: 'row',
@@ -27,22 +28,34 @@ const styles = StyleSheet.create({
 });
 
 export function DigitalValueWithLabel(props) {
-  const { append, color, label, size, style, value } = props;
+  const { append, color, label, size, style, value, horizontal, minChars } =
+    props;
 
   if (!value) return null;
 
   const appendExists = Boolean(append);
-  const containerStyle = [styles.container, style];
+  const containerStyle = [
+    styles.container,
+    horizontal && styles.horizontal,
+    style,
+  ];
+
+  const labelStyle = [{ marginBottom: horizontal ? 0 : SPACER }];
 
   return (
     <View style={containerStyle}>
       <Label
-        backgroundColor={COLORS.DANGER}
-        style={styles.label}
+        // backgroundColor={COLORS.DANGER}
+        style={labelStyle}
         value={label}
       />
       <View style={styles.valueContainer}>
-        <DigitalValue color={color} size={size} value={value} />
+        <DigitalValue
+          color={color}
+          size={size}
+          value={value}
+          minChars={minChars}
+        />
         {appendExists && <Text style={styles.append}>{append}</Text>}
       </View>
     </View>
@@ -52,7 +65,9 @@ export function DigitalValueWithLabel(props) {
 DigitalValueWithLabel.propTypes = {
   append: PropTypes.string,
   color: PropTypes.string,
+  horizontal: PropTypes.bool,
   label: PropTypes.string,
+  minChars: PropTypes.number,
   size: PropTypes.number,
   style: PropTypes.object,
   value: PropTypes.string,
@@ -61,7 +76,9 @@ DigitalValueWithLabel.propTypes = {
 DigitalValueWithLabel.defaultProps = {
   append: undefined,
   color: undefined,
+  horizontal: false,
   label: undefined,
+  minChars: undefined,
   size: undefined,
   style: undefined,
   value: undefined,
