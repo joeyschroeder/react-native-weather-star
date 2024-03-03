@@ -12,6 +12,8 @@ import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value
 import { SPACER } from '../../constants/spacer';
 import { HeaderConnected } from '../header/header.connected';
 import { CurrentWeatherSectionConnected } from '../current-weather-section/current-weather-section.connected';
+import { CurrentPrecipSectionConnected } from '../current-precip-section/current-precip-section.connected';
+import { CurrentWindSectionConnected } from '../current-wind-section/current-wind-section.connected';
 
 const TIMER_INTERVAL = 1000 * 60;
 
@@ -47,18 +49,8 @@ export function App(props) {
       <HeaderConnected />
       <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
         <CurrentWeatherSectionConnected style={{ flex: 3 }} />
-        <Section style={{ flex: 1 }}>
-          <View style={{ gap: SPACER }}>
-            <DigitalValueWithLabel color={COLORS.INFO} label="Rain" value="15" append="%" />
-            <DigitalValueWithLabel label="Humidity" append="%" value="18" color={COLORS.INFO} />
-          </View>
-        </Section>
-        <Section style={{ flex: 1 }}>
-          <View style={{ gap: SPACER }}>
-            <DigitalValueWithLabel color={COLORS.DANGER} label="Wind MPH" value="15" />
-            <DigitalValueWithLabel color={COLORS.DANGER} value="NE" label="Wind Dir." />
-          </View>
-        </Section>
+        <CurrentPrecipSectionConnected style={{ flex: 1 }} />
+        <CurrentWindSectionConnected style={{ flex: 1 }} />
       </View>
       <DateTimeSection blink style={{ flex: 2 }} color={COLORS.WHITE} value={now} />
       <Footer />

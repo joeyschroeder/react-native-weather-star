@@ -5,6 +5,7 @@ import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { SPACER } from '../../constants/spacer';
 import PropTypes from 'prop-types';
+import { convertTempToColor } from '../../utils/convert-temp-to-color/convert-temp-to-color';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,13 +22,23 @@ export function CurrentWeatherSection(props) {
 
   const tempUnitFormatted = tempUnit === 'F' ? '°F' : '°C';
 
+  const tempCurrentColor = convertTempToColor(tempCurrent);
+  const tempHighColor = convertTempToColor(tempHigh);
+  const tempLowColor = convertTempToColor(tempLow);
+
   return (
     <Section style={style}>
       <View style={styles.container}>
-        <DigitalValueWithLabel append={tempUnitFormatted} label="Current" size={scaledValue(240)} value={tempCurrent} />
+        <DigitalValueWithLabel
+          append={tempUnitFormatted}
+          color={tempCurrentColor}
+          label="Current"
+          size={scaledValue(240)}
+          value={tempCurrent}
+        />
         <View style={styles.highLowContainer}>
-          <DigitalValueWithLabel append="°" label="High" value={tempHigh} />
-          <DigitalValueWithLabel append="°" label="Low" value={tempLow} />
+          <DigitalValueWithLabel append="°" label="High" value={tempHigh} color={tempHighColor} />
+          <DigitalValueWithLabel append="°" label="Low" value={tempLow} color={tempLowColor} />
         </View>
       </View>
     </Section>
