@@ -10,9 +10,8 @@ import { Footer } from '../footer/footer';
 import { Section } from '../section/section';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import { SPACER } from '../../constants/spacer';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { Header } from '../header/header';
 import { HeaderConnected } from '../header/header.connected';
+import { CurrentWeatherSectionConnected } from '../current-weather-section/current-weather-section.connected';
 
 const TIMER_INTERVAL = 1000 * 60;
 
@@ -47,15 +46,7 @@ export function App(props) {
     <View style={styles.container} onLayout={onLayout}>
       <HeaderConnected />
       <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
-        <Section style={{ flex: 3 }}>
-          <View style={{ flexDirection: 'row', gap: SPACER }}>
-            <DigitalValueWithLabel append="°F" label="Current" size={scaledValue(240)} value="60" />
-            <View style={{ gap: SPACER / 2 }}>
-              <DigitalValueWithLabel append="°" label="High" value="89" />
-              <DigitalValueWithLabel append="°" label="Low" value="55" />
-            </View>
-          </View>
-        </Section>
+        <CurrentWeatherSectionConnected style={{ flex: 3 }} />
         <Section style={{ flex: 1 }}>
           <View style={{ gap: SPACER }}>
             <DigitalValueWithLabel color={COLORS.INFO} label="Rain" value="15" append="%" />

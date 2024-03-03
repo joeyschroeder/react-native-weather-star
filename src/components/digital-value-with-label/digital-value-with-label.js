@@ -30,8 +30,6 @@ const styles = StyleSheet.create({
 export function DigitalValueWithLabel(props) {
   const { append, color, label, size, style, value, horizontal, minChars } = props;
 
-  if (!value) return null;
-
   const appendExists = Boolean(append);
   const containerStyle = [styles.container, horizontal && styles.horizontal, style];
 
@@ -60,7 +58,7 @@ DigitalValueWithLabel.propTypes = {
   minChars: PropTypes.number,
   size: PropTypes.number,
   style: PropTypes.object,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 DigitalValueWithLabel.defaultProps = {

@@ -6,6 +6,7 @@ import { COLORS } from '../../constants/colors';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { SPACER } from '../../constants/spacer';
 import { BORDER_RADIUS } from '../../constants/border-radius';
+import { EMPTY_VALUE_LABEL } from '../../constants/emtpy-value-label';
 
 const NUMBER_FONT = FONTS.MONO.NUMBER.ITALIC;
 const LETTER_FONT = FONTS.MONO.LETTER.ITALIC;
@@ -32,10 +33,9 @@ const styles = StyleSheet.create({
 export function DigitalValue(props) {
   const { color, size, style, value, minChars } = props;
 
-  if (!value) return null;
-
   // eslint-disable-next-line no-restricted-globals
   const isNumber = !isNaN(value);
+  const valueFormatted = isNumber ? value.toString() : value;
 
   const fontFamily = isNumber ? NUMBER_FONT : LETTER_FONT;
   const shadowCharacter = isNumber ? '8' : '~';
@@ -46,7 +46,7 @@ export function DigitalValue(props) {
   const textStyles = [styles.text, commonTextStyles];
   const shadowStyles = [styles.text, commonTextStyles, styles.shadow];
 
-  const valueLength = value.length;
+  const valueLength = valueFormatted.length;
   const padding = minChars && valueLength < minChars ? minChars - valueLength : 0;
   const paddingString = '0'.repeat(padding);
 
@@ -62,7 +62,7 @@ export function DigitalValue(props) {
           </View>
         );
       })}
-      {[...value].map((character, index) => {
+      {[...valueFormatted].map((character, index) => {
         const key = `${character}-${index}`;
 
         return (
@@ -81,7 +81,7 @@ DigitalValue.propTypes = {
   minChars: PropTypes.number,
   size: PropTypes.number,
   style: PropTypes.object,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 DigitalValue.defaultProps = {
@@ -89,5 +89,5 @@ DigitalValue.defaultProps = {
   minChars: undefined,
   size: scaledValue(88),
   style: undefined,
-  value: undefined,
+  value: EMPTY_VALUE_LABEL,
 };

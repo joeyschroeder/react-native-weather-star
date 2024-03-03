@@ -35,7 +35,7 @@ export function Header(props) {
   const cityState = city && state ? `${city}, ${state}` : undefined;
   const cityStateExists = Boolean(cityState);
 
-  const lastUpdateFormatted = lastUpdate ? moment(lastUpdate).format('hmm A') : EMPTY_VALUE_LABEL;
+  const lastUpdateFormatted = lastUpdate ? moment(lastUpdate).format('hh:mmA') : EMPTY_VALUE_LABEL;
 
   return (
     <View style={containerStyles}>
@@ -49,7 +49,7 @@ export function Header(props) {
       <Section>
         <DigitalValueWithLabel
           horizontal
-          minChars={7}
+          minChars={5}
           label="Last Update"
           size={scaledValue(25)}
           value={lastUpdateFormatted}
