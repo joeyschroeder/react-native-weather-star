@@ -7,9 +7,6 @@ import { DateTimeSection } from '../date-time-section/date-time-section';
 import moment from 'moment';
 import { useKeepAwake } from 'expo-keep-awake';
 import { Footer } from '../footer/footer';
-import { Section } from '../section/section';
-import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
-import { SPACER } from '../../constants/spacer';
 import { HeaderConnected } from '../header/header.connected';
 import { CurrentWeatherSectionConnected } from '../current-weather-section/current-weather-section.connected';
 import { CurrentPrecipSectionConnected } from '../current-precip-section/current-precip-section.connected';
@@ -52,7 +49,7 @@ export function App(props) {
         <CurrentPrecipSectionConnected style={{ flex: 1 }} />
         <CurrentWindSectionConnected style={{ flex: 1 }} />
       </View>
-      <DateTimeSection blink style={{ flex: 2 }} color={COLORS.WHITE} value={now} />
+      <DateTimeSection blink style={{ flex: 2 }} value={now} />
       <Footer />
     </View>
   );
