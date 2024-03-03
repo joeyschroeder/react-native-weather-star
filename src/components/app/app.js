@@ -12,6 +12,7 @@ import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value
 import { SPACER } from '../../constants/spacer';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { Header } from '../header/header';
+import { HeaderConnected } from '../header/header.connected';
 
 const TIMER_INTERVAL = 1000 * 60;
 
@@ -44,7 +45,7 @@ export function App(props) {
 
   return (
     <View style={styles.container} onLayout={onLayout}>
-      <Header station="KMKX" city="Milwaukee" state="WI" />
+      <HeaderConnected />
       <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
         <Section style={{ flex: 3 }}>
           <View style={{ flexDirection: 'row', gap: SPACER }}>

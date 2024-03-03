@@ -6,7 +6,7 @@ import * as Font from 'expo-font';
 import { STORE } from './store';
 import { FONT_ASSETS } from './fonts';
 import { StatusBar } from 'expo-status-bar';
-import { AppConnected } from './components/app/app.conntected';
+import { AppConnected } from './components/app/app.connected';
 
 // Makes the native splash screen remain visible until hideAsync is called.
 SplashScreen.preventAutoHideAsync();

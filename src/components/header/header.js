@@ -29,13 +29,13 @@ const styles = StyleSheet.create({
 });
 
 export function Header(props) {
-  const { city, lastUpdate, state, station, style } = props;
+  const { city, lastUpdate, state, radarStation, style } = props;
   const containerStyles = { ...styles.container, ...style };
 
   const cityState = city && state ? `${city}, ${state}` : undefined;
   const cityStateExists = Boolean(cityState);
 
-  const formattedLastUpdate = lastUpdate ? moment(lastUpdate).format('hmm A') : EMPTY_VALUE_LABEL;
+  const lastUpdateFormatted = lastUpdate ? moment(lastUpdate).format('hmm A') : EMPTY_VALUE_LABEL;
 
   return (
     <View style={containerStyles}>
@@ -43,7 +43,7 @@ export function Header(props) {
         <WeatherIcon name="radar" size={scaledValue(36)} />
       </Section>
       <Section style={styles.primary}>
-        <Label value={`Station: ${station || EMPTY_VALUE_LABEL}`} />
+        <Label value={`Radar Station: ${radarStation || EMPTY_VALUE_LABEL}`} />
         {cityStateExists && <Text style={styles.text}>{cityState}</Text>}
       </Section>
       <Section>
@@ -52,7 +52,7 @@ export function Header(props) {
           minChars={7}
           label="Last Update"
           size={scaledValue(25)}
-          value={formattedLastUpdate}
+          value={lastUpdateFormatted}
         />
       </Section>
     </View>
@@ -63,7 +63,7 @@ Header.propTypes = {
   city: PropTypes.string,
   lastUpdate: PropTypes.string,
   state: PropTypes.string,
-  station: PropTypes.string,
+  radarStation: PropTypes.string,
   style: PropTypes.object,
 };
 
@@ -71,6 +71,6 @@ Header.defaultProps = {
   city: undefined,
   lastUpdate: undefined,
   state: undefined,
-  station: undefined,
+  radarStation: undefined,
   style: undefined,
 };
