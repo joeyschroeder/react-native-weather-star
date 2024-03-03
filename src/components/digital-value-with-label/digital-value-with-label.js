@@ -35,7 +35,7 @@ export function DigitalValueWithLabel(props) {
   const appendExists = Boolean(append);
   const containerStyle = [styles.container, horizontal && styles.horizontal, style];
 
-  const labelStyle = [{ marginBottom: horizontal ? 0 : SPACER }];
+  const labelStyle = { marginBottom: horizontal ? undefined : SPACER };
 
   return (
     <View style={containerStyle}>

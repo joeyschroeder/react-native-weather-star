@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { sampleReducer, NAME as SAMPLE } from './sample/sample';
+import { weatherMetadataReducer, NAME as WEATHER_METADATA } from './weather-metadata/weather-metadata';
+import { locationReducer, NAME as LOCATION } from './location/location';
+import { weatherForecastReducer, NAME as WEATHER_FORECAST } from './weather-forecast/weather-forecast';
 
 export const STORE = configureStore({
   reducer: {
-    [SAMPLE]: sampleReducer,
+    [LOCATION]: locationReducer,
+    [WEATHER_FORECAST]: weatherForecastReducer,
+    [WEATHER_METADATA]: weatherMetadataReducer,
   },
 });

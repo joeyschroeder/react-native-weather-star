@@ -25,10 +25,14 @@ const styles = StyleSheet.create({
 });
 
 export function App(props) {
-  const { onLayout } = props;
+  const { onLayout, requestData } = props;
 
   useKeepAwake();
   const [now, setNow] = useState(moment().format());
+
+  useEffect(() => {
+    requestData();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,12 +48,7 @@ export function App(props) {
       <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
         <Section style={{ flex: 3 }}>
           <View style={{ flexDirection: 'row', gap: SPACER }}>
-            <DigitalValueWithLabel
-              append="°F"
-              label="Current"
-              size={scaledValue(240)}
-              value="60"
-            />
+            <DigitalValueWithLabel append="°F" label="Current" size={scaledValue(240)} value="60" />
             <View style={{ gap: SPACER / 2 }}>
               <DigitalValueWithLabel append="°" label="High" value="89" />
               <DigitalValueWithLabel append="°" label="Low" value="55" />
@@ -58,41 +57,18 @@ export function App(props) {
         </Section>
         <Section style={{ flex: 1 }}>
           <View style={{ gap: SPACER }}>
-            <DigitalValueWithLabel
-              color={COLORS.INFO}
-              label="Rain"
-              value="15"
-              append="%"
-            />
-            <DigitalValueWithLabel
-              label="Humidity"
-              append="%"
-              value="18"
-              color={COLORS.INFO}
-            />
+            <DigitalValueWithLabel color={COLORS.INFO} label="Rain" value="15" append="%" />
+            <DigitalValueWithLabel label="Humidity" append="%" value="18" color={COLORS.INFO} />
           </View>
         </Section>
         <Section style={{ flex: 1 }}>
           <View style={{ gap: SPACER }}>
-            <DigitalValueWithLabel
-              color={COLORS.DANGER}
-              label="Wind MPH"
-              value="15"
-            />
-            <DigitalValueWithLabel
-              color={COLORS.DANGER}
-              value="NE"
-              label="Wind Dir."
-            />
+            <DigitalValueWithLabel color={COLORS.DANGER} label="Wind MPH" value="15" />
+            <DigitalValueWithLabel color={COLORS.DANGER} value="NE" label="Wind Dir." />
           </View>
         </Section>
       </View>
-      <DateTimeSection
-        blink
-        style={{ flex: 2 }}
-        color={COLORS.WHITE}
-        value={now}
-      />
+      <DateTimeSection blink style={{ flex: 2 }} color={COLORS.WHITE} value={now} />
       <Footer />
     </View>
   );
@@ -100,8 +76,10 @@ export function App(props) {
 
 App.propTypes = {
   onLayout: PropTypes.func,
+  requestData: PropTypes.func,
 };
 
 App.defaultProps = {
   onLayout: undefined,
+  requestData: () => {},
 };

@@ -1,12 +1,12 @@
 import { registerRootComponent } from 'expo';
 import React, { useState, useEffect, useCallback } from 'react';
-import { App } from './components/app/app';
 import { Provider } from 'react-redux';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { STORE } from './store';
 import { FONT_ASSETS } from './fonts';
 import { StatusBar } from 'expo-status-bar';
+import { AppConnected } from './components/app/app.conntected';
 
 // Makes the native splash screen remain visible until hideAsync is called.
 SplashScreen.preventAutoHideAsync();
@@ -41,7 +41,7 @@ export function Main() {
   return (
     <Provider store={STORE}>
       <StatusBar hidden />
-      <App onLayout={onLayout} />
+      <AppConnected onLayout={onLayout} />
     </Provider>
   );
 }
