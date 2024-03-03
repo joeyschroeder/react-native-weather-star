@@ -44,9 +44,7 @@ export function Footer(props) {
         </Pressable>
       </Section> */}
       <Section style={styles.primary}>
-        <Text style={styles.text}>
-          Increasing clouds, with a high near 49. South wind around 15 mph.
-        </Text>
+        <Text style={styles.text}>Increasing clouds, with a high near 49. South wind around 15 mph.</Text>
       </Section>
     </View>
   );

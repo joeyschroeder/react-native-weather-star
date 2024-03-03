@@ -29,11 +29,7 @@ export function SettingsSection(props) {
 
   return (
     <View style={containerStyle}>
-      <Label
-        backgroundColor={COLORS.BLACK_TYPE}
-        style={styles.label}
-        value={label}
-      />
+      <Label backgroundColor={COLORS.BLACK_TYPE} style={styles.label} value={label} />
       {children}
     </View>
   );

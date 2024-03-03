@@ -28,17 +28,12 @@ const styles = StyleSheet.create({
 });
 
 export function DigitalValueWithLabel(props) {
-  const { append, color, label, size, style, value, horizontal, minChars } =
-    props;
+  const { append, color, label, size, style, value, horizontal, minChars } = props;
 
   if (!value) return null;
 
   const appendExists = Boolean(append);
-  const containerStyle = [
-    styles.container,
-    horizontal && styles.horizontal,
-    style,
-  ];
+  const containerStyle = [styles.container, horizontal && styles.horizontal, style];
 
   const labelStyle = [{ marginBottom: horizontal ? 0 : SPACER }];
 
@@ -50,12 +45,7 @@ export function DigitalValueWithLabel(props) {
         value={label}
       />
       <View style={styles.valueContainer}>
-        <DigitalValue
-          color={color}
-          size={size}
-          value={value}
-          minChars={minChars}
-        />
+        <DigitalValue color={color} size={size} value={value} minChars={minChars} />
         {appendExists && <Text style={styles.append}>{append}</Text>}
       </View>
     </View>

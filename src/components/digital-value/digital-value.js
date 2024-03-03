@@ -47,8 +47,7 @@ export function DigitalValue(props) {
   const shadowStyles = [styles.text, commonTextStyles, styles.shadow];
 
   const valueLength = value.length;
-  const padding =
-    minChars && valueLength < minChars ? minChars - valueLength : 0;
+  const padding = minChars && valueLength < minChars ? minChars - valueLength : 0;
   const paddingString = '0'.repeat(padding);
 
   return (

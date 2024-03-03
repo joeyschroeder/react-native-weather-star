@@ -46,36 +46,18 @@ export function Settings(props) {
           {/* <Label value="Settings" /> */}
           <SettingsSection label="Destination">
             <TimePicker value={new Date()} />
-            <RadioSelector
-              value="Red"
-              options={['Red', 'Yellow', 'Green', 'Blue', 'White']}
-            />
+            <RadioSelector value="Red" options={['Red', 'Yellow', 'Green', 'Blue', 'White']} />
           </SettingsSection>
           <SettingsSection label="Present">
-            <RadioSelector
-              value="Red"
-              options={['Red', 'Yellow', 'Green', 'Blue', 'White']}
-            />
+            <RadioSelector value="Red" options={['Red', 'Yellow', 'Green', 'Blue', 'White']} />
           </SettingsSection>
           <SettingsSection label="Last Departed">
             <TimePicker value={new Date()} />
-            <RadioSelector
-              value="Red"
-              options={['Red', 'Yellow', 'Green', 'Blue', 'White']}
-            />
+            <RadioSelector value="Red" options={['Red', 'Yellow', 'Green', 'Blue', 'White']} />
           </SettingsSection>
           <View style={styles.actions}>
-            <BlockButton
-              style={styles.action}
-              label="Save"
-              color={COLORS.SUCCESS}
-            />
-            <BlockButton
-              style={styles.action}
-              label="Cancel"
-              onPress={onDismiss}
-              color={COLORS.DANGER}
-            />
+            <BlockButton style={styles.action} label="Save" color={COLORS.SUCCESS} />
+            <BlockButton style={styles.action} label="Cancel" onPress={onDismiss} color={COLORS.DANGER} />
           </View>
         </View>
       </View>

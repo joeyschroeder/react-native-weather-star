@@ -14,10 +14,7 @@ export function Light(props) {
   const { active, color, style, size } = props;
 
   const backgroundColor = active ? color : COLORS.BLACK_TYPE;
-  const lightStyles = [
-    styles.light,
-    { backgroundColor, width: size, height: size },
-  ];
+  const lightStyles = [styles.light, { backgroundColor, width: size, height: size }];
 
   return (
     <View style={style}>

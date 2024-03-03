@@ -28,5 +28,4 @@ export const { updateSampleData, resetSampleData } = actions;
 
 // selectors
 export const selectSample = (state) => state[NAME] || INITIAL_STATE;
-export const selectSampleData = (state) =>
-  selectSample(state).data || INITIAL_STATE.data;
+export const selectSampleData = (state) => selectSample(state).data || INITIAL_STATE.data;

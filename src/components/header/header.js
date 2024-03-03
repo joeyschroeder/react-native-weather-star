@@ -35,9 +35,7 @@ export function Header(props) {
   const cityState = city && state ? `${city}, ${state}` : undefined;
   const cityStateExists = Boolean(cityState);
 
-  const formattedLastUpdate = lastUpdate
-    ? moment(lastUpdate).format('hmm A')
-    : EMPTY_VALUE_LABEL;
+  const formattedLastUpdate = lastUpdate ? moment(lastUpdate).format('hmm A') : EMPTY_VALUE_LABEL;
 
   return (
     <View style={containerStyles}>
