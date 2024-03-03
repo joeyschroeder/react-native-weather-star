@@ -6,7 +6,6 @@ import { FLEX_GAP } from '../../constants/flex-gap';
 import { DateTimeSection } from '../date-time-section/date-time-section';
 import moment from 'moment';
 import { useKeepAwake } from 'expo-keep-awake';
-import { Footer } from '../footer/footer';
 import { HeaderConnected } from '../header/header.connected';
 import { CurrentWeatherSectionConnected } from '../current-weather-section/current-weather-section.connected';
 import { CurrentPrecipSectionConnected } from '../current-precip-section/current-precip-section.connected';
@@ -50,7 +49,6 @@ export function App(props) {
         <CurrentWindSectionConnected style={{ flex: 1 }} />
       </View>
       <DateTimeSection blink style={{ flex: 2 }} value={now} />
-      <Footer />
     </View>
   );
 }
