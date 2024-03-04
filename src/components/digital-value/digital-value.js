@@ -6,7 +6,7 @@ import { COLORS } from '../../constants/colors';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { SPACER } from '../../constants/spacer';
 import { BORDER_RADIUS } from '../../constants/border-radius';
-import { EMPTY_VALUE_LABEL } from '../../constants/emtpy-value-label';
+import { EMPTY_VALUE_LABEL } from '../../constants/empty-value-label';
 
 const NUMBER_FONT = FONTS.MONO.NUMBER.ITALIC;
 const LETTER_FONT = FONTS.MONO.LETTER.ITALIC;
@@ -88,7 +88,7 @@ DigitalValue.propTypes = {
   size: PropTypes.number,
   style: PropTypes.object,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  valueType: PropTypes.oneOf(['number', 'letter']),
+  valueType: PropTypes.oneOf(['letter', 'number']),
 };
 
 DigitalValue.defaultProps = {

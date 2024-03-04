@@ -6,7 +6,7 @@ import { COLORS } from '../../constants/colors';
 import { Section } from '../section/section';
 import { WeatherIcon } from '../weather-icon/weather-icon';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { EMPTY_VALUE_LABEL } from '../../constants/emtpy-value-label';
+import { EMPTY_VALUE_LABEL } from '../../constants/empty-value-label';
 import { FLEX_GAP } from '../../constants/flex-gap';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import moment from 'moment';

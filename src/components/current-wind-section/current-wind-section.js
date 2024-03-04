@@ -6,17 +6,25 @@ import { SPACER } from '../../constants/spacer';
 import PropTypes from 'prop-types';
 import { COLORS } from '../../constants/colors';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
+import { DigitalLevel } from '../digital-level/digital-level';
+
+const MAX_MPH = 50;
 
 export function CurrentWindSection(props) {
   const { style, speed, direction } = props;
 
-  const speedColor = speed > 25 ? COLORS.DANGER : COLORS.WHITE;
+  const dangerMph = MAX_MPH / 2;
+  const speedColor = speed > dangerMph ? COLORS.DANGER : COLORS.WHITE;
+
+  const maxLevels = 25;
+  const levelValue = (speed / MAX_MPH) * maxLevels;
 
   return (
     <Section style={style}>
       <View style={{ gap: SPACER }}>
-        <DigitalValueWithLabel label="Wind MPH" value={speed} minChars={2} color={speedColor} />
-        <DigitalValueWithLabel label="Wind Dir." minChars={3} value={direction} size={scaledValue(60)} />
+        <DigitalLevel value={levelValue} maxLevels={maxLevels} />
+        <DigitalValueWithLabel label="Wind MPH" value={speed} minChars={2} color={speedColor} size={scaledValue(54)} />
+        <DigitalValueWithLabel label="Wind Dir." minChars={3} value={direction} size={scaledValue(37)} />
       </View>
     </Section>
   );

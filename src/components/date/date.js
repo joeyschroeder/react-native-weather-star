@@ -20,13 +20,13 @@ export function Date(props) {
 
   const day = moment(value).format('DD');
   const month = moment(value).format('MMM');
-  const year = moment(value).format('YYYY');
+  // const year = moment(value).format('YYYY');
 
   return (
     <View style={containerStyle}>
       <DigitalValueWithLabel value={month} label="Month" color={color} />
       <DigitalValueWithLabel value={day} label="Day" color={color} />
-      <DigitalValueWithLabel value={year} label="Year" color={color} />
+      {/* <DigitalValueWithLabel value={year} label="Year" color={color} /> */}
     </View>
   );
 }
