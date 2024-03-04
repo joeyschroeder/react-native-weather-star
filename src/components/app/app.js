@@ -12,6 +12,7 @@ import { CurrentPrecipSectionConnected } from '../current-precip-section/current
 import { CurrentWindSectionConnected } from '../current-wind-section/current-wind-section.connected';
 
 const TIMER_INTERVAL = 1000 * 60;
+const DATA_REQUEST_INTERVAL = 1000 * 60 * 30;
 
 const styles = StyleSheet.create({
   container: {
@@ -30,25 +31,34 @@ export function App(props) {
 
   useEffect(() => {
     requestData();
-  }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+    const dataRequestInterval = setInterval(() => {
+      requestData();
+    }, DATA_REQUEST_INTERVAL);
+
+    const timerInterval = setInterval(() => {
       setNow(moment().format());
     }, TIMER_INTERVAL);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(dataRequestInterval);
+      clearInterval(timerInterval);
+    };
   }, []);
 
   return (
     <View style={styles.container} onLayout={onLayout}>
       <HeaderConnected />
       <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
-        <CurrentWeatherSectionConnected style={{ flex: 3 }} />
-        <CurrentPrecipSectionConnected style={{ flex: 1 }} />
-        <CurrentWindSectionConnected style={{ flex: 1 }} />
+        <View style={{ gap: FLEX_GAP, flex: 1 }}>
+          <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
+            <CurrentWeatherSectionConnected style={{ flex: 3 }} />
+            <CurrentPrecipSectionConnected style={{ flex: 1 }} />
+          </View>
+          <DateTimeSection blink style={{ flex: 2 }} value={now} />
+        </View>
+        <CurrentWindSectionConnected />
       </View>
-      <DateTimeSection blink style={{ flex: 2 }} value={now} />
     </View>
   );
 }
