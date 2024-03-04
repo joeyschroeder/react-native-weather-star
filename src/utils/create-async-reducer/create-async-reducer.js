@@ -4,9 +4,18 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ASYNC_THUNK_LOADING_STATES } from '../../constants/async-thunk-loading-states';
 import { ASYNC_THUNK_TYPES } from '../../constants/async-thunk-types';
 
-export const createAsyncReducer = ({ initialState = {}, name, requestFunc }) => {
+export const createAsyncReducer = ({ initialState = {}, name, requestFunc: requestFuncParam, requestOnce = false }) => {
   if (!name) throw new Error('name is required');
-  if (!requestFunc) throw new Error('requestFunc is required');
+  if (!requestFuncParam) throw new Error('requestFunc is required');
+
+  const selectLoading = (state) => state[name]?.loading || ASYNC_THUNK_LOADING_STATES.IDLE;
+
+  function requestFunc(args, thunkAPI) {
+    const { getState } = thunkAPI;
+    if (requestOnce && selectLoading(getState()) === ASYNC_THUNK_LOADING_STATES.FULFILLED) return;
+
+    return requestFuncParam(args, thunkAPI);
+  }
 
   const request = createAsyncThunk(`${name}/request`, requestFunc);
 

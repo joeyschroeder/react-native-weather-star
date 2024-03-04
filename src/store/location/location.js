@@ -5,6 +5,7 @@ export const NAME = 'location';
 
 const { reducer, requestThunk, selectData, selectLoading } = createAsyncReducer({
   name: NAME,
+  requestOnce: true,
   requestFunc: async () => {
     await getLocationForegroundPermissions();
     return getLocation();
