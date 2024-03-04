@@ -33,7 +33,7 @@ export function CurrentWeatherSection(props) {
           append={tempUnitFormatted}
           color={tempCurrentColor}
           label="Current"
-          size={scaledValue(240)}
+          size={scaledValue(251)}
           value={tempCurrent}
         />
         <View style={styles.highLowContainer}>

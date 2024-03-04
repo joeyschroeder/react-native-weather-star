@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { getWeatherByForecastUrl } from '../../services/weather/weather';
 import { createAsyncReducer } from '../../utils/create-async-reducer/create-async-reducer';
 import { formatHourlyForecastObject } from '../../utils/format-hourly-forecast-object/format-hourly-forecast-object';
@@ -25,10 +26,16 @@ const selectPeriods = (state) => {
   return periods.map((period) => formatHourlyForecastObject(period));
 };
 
-// TODO: update this to use current time and not just the first period
 const selectPeriodLatest = (state) => {
+  const now = moment();
   const periods = selectPeriods(state);
-  return periods[0];
+
+  const first = periods.find((period) => {
+    const endTime = moment(period.endTime);
+    return moment(endTime).isSameOrAfter(now);
+  });
+
+  return first;
 };
 
 export const selectWeatherForecastDewpoint = (state) => selectPeriodLatest(state)?.dewpoint;
