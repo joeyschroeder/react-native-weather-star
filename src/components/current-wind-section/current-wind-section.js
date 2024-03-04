@@ -8,7 +8,7 @@ import { COLORS } from '../../constants/colors';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { DigitalLevel } from '../digital-level/digital-level';
 
-const MAX_MPH = 50;
+const MAX_MPH = 30;
 
 export function CurrentWindSection(props) {
   const { style, speed, direction } = props;

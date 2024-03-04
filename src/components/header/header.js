@@ -11,6 +11,7 @@ import { FLEX_GAP } from '../../constants/flex-gap';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import moment from 'moment';
 import { Label } from '../label/label';
+import { DigitalValue } from '../digital-value/digital-value';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,6 +19,9 @@ const styles = StyleSheet.create({
     gap: FLEX_GAP,
   },
   primary: {
+    alignItems: 'flex-start',
+  },
+  secondary: {
     alignItems: 'flex-start',
     flex: 1,
   },
@@ -29,7 +33,7 @@ const styles = StyleSheet.create({
 });
 
 export function Header(props) {
-  const { city, lastUpdate, state, radarStation, style } = props;
+  const { city, lastUpdate, state, radarStation, style, shortForecast } = props;
   const containerStyles = { ...styles.container, ...style };
 
   const cityState = city && state ? `${city}, ${state}` : undefined;
@@ -42,9 +46,12 @@ export function Header(props) {
       <Section>
         <WeatherIcon name="radar" size={scaledValue(36)} />
       </Section>
-      <Section style={styles.primary}>
+      <Section style={styles.secondary}>
         <Label value={`Radar Station: ${radarStation || EMPTY_VALUE_LABEL}`} />
         {cityStateExists && <Text style={styles.text}>{cityState}</Text>}
+      </Section>
+      <Section style={styles.primary}>
+        <DigitalValue value={shortForecast || EMPTY_VALUE_LABEL} size={scaledValue(25)} minChars={22} />
       </Section>
       <Section>
         <DigitalValueWithLabel
@@ -62,15 +69,17 @@ export function Header(props) {
 Header.propTypes = {
   city: PropTypes.string,
   lastUpdate: PropTypes.string,
-  state: PropTypes.string,
   radarStation: PropTypes.string,
+  shortForecast: PropTypes.string,
+  state: PropTypes.string,
   style: PropTypes.object,
 };
 
 Header.defaultProps = {
   city: undefined,
   lastUpdate: undefined,
-  state: undefined,
   radarStation: undefined,
+  shortForecast: undefined,
+  state: undefined,
   style: undefined,
 };
