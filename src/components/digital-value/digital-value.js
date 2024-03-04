@@ -40,11 +40,11 @@ const styles = StyleSheet.create({
 });
 
 export function DigitalValue(props) {
-  const { color, maxChars, minChars, size, style, value } = props;
+  const { color, maxChars, minChars, size, style, value, valueType } = props;
 
   const containerStyle = [styles.container, style];
   // eslint-disable-next-line no-restricted-globals
-  const isNumber = !isNaN(value);
+  const isNumber = valueType === 'number' || !isNaN(value);
 
   const fontFamily = isNumber ? NUMBER_FONT : LETTER_FONT;
   const shadowChar = isNumber ? NUMBER_EMPTY_CHAR : LETTER_EMPTY_CHAR;
@@ -88,6 +88,7 @@ DigitalValue.propTypes = {
   size: PropTypes.number,
   style: PropTypes.object,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  valueType: PropTypes.oneOf(['number', 'letter']),
 };
 
 DigitalValue.defaultProps = {
@@ -97,4 +98,5 @@ DigitalValue.defaultProps = {
   size: scaledValue(88),
   style: undefined,
   value: EMPTY_VALUE_LABEL,
+  valueType: undefined,
 };
