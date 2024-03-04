@@ -49,8 +49,8 @@ export function Header(props) {
       <Section>
         <DigitalValueWithLabel
           horizontal
-          minChars={5}
           label="Last Update"
+          minChars={6}
           size={scaledValue(25)}
           value={lastUpdateFormatted}
         />
