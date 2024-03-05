@@ -11,7 +11,7 @@ import { withTheme } from '../with-theme/with-theme';
 function createStyleSheet(theme) {
   return StyleSheet.create({
     append: {
-      color: theme.text,
+      color: theme.colors.text,
       fontFamily: FONTS.SANS_SERIF.BOLD,
       fontSize: scaledValue(30),
       marginLeft: SPACER / 2,

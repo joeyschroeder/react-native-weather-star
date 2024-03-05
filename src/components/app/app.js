@@ -18,7 +18,7 @@ const DATA_REQUEST_INTERVAL = 1000 * 60 * 30;
 function createStyleSheet(theme) {
   return StyleSheet.create({
     container: {
-      backgroundColor: theme.background,
+      backgroundColor: theme.colors.background,
       flex: 1,
       gap: FLEX_GAP,
       justifyContent: 'center',

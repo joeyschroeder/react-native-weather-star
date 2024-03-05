@@ -14,7 +14,7 @@ function CurrentWindSectionBase(props) {
   const { style, speed, direction, theme } = props;
 
   const dangerMph = MAX_MPH / 2;
-  const speedColor = speed > dangerMph ? theme.danger : theme.text;
+  const speedColor = speed > dangerMph ? theme.colors.danger : theme.colors.text;
 
   const maxLevels = 25;
   const levelValue = (speed / MAX_MPH) * maxLevels;

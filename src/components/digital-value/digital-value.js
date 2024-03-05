@@ -21,7 +21,7 @@ const SPACE_CHAR = PADDING_CHAR;
 function createStyleSheet(theme) {
   return StyleSheet.create({
     container: {
-      backgroundColor: theme.valueBackground,
+      backgroundColor: theme.colors.valueBackground,
       borderRadius: BORDER_RADIUS,
       flexDirection: 'row',
       padding: SPACER / 2,
@@ -34,7 +34,7 @@ function createStyleSheet(theme) {
       position: 'absolute',
     },
     text: {
-      color: theme.text,
+      color: theme.colors.text,
       textTransform: 'uppercase',
       zIndex: 1,
     },
@@ -46,7 +46,7 @@ function DigitalValueBase(props) {
 
   const styles = createStyleSheet(theme);
 
-  const color = colorProp || theme.text;
+  const color = colorProp || theme.colors.text;
   const containerStyle = [styles.container, style];
   // eslint-disable-next-line no-restricted-globals
   const isNumber = valueType === 'number' || !isNaN(value);

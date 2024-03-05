@@ -8,7 +8,7 @@ import { withTheme } from '../with-theme/with-theme';
 function createStyleSheet(theme) {
   return StyleSheet.create({
     text: {
-      color: theme.text,
+      color: theme.colors.text,
       fontFamily: FONTS.SANS_SERIF.BOLD,
       fontSize: scaledValue(20),
       textAlign: 'center',

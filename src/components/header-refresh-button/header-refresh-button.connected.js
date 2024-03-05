@@ -10,7 +10,6 @@ import { selectAnyRequestRejected } from '../../selectors/select-any-request-rej
 const REQUEST_SELECTORS = [selectLocationLoading, selectWeatherForecastLoading, selectWeatherMetadataLoading];
 
 const mapStateToProps = (state) => {
-  console.log('selectLocationLoading: ', selectLocationLoading(state));
   return {
     hasError: selectAnyRequestRejected(state, REQUEST_SELECTORS),
     isLoading: selectAnyRequestPending(state, REQUEST_SELECTORS),

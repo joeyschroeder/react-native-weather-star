@@ -1,16 +1,14 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FONTS } from '../../constants/fonts';
 import { Section } from '../section/section';
-import { WeatherIcon } from '../weather-icon/weather-icon';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { EMPTY_VALUE_LABEL } from '../../constants/empty-value-label';
 import { FLEX_GAP } from '../../constants/flex-gap';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import moment from 'moment';
 import { Label } from '../label/label';
-import { AnimationSpin } from '../animation-spin/animation-spin';
 import { withTheme } from '../with-theme/with-theme';
 import { HeaderRefreshButtonConnected } from '../header-refresh-button/header-refresh-button.connected';
 
@@ -28,7 +26,7 @@ function createStyleSheet(theme) {
       alignItems: 'flex-start',
     },
     text: {
-      color: theme.text,
+      color: theme.colors.text,
       fontFamily: FONTS.SANS_SERIF.BOLD,
       textTransform: 'uppercase',
     },
@@ -39,7 +37,7 @@ function HeaderBase(props) {
   const { city, lastUpdate, radarStation, shortForecast, state, style, theme } = props;
 
   const styles = createStyleSheet(theme);
-  const containerStyles = { ...styles.container, ...style };
+  const containerStyles = [styles.container, style];
 
   const cityState = city && state ? `${city}, ${state}` : undefined;
   const cityStateExists = Boolean(cityState);

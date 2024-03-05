@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
 function LightBase(props) {
   const { active, color: colorProp, style, size, theme } = props;
 
-  const color = colorProp || theme.text;
-  const backgroundColor = active ? color : theme.valueBackground;
+  const color = colorProp || theme.colors.text;
+  const backgroundColor = active ? color : theme.colors.valueBackground;
   const lightStyles = [styles.light, { backgroundColor, width: size, height: size }];
 
   return (

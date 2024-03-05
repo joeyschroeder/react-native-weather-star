@@ -25,13 +25,15 @@ export const selectTheme = (state) => {
   const secondary = COLORS.BLUE;
 
   return {
-    ...COLOR_VALUES,
-    background,
-    section,
-    valueBackground,
-    primary,
-    secondary,
-    text,
+    colors: {
+      ...COLOR_VALUES,
+      background,
+      section,
+      valueBackground,
+      primary,
+      secondary,
+      text,
+    },
     dark: theme === COLOR_SCHEMES.DARK,
   };
 };

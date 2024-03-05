@@ -14,7 +14,7 @@ function createStyleSheet(theme) {
       justifyContent: 'flex-end',
     },
     seg: {
-      backgroundColor: theme.valueBackground,
+      backgroundColor: theme.colors.valueBackground,
       borderRadius: BORDER_RADIUS,
       height: scaledValue(10),
       marginTop: SPACER / 4,
@@ -31,8 +31,8 @@ function DigitalLevelBase(props) {
   const styles = createStyleSheet(theme);
 
   const containerStyle = [styles.container, style];
-  const activeSegStyle = { backgroundColor: theme.text };
-  const thresholdSegStyle = { backgroundColor: theme.danger };
+  const activeSegStyle = { backgroundColor: theme.colors.text };
+  const thresholdSegStyle = { backgroundColor: theme.colors.danger };
 
   const segments = [...Array(maxLevels)].map((_, index) => {
     const key = `segment-${index}`;

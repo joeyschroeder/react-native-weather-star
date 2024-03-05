@@ -9,7 +9,7 @@ function createStyleSheet(theme) {
   return StyleSheet.create({
     container: {
       alignItems: 'center',
-      backgroundColor: theme.section,
+      backgroundColor: theme.colors.section,
       justifyContent: 'center',
       padding: SPACER,
     },
