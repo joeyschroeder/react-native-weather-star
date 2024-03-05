@@ -6,6 +6,7 @@ import { BORDER_RADIUS } from '../../constants/border-radius';
 import { SPACER } from '../../constants/spacer';
 import PropTypes from 'prop-types';
 import { withTheme } from '../with-theme/with-theme';
+import { useCountUp } from 'use-count-up';
 
 function createStyleSheet(theme) {
   return StyleSheet.create({
@@ -34,13 +35,19 @@ function DigitalLevelBase(props) {
   const activeSegStyle = { backgroundColor: theme.colors.text };
   const thresholdSegStyle = { backgroundColor: theme.colors.danger };
 
+  const { value: countUpValue } = useCountUp({
+    duration: 1,
+    end: value,
+    isCounting: true,
+  });
+
   const segments = [...Array(maxLevels)].map((_, index) => {
     const key = `segment-${index}`;
 
     const isLast = index === maxLevels - 1;
     let segStyle = isLast ? [styles.seg, styles.segLast] : styles.seg;
 
-    const active = index < value;
+    const active = index < countUpValue;
     const overThreshold = active && index > maxLevels / 2;
 
     if (overThreshold) {

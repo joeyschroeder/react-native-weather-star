@@ -15,8 +15,20 @@ function CurrentPrecipSectionBase(props) {
   return (
     <Section style={style}>
       <View style={{ gap: SPACER }}>
-        <DigitalValueWithLabel label="Rain" value={precipProbability} append="%" color={precipProbabilityColor} />
-        <DigitalValueWithLabel label="Humidity" append="%" value={relativeHumidity} color={relativeHumidityColor} />
+        <DigitalValueWithLabel
+          append="%"
+          color={precipProbabilityColor}
+          countUp
+          label="Rain"
+          value={precipProbability}
+        />
+        <DigitalValueWithLabel
+          append="%"
+          color={relativeHumidityColor}
+          countUp
+          label="Humidity"
+          value={relativeHumidity}
+        />
       </View>
     </Section>
   );

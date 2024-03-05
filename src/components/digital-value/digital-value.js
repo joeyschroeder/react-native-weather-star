@@ -7,6 +7,7 @@ import { SPACER } from '../../constants/spacer';
 import { BORDER_RADIUS } from '../../constants/border-radius';
 import { EMPTY_VALUE_LABEL } from '../../constants/empty-value-label';
 import { withTheme } from '../with-theme/with-theme';
+import { useCountUp } from 'use-count-up';
 
 const NUMBER_FONT = FONTS.MONO.NUMBER.ITALIC;
 const LETTER_FONT = FONTS.MONO.LETTER.ITALIC;
@@ -42,7 +43,7 @@ function createStyleSheet(theme) {
 }
 
 function DigitalValueBase(props) {
-  const { color: colorProp, maxChars, minChars, size, style, value, valueType, theme } = props;
+  const { color: colorProp, maxChars, minChars, size, style, value, valueType, theme, countUp } = props;
 
   const styles = createStyleSheet(theme);
 
@@ -57,7 +58,19 @@ function DigitalValueBase(props) {
 
   const textStyle = [styles.text, commonTextStyles];
 
-  let normalizedValue = isNumber ? value.toString() : value;
+  let normalizedValue = value;
+  if (isNumber && countUp) {
+    const { value: countUpValue } = useCountUp({
+      isCounting: true,
+      end: value,
+      duration: 1,
+    });
+
+    normalizedValue = countUpValue.toString();
+  } else if (isNumber) {
+    normalizedValue = value.toString();
+  }
+
   normalizedValue = normalizedValue.replace(/\s/g, SPACE_CHAR);
   const valueLength = normalizedValue.length;
 
@@ -88,6 +101,7 @@ function DigitalValueBase(props) {
 
 DigitalValueBase.propTypes = {
   color: PropTypes.string,
+  countUp: PropTypes.bool,
   maxChars: PropTypes.number,
   minChars: PropTypes.number,
   size: PropTypes.number,
@@ -99,6 +113,7 @@ DigitalValueBase.propTypes = {
 
 DigitalValueBase.defaultProps = {
   color: undefined,
+  countUp: false,
   maxChars: undefined,
   minChars: 2,
   size: scaledValue(88),

@@ -30,7 +30,7 @@ function createStyleSheet(theme) {
 }
 
 function DigitalValueWithLabelBase(props) {
-  const { append, color, label, size, style, value, horizontal, minChars, theme } = props;
+  const { append, color, countUp, horizontal, label, minChars, size, style, theme, value } = props;
 
   const styles = createStyleSheet(theme);
   const appendExists = Boolean(append);
@@ -42,7 +42,7 @@ function DigitalValueWithLabelBase(props) {
     <View style={containerStyle}>
       <Label style={labelStyle} value={label} />
       <View style={styles.valueContainer}>
-        <DigitalValue color={color} size={size} value={value} minChars={minChars} />
+        <DigitalValue color={color} countUp={countUp} minChars={minChars} size={size} value={value} />
         {appendExists && <Text style={styles.append}>{append}</Text>}
       </View>
     </View>
@@ -52,6 +52,7 @@ function DigitalValueWithLabelBase(props) {
 DigitalValueWithLabelBase.propTypes = {
   append: PropTypes.string,
   color: PropTypes.string,
+  countUp: PropTypes.bool,
   horizontal: PropTypes.bool,
   label: PropTypes.string,
   minChars: PropTypes.number,
@@ -64,6 +65,7 @@ DigitalValueWithLabelBase.propTypes = {
 DigitalValueWithLabelBase.defaultProps = {
   append: undefined,
   color: undefined,
+  countUp: undefined,
   horizontal: false,
   label: undefined,
   minChars: undefined,

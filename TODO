@@ -6,16 +6,13 @@
 * add weather alerts
 * perhaps scroll short forecasts
 * add settings fo color changes
-* add app icon
-* add intro animation
-* add splash screen
-* add light/dark mode
 * add settings for units
 * add settings for clock
 * add settings for danger levels for temp rain humidity and wind
-* add count up/down on numberic values
 * add scroll/marquee for long text
-* add digitial initlaization animation like time circutis
 * add sunrise/sunset api (https://sunrisesunset.io/api/)
 * add weather icon
+* add app icon
+* add intro animation
+* add splash screen
 * add music?
