@@ -1,34 +1,38 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { COLORS } from '../../constants/colors';
 import { FLEX_GAP } from '../../constants/flex-gap';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { BORDER_RADIUS } from '../../constants/border-radius';
 import { SPACER } from '../../constants/spacer';
 import PropTypes from 'prop-types';
+import { withTheme } from '../with-theme/with-theme';
 
-const styles = StyleSheet.create({
-  container: {
-    gap: FLEX_GAP,
-    justifyContent: 'flex-end',
-  },
-  seg: {
-    backgroundColor: COLORS.BLACK_TYPE,
-    borderRadius: BORDER_RADIUS,
-    height: scaledValue(10),
-    marginTop: SPACER / 4,
-  },
-  segLast: {
-    marginTop: 0,
-  },
-});
+function createStyleSheet(theme) {
+  return StyleSheet.create({
+    container: {
+      gap: FLEX_GAP,
+      justifyContent: 'flex-end',
+    },
+    seg: {
+      backgroundColor: theme.black_type,
+      borderRadius: BORDER_RADIUS,
+      height: scaledValue(10),
+      marginTop: SPACER / 4,
+    },
+    segLast: {
+      marginTop: 0,
+    },
+  });
+}
 
-export function DigitalLevel(props) {
-  const { maxLevels, style, value, color, thresholdColor } = props;
+function DigitalLevelBase(props) {
+  const { maxLevels, style, theme, value } = props;
+
+  const styles = createStyleSheet(theme);
 
   const containerStyle = [styles.container, style];
-  const activeSegStyle = { backgroundColor: color };
-  const thresholdSegStyle = { backgroundColor: thresholdColor };
+  const activeSegStyle = { backgroundColor: theme.text };
+  const thresholdSegStyle = { backgroundColor: theme.danger };
 
   const segments = [...Array(maxLevels)].map((_, index) => {
     const key = `segment-${index}`;
@@ -51,18 +55,18 @@ export function DigitalLevel(props) {
   return <View style={containerStyle}>{segments.reverse()}</View>;
 }
 
-DigitalLevel.propTypes = {
-  color: PropTypes.string,
+DigitalLevelBase.propTypes = {
   maxLevels: PropTypes.number,
   style: PropTypes.object,
-  thresholdColor: PropTypes.string,
+  theme: PropTypes.object,
   value: PropTypes.number,
 };
 
-DigitalLevel.defaultProps = {
-  color: COLORS.WHITE,
+DigitalLevelBase.defaultProps = {
   maxLevels: 20,
   style: undefined,
-  thresholdColor: COLORS.DANGER,
+  theme: undefined,
   value: 0,
 };
+
+export const DigitalLevel = withTheme(DigitalLevelBase);

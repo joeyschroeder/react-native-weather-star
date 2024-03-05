@@ -4,13 +4,13 @@ import { View } from 'react-native';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import { SPACER } from '../../constants/spacer';
 import PropTypes from 'prop-types';
-import { COLORS } from '../../constants/colors';
+import { withTheme } from '../with-theme/with-theme';
 
-export function CurrentPrecipSection(props) {
-  const { style, precipProbability, relativeHumidity } = props;
+function CurrentPrecipSectionBase(props) {
+  const { precipProbability, relativeHumidity, style, theme } = props;
 
-  const precipProbabilityColor = precipProbability > 25 ? COLORS.DANGER : COLORS.WHITE;
-  const relativeHumidityColor = relativeHumidity > 50 ? COLORS.DANGER : COLORS.WHITE;
+  const precipProbabilityColor = precipProbability > 25 ? theme.danger : theme.text;
+  const relativeHumidityColor = relativeHumidity > 50 ? theme.danger : theme.text;
 
   return (
     <Section style={style}>
@@ -22,14 +22,18 @@ export function CurrentPrecipSection(props) {
   );
 }
 
-CurrentPrecipSection.propTypes = {
+CurrentPrecipSectionBase.propTypes = {
   precipProbability: PropTypes.number,
   relativeHumidity: PropTypes.number,
   style: PropTypes.object,
+  theme: PropTypes.object,
 };
 
-CurrentPrecipSection.defaultProps = {
-  style: undefined,
+CurrentPrecipSectionBase.defaultProps = {
   precipProbability: undefined,
   relativeHumidity: undefined,
+  style: undefined,
+  theme: undefined,
 };
+
+export const CurrentPrecipSection = withTheme(CurrentPrecipSectionBase);

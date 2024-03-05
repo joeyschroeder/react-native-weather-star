@@ -5,7 +5,7 @@
 
 # 🕤 react-native-time-circuits-clock
 
-A [React-Native](https://facebook.github.io/react-native/) clock application based on the *Back to the Future* time circuits.
+A [React-Native](https://facebook.github.io/react-native/) clock application based on the _Back to the Future_ time circuits.
 
 ## Versioning
 
@@ -29,4 +29,4 @@ This project is licensed under the MIT License - see the [MIT Open Source Initia
 
 Hat tip to anyone who's code was used! 🤠
 
-* [DSEG](https://www.keshikan.net/fonts-e.html): DSEG is a free font family, which imitates seven and fourteen segment displays (7SEG, 14SEG).
+- [DSEG](https://www.keshikan.net/fonts-e.html): DSEG is a free font family, which imitates seven and fourteen segment displays (7SEG, 14SEG).

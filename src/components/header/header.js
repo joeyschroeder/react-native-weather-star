@@ -2,7 +2,6 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FONTS } from '../../constants/fonts';
-import { COLORS } from '../../constants/colors';
 import { Section } from '../section/section';
 import { WeatherIcon } from '../weather-icon/weather-icon';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
@@ -12,28 +11,33 @@ import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value
 import moment from 'moment';
 import { Label } from '../label/label';
 import { AnimationSpin } from '../animation-spin/animation-spin';
+import { withTheme } from '../with-theme/with-theme';
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    gap: FLEX_GAP,
-  },
-  primary: {
-    alignItems: 'flex-start',
-  },
-  secondary: {
-    alignItems: 'flex-start',
-    flex: 1,
-  },
-  text: {
-    color: COLORS.WHITE,
-    fontFamily: FONTS.SANS_SERIF.BOLD,
-    textTransform: 'uppercase',
-  },
-});
+function createStyleSheet(theme) {
+  return StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      gap: FLEX_GAP,
+    },
+    primary: {
+      alignItems: 'flex-end',
+      flex: 1,
+    },
+    secondary: {
+      alignItems: 'flex-start',
+    },
+    text: {
+      color: theme.text,
+      fontFamily: FONTS.SANS_SERIF.BOLD,
+      textTransform: 'uppercase',
+    },
+  });
+}
 
-export function Header(props) {
-  const { city, isLoading, lastUpdate, onIconPress, radarStation, shortForecast, state, style } = props;
+function HeaderBase(props) {
+  const { city, isLoading, lastUpdate, onIconPress, radarStation, shortForecast, state, style, theme } = props;
+
+  const styles = createStyleSheet(theme);
   const containerStyles = { ...styles.container, ...style };
 
   const cityState = city && state ? `${city}, ${state}` : undefined;
@@ -76,7 +80,7 @@ export function Header(props) {
   );
 }
 
-Header.propTypes = {
+HeaderBase.propTypes = {
   city: PropTypes.string,
   isLoading: PropTypes.bool,
   lastUpdate: PropTypes.string,
@@ -85,9 +89,10 @@ Header.propTypes = {
   shortForecast: PropTypes.string,
   state: PropTypes.string,
   style: PropTypes.object,
+  theme: PropTypes.object,
 };
 
-Header.defaultProps = {
+HeaderBase.defaultProps = {
   city: undefined,
   isLoading: false,
   lastUpdate: undefined,
@@ -96,4 +101,7 @@ Header.defaultProps = {
   shortForecast: undefined,
   state: undefined,
   style: undefined,
+  theme: undefined,
 };
+
+export const Header = withTheme(HeaderBase);

@@ -6,6 +6,7 @@ import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { SPACER } from '../../constants/spacer';
 import PropTypes from 'prop-types';
 import { convertTempToColor } from '../../utils/convert-temp-to-color/convert-temp-to-color';
+import { withTheme } from '../with-theme/with-theme';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,14 +18,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export function CurrentWeatherSection(props) {
-  const { style, tempCurrent, tempHigh, tempLow, tempUnit } = props;
+export const CurrentWeatherSection = withTheme(function Base(props) {
+  const { style, tempCurrent, tempHigh, tempLow, tempUnit, theme } = props;
 
   const tempUnitFormatted = tempUnit === 'F' ? '°F' : '°C';
 
-  const tempCurrentColor = convertTempToColor(tempCurrent);
-  const tempHighColor = convertTempToColor(tempHigh);
-  const tempLowColor = convertTempToColor(tempLow);
+  const tempCurrentColor = convertTempToColor(theme, tempCurrent);
+  const tempHighColor = convertTempToColor(theme, tempHigh);
+  const tempLowColor = convertTempToColor(theme, tempLow);
 
   return (
     <Section style={style}>
@@ -43,7 +44,7 @@ export function CurrentWeatherSection(props) {
       </View>
     </Section>
   );
-}
+});
 
 CurrentWeatherSection.propTypes = {
   style: PropTypes.object,
@@ -51,6 +52,7 @@ CurrentWeatherSection.propTypes = {
   tempHigh: PropTypes.number,
   tempLow: PropTypes.number,
   tempUnit: PropTypes.string,
+  theme: PropTypes.object,
 };
 
 CurrentWeatherSection.defaultProps = {
@@ -59,4 +61,5 @@ CurrentWeatherSection.defaultProps = {
   tempHigh: undefined,
   tempLow: undefined,
   tempUnit: undefined,
+  theme: undefined,
 };

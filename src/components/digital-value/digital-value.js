@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text } from 'react-native';
 import { FONTS } from '../../constants/fonts';
-import { COLORS } from '../../constants/colors';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { SPACER } from '../../constants/spacer';
 import { BORDER_RADIUS } from '../../constants/border-radius';
 import { EMPTY_VALUE_LABEL } from '../../constants/empty-value-label';
+import { withTheme } from '../with-theme/with-theme';
 
 const NUMBER_FONT = FONTS.MONO.NUMBER.ITALIC;
 const LETTER_FONT = FONTS.MONO.LETTER.ITALIC;
@@ -18,30 +18,35 @@ const ZERO_SPACE_CHARS = ['.', ':'];
 
 const SPACE_CHAR = PADDING_CHAR;
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLORS.BLACK_TYPE,
-    borderRadius: BORDER_RADIUS,
-    flexDirection: 'row',
-    padding: SPACER / 2,
-  },
-  padding: {
-    opacity: 0,
-  },
-  shadow: {
-    opacity: 0.1,
-    position: 'absolute',
-  },
-  text: {
-    color: COLORS.WHITE,
-    textTransform: 'uppercase',
-    zIndex: 1,
-  },
-});
+function createStyleSheet(theme) {
+  return StyleSheet.create({
+    container: {
+      backgroundColor: theme.black_type,
+      borderRadius: BORDER_RADIUS,
+      flexDirection: 'row',
+      padding: SPACER / 2,
+    },
+    padding: {
+      opacity: 0,
+    },
+    shadow: {
+      opacity: 0.1,
+      position: 'absolute',
+    },
+    text: {
+      color: theme.text,
+      textTransform: 'uppercase',
+      zIndex: 1,
+    },
+  });
+}
 
-export function DigitalValue(props) {
-  const { color, maxChars, minChars, size, style, value, valueType } = props;
+function DigitalValueBase(props) {
+  const { color: colorProp, maxChars, minChars, size, style, value, valueType, theme } = props;
 
+  const styles = createStyleSheet(theme);
+
+  const color = colorProp || theme.text;
   const containerStyle = [styles.container, style];
   // eslint-disable-next-line no-restricted-globals
   const isNumber = valueType === 'number' || !isNaN(value);
@@ -81,22 +86,26 @@ export function DigitalValue(props) {
   );
 }
 
-DigitalValue.propTypes = {
+DigitalValueBase.propTypes = {
   color: PropTypes.string,
   maxChars: PropTypes.number,
   minChars: PropTypes.number,
   size: PropTypes.number,
   style: PropTypes.object,
+  theme: PropTypes.object,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   valueType: PropTypes.oneOf(['letter', 'number']),
 };
 
-DigitalValue.defaultProps = {
-  color: COLORS.WHITE,
+DigitalValueBase.defaultProps = {
+  color: undefined,
   maxChars: undefined,
   minChars: 2,
   size: scaledValue(88),
   style: undefined,
+  theme: undefined,
   value: EMPTY_VALUE_LABEL,
   valueType: undefined,
 };
+
+export const DigitalValue = withTheme(DigitalValueBase);

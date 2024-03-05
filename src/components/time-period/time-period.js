@@ -4,7 +4,6 @@ import React from 'react';
 import { SPACER } from '../../constants/spacer';
 import { Light } from '../light/light';
 import { Label } from '../label/label';
-import { COLORS } from '../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,9 +27,9 @@ export function TimePeriod(props) {
 
   return (
     <View style={containerStyle}>
-      <Label style={styles.label} value="AM" backgroundColor={COLORS.DANGER} />
+      <Label style={styles.label} value="AM" />
       <Light style={styles.light} active={amActive} color={color} />
-      <Label style={styles.label} value="PM" backgroundColor={COLORS.DANGER} />
+      <Label style={styles.label} value="PM" />
       <Light style={styles.light} active={!amActive} color={color} />
     </View>
   );

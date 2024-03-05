@@ -7,10 +7,11 @@ import PropTypes from 'prop-types';
 import { COLORS } from '../../constants/colors';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { DigitalLevel } from '../digital-level/digital-level';
+import { withTheme } from '../with-theme/with-theme';
 
 const MAX_MPH = 30;
 
-export function CurrentWindSection(props) {
+function CurrentWindSectionBase(props) {
   const { style, speed, direction } = props;
 
   const dangerMph = MAX_MPH / 2;
@@ -30,14 +31,16 @@ export function CurrentWindSection(props) {
   );
 }
 
-CurrentWindSection.propTypes = {
+CurrentWindSectionBase.propTypes = {
   direction: PropTypes.string,
   speed: PropTypes.number,
   style: PropTypes.object,
 };
 
-CurrentWindSection.defaultProps = {
-  style: undefined,
-  speed: undefined,
+CurrentWindSectionBase.defaultProps = {
   direction: undefined,
+  speed: undefined,
+  style: undefined,
 };
+
+export const CurrentWindSection = withTheme(CurrentWindSectionBase);

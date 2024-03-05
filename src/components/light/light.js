@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
-import { COLORS } from '../../constants/colors';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
+import { withTheme } from '../with-theme/with-theme';
 
 const styles = StyleSheet.create({
   light: {
@@ -10,10 +10,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export function Light(props) {
-  const { active, color, style, size } = props;
+function LightBase(props) {
+  const { active, color: colorProp, style, size, theme } = props;
 
-  const backgroundColor = active ? color : COLORS.BLACK_TYPE;
+  const color = colorProp || theme.text;
+  const backgroundColor = active ? color : theme.black_type;
   const lightStyles = [styles.light, { backgroundColor, width: size, height: size }];
 
   return (
@@ -23,16 +24,20 @@ export function Light(props) {
   );
 }
 
-Light.propTypes = {
+LightBase.propTypes = {
   active: PropTypes.bool,
   color: PropTypes.string,
   size: PropTypes.number,
   style: PropTypes.object,
+  theme: PropTypes.object,
 };
 
-Light.defaultProps = {
+LightBase.defaultProps = {
   active: true,
-  color: COLORS.WHITE,
+  color: undefined,
   size: scaledValue(14),
   style: undefined,
+  theme: undefined,
 };
+
+export const Light = withTheme(LightBase);

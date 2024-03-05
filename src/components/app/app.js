@@ -1,7 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { COLORS } from '../../constants/colors';
 import { FLEX_GAP } from '../../constants/flex-gap';
 import { DateTimeSection } from '../date-time-section/date-time-section';
 import moment from 'moment';
@@ -10,21 +9,25 @@ import { HeaderConnected } from '../header/header.connected';
 import { CurrentWeatherSectionConnected } from '../current-weather-section/current-weather-section.connected';
 import { CurrentPrecipSectionConnected } from '../current-precip-section/current-precip-section.connected';
 import { CurrentWindSectionConnected } from '../current-wind-section/current-wind-section.connected';
+import { withTheme } from '../with-theme/with-theme';
 
 const TIMER_INTERVAL = 1000 * 60;
 const DATA_REQUEST_INTERVAL = 1000 * 60 * 30;
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: COLORS.BLACK,
-    flex: 1,
-    gap: FLEX_GAP,
-    justifyContent: 'center',
-  },
-});
+function createStyleSheet(theme) {
+  return StyleSheet.create({
+    container: {
+      backgroundColor: theme.dark ? theme.black : theme.white,
+      flex: 1,
+      gap: FLEX_GAP,
+      justifyContent: 'center',
+    },
+  });
+}
 
-export function App(props) {
-  const { onLayout, requestData } = props;
+function AppBase(props) {
+  const { onLayout, requestData, theme } = props;
+  const styles = createStyleSheet(theme);
 
   useKeepAwake();
   const [now, setNow] = useState(moment().format());
@@ -63,12 +66,16 @@ export function App(props) {
   );
 }
 
-App.propTypes = {
+AppBase.propTypes = {
   onLayout: PropTypes.func,
   requestData: PropTypes.func,
+  theme: PropTypes.object,
 };
 
-App.defaultProps = {
+AppBase.defaultProps = {
+  theme: undefined,
   onLayout: undefined,
   requestData: () => {},
 };
+
+export const App = withTheme(AppBase);

@@ -2,14 +2,23 @@ import Color from 'color';
 
 const BLACK_TYPE = '#3a3a3a';
 
-export const COLORS = {
+const VALUES = {
   BLACK: '#000',
   BLACK_TYPE,
-  DANGER: '#ff0042',
+  BLUE: '#00c6ff',
+  GREEN: '#00ffba',
   GREY: Color(BLACK_TYPE).lighten(0.3).string(),
-  SUCCESS: '#00ffba',
+  RED: '#ff0042',
   TRANSPARENT: 'transparent',
-  INFO: '#00c6ff',
-  WARNING: '#ffae00',
   WHITE: '#fff',
+  YELLOW: '#ffae00',
+};
+
+export const COLORS = {
+  ...VALUES,
+  DANGER: VALUES.RED,
+  INFO: VALUES.BLUE,
+  SUCCESS: VALUES.GREEN,
+  TRANSPARENT: VALUES.TRANSPARENT,
+  WARNING: VALUES.YELLOW,
 };
