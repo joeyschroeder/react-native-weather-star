@@ -38,8 +38,8 @@ export function Label(props) {
 
 Label.propTypes = {
   backgroundColor: PropTypes.string,
-  value: PropTypes.string,
   style: PropTypes.object,
+  value: PropTypes.string,
 };
 
 Label.defaultProps = {

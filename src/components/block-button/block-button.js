@@ -44,8 +44,8 @@ export function BlockButton(props) {
 }
 
 BlockButton.propTypes = {
-  label: PropTypes.string,
   color: PropTypes.string,
+  label: PropTypes.string,
   onPress: PropTypes.func,
   style: PropTypes.object,
 };

@@ -23,9 +23,9 @@ export function CurrentPrecipSection(props) {
 }
 
 CurrentPrecipSection.propTypes = {
-  style: PropTypes.object,
   precipProbability: PropTypes.number,
   relativeHumidity: PropTypes.number,
+  style: PropTypes.object,
 };
 
 CurrentPrecipSection.defaultProps = {

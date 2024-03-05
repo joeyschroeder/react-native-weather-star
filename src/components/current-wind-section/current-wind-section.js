@@ -31,9 +31,9 @@ export function CurrentWindSection(props) {
 }
 
 CurrentWindSection.propTypes = {
-  style: PropTypes.object,
-  speed: PropTypes.number,
   direction: PropTypes.string,
+  speed: PropTypes.number,
+  style: PropTypes.object,
 };
 
 CurrentWindSection.defaultProps = {

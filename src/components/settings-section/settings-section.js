@@ -36,9 +36,9 @@ export function SettingsSection(props) {
 }
 
 SettingsSection.propTypes = {
+  children: PropTypes.node,
   label: PropTypes.string,
   style: PropTypes.object,
-  children: PropTypes.node,
 };
 
 SettingsSection.defaultProps = {
