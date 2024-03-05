@@ -1,16 +1,20 @@
 import Color from 'color';
 
-const BLACK_TYPE = '#3a3a3a';
+const WHITE = '#fff';
+const BLACK = '#000';
+
+const MIX_WHITE = Color(WHITE);
+const MIX_BLACK = Color(BLACK);
 
 const VALUES = {
-  BLACK: '#000',
-  BLACK_TYPE,
+  BLACK,
+  BLACK_TYPE: MIX_BLACK.mix(MIX_WHITE, 0.2).string(),
   BLUE: '#00c6ff',
   GREEN: '#00ffba',
-  GREY: Color(BLACK_TYPE).lighten(0.3).string(),
+  GREY: MIX_BLACK.mix(MIX_WHITE, 0.25).string(),
   RED: '#ff0042',
   TRANSPARENT: 'transparent',
-  WHITE: '#fff',
+  WHITE,
   YELLOW: '#ffae00',
 };
 

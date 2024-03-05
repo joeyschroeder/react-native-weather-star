@@ -1,37 +1,35 @@
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { COLORS } from '../../constants/colors';
+import { withTheme } from '../with-theme/with-theme';
 
-const styles = StyleSheet.create({
-  icon: {
-    color: COLORS.WHITE,
-  },
-});
-
-export function WeatherIcon(props) {
-  const { name, style, size } = props;
+function WeatherIconBase(props) {
+  const { name, style, size, theme } = props;
   const nameExists = Boolean(name);
 
   if (!nameExists) return null;
 
   return (
     <View style={style}>
-      <MaterialCommunityIcons name={name} size={size} style={styles.icon} />
+      <MaterialCommunityIcons name={name} size={size} color={theme.text} />
     </View>
   );
 }
 
-WeatherIcon.propTypes = {
+WeatherIconBase.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
   style: PropTypes.object,
+  theme: PropTypes.object,
 };
 
-WeatherIcon.defaultProps = {
+WeatherIconBase.defaultProps = {
   name: undefined,
   size: scaledValue(16),
   style: undefined,
+  theme: undefined,
 };
+
+export const WeatherIcon = withTheme(WeatherIconBase);

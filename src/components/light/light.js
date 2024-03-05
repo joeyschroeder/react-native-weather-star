@@ -14,7 +14,7 @@ function LightBase(props) {
   const { active, color: colorProp, style, size, theme } = props;
 
   const color = colorProp || theme.text;
-  const backgroundColor = active ? color : theme.black_type;
+  const backgroundColor = active ? color : theme.valueBackground;
   const lightStyles = [styles.light, { backgroundColor, width: size, height: size }];
 
   return (

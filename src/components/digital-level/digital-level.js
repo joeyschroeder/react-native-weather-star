@@ -14,7 +14,7 @@ function createStyleSheet(theme) {
       justifyContent: 'flex-end',
     },
     seg: {
-      backgroundColor: theme.black_type,
+      backgroundColor: theme.valueBackground,
       borderRadius: BORDER_RADIUS,
       height: scaledValue(10),
       marginTop: SPACER / 4,

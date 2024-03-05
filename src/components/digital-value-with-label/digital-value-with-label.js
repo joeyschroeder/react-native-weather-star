@@ -40,11 +40,7 @@ function DigitalValueWithLabelBase(props) {
 
   return (
     <View style={containerStyle}>
-      <Label
-        // backgroundColor={COLORS.DANGER}
-        style={labelStyle}
-        value={label}
-      />
+      <Label style={labelStyle} value={label} />
       <View style={styles.valueContainer}>
         <DigitalValue color={color} size={size} value={value} minChars={minChars} />
         {appendExists && <Text style={styles.append}>{append}</Text>}

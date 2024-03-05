@@ -21,7 +21,7 @@ const SPACE_CHAR = PADDING_CHAR;
 function createStyleSheet(theme) {
   return StyleSheet.create({
     container: {
-      backgroundColor: theme.black_type,
+      backgroundColor: theme.valueBackground,
       borderRadius: BORDER_RADIUS,
       flexDirection: 'row',
       padding: SPACER / 2,

@@ -4,7 +4,6 @@ import { View } from 'react-native';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import { SPACER } from '../../constants/spacer';
 import PropTypes from 'prop-types';
-import { COLORS } from '../../constants/colors';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { DigitalLevel } from '../digital-level/digital-level';
 import { withTheme } from '../with-theme/with-theme';
@@ -12,10 +11,10 @@ import { withTheme } from '../with-theme/with-theme';
 const MAX_MPH = 30;
 
 function CurrentWindSectionBase(props) {
-  const { style, speed, direction } = props;
+  const { style, speed, direction, theme } = props;
 
   const dangerMph = MAX_MPH / 2;
-  const speedColor = speed > dangerMph ? COLORS.DANGER : COLORS.WHITE;
+  const speedColor = speed > dangerMph ? theme.danger : theme.text;
 
   const maxLevels = 25;
   const levelValue = (speed / MAX_MPH) * maxLevels;
@@ -35,12 +34,14 @@ CurrentWindSectionBase.propTypes = {
   direction: PropTypes.string,
   speed: PropTypes.number,
   style: PropTypes.object,
+  theme: PropTypes.object,
 };
 
 CurrentWindSectionBase.defaultProps = {
   direction: undefined,
   speed: undefined,
   style: undefined,
+  theme: undefined,
 };
 
 export const CurrentWindSection = withTheme(CurrentWindSectionBase);

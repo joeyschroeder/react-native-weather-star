@@ -10,6 +10,7 @@ import { CurrentWeatherSectionConnected } from '../current-weather-section/curre
 import { CurrentPrecipSectionConnected } from '../current-precip-section/current-precip-section.connected';
 import { CurrentWindSectionConnected } from '../current-wind-section/current-wind-section.connected';
 import { withTheme } from '../with-theme/with-theme';
+import { withAppearanceChangeListener } from '../with-appearance-change-listener/with-appearance-change-listener';
 
 const TIMER_INTERVAL = 1000 * 60;
 const DATA_REQUEST_INTERVAL = 1000 * 60 * 30;
@@ -17,7 +18,7 @@ const DATA_REQUEST_INTERVAL = 1000 * 60 * 30;
 function createStyleSheet(theme) {
   return StyleSheet.create({
     container: {
-      backgroundColor: theme.dark ? theme.black : theme.white,
+      backgroundColor: theme.background,
       flex: 1,
       gap: FLEX_GAP,
       justifyContent: 'center',
@@ -78,4 +79,4 @@ AppBase.defaultProps = {
   requestData: () => {},
 };
 
-export const App = withTheme(AppBase);
+export const App = withAppearanceChangeListener(withTheme(AppBase));
