@@ -52,6 +52,6 @@ export const createAsyncReducer = ({
     reducer,
     requestThunk: request,
     selectData: (state) => state[name]?.data || initialState,
-    selectLoading: (state) => state[name]?.loading || ASYNC_THUNK_LOADING_STATES.IDLE,
+    selectLoading: (state) => state[name]?.loading === ASYNC_THUNK_LOADING_STATES.PENDING,
   };
 };

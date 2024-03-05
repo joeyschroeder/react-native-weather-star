@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { FONTS } from '../../constants/fonts';
@@ -11,7 +11,7 @@ import { FLEX_GAP } from '../../constants/flex-gap';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import moment from 'moment';
 import { Label } from '../label/label';
-import { DigitalValue } from '../digital-value/digital-value';
+import { AnimationSpin } from '../animation-spin/animation-spin';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 });
 
 export function Header(props) {
-  const { city, lastUpdate, state, radarStation, style, shortForecast } = props;
+  const { city, isLoading, lastUpdate, onIconPress, radarStation, shortForecast, state, style } = props;
   const containerStyles = { ...styles.container, ...style };
 
   const cityState = city && state ? `${city}, ${state}` : undefined;
@@ -44,14 +44,24 @@ export function Header(props) {
   return (
     <View style={containerStyles}>
       <Section>
-        <WeatherIcon name="radar" size={scaledValue(36)} />
+        <Pressable onPress={onIconPress}>
+          <AnimationSpin animate={isLoading} loop>
+            <WeatherIcon name="radar" size={scaledValue(36)} />
+          </AnimationSpin>
+        </Pressable>
       </Section>
       <Section style={styles.secondary}>
         <Label value={`Radar Station: ${radarStation || EMPTY_VALUE_LABEL}`} />
-        {cityStateExists && <Text style={styles.text}>{cityState}</Text>}
+        {cityStateExists ? <Text style={styles.text}>{cityState}</Text> : null}
       </Section>
       <Section style={styles.primary}>
-        <DigitalValue value={shortForecast || EMPTY_VALUE_LABEL} size={scaledValue(25)} minChars={22} />
+        <DigitalValueWithLabel
+          horizontal
+          label="Current"
+          minChars={16}
+          size={scaledValue(25)}
+          value={shortForecast || EMPTY_VALUE_LABEL}
+        />
       </Section>
       <Section>
         <DigitalValueWithLabel
@@ -68,7 +78,9 @@ export function Header(props) {
 
 Header.propTypes = {
   city: PropTypes.string,
+  isLoading: PropTypes.bool,
   lastUpdate: PropTypes.string,
+  onIconPress: PropTypes.func,
   radarStation: PropTypes.string,
   shortForecast: PropTypes.string,
   state: PropTypes.string,
@@ -77,7 +89,9 @@ Header.propTypes = {
 
 Header.defaultProps = {
   city: undefined,
+  isLoading: false,
   lastUpdate: undefined,
+  onIconPress: undefined,
   radarStation: undefined,
   shortForecast: undefined,
   state: undefined,
