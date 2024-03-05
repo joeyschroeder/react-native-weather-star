@@ -3,7 +3,7 @@ import { createAsyncReducer } from '../../utils/create-async-reducer/create-asyn
 
 export const NAME = 'weather-metadata';
 
-const { reducer, requestThunk, selectData, selectLoading } = createAsyncReducer({
+const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
   name: NAME,
   requestFunc: ({ latitude, longitude }) => {
     return getWeatherMetadataByLatitudeLongitude({ latitude, longitude });
@@ -14,7 +14,7 @@ export { reducer as weatherMetadataReducer };
 export { requestThunk as requestWeatherMetadata };
 
 export const selectWeatherMetadata = selectData;
-export const selectWeatherMetadataLoading = selectLoading;
+export const selectWeatherMetadataLoading = selectStatus;
 
 export const selectWeatherMetadataForecast = (state) => selectWeatherMetadata(state)?.forecast;
 export const selectWeatherMetadataForecastHourly = (state) => selectWeatherMetadata(state)?.forecastHourly;

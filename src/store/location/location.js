@@ -3,7 +3,7 @@ import { createAsyncReducer } from '../../utils/create-async-reducer/create-asyn
 
 export const NAME = 'location';
 
-const { reducer, requestThunk, selectData, selectLoading } = createAsyncReducer({
+const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
   name: NAME,
   requestOnce: true,
   requestFunc: async () => {
@@ -16,7 +16,7 @@ export { reducer as locationReducer };
 export { requestThunk as requestLocation };
 
 export const selectLocation = selectData;
-export const selectLocationLoading = selectLoading;
+export const selectLocationLoading = selectStatus;
 
 export const selectLocationLatitude = (state) => selectLocation(state)?.latitude;
 export const selectLocationLongitude = (state) => selectLocation(state)?.longitude;

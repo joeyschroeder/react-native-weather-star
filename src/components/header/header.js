@@ -12,6 +12,7 @@ import moment from 'moment';
 import { Label } from '../label/label';
 import { AnimationSpin } from '../animation-spin/animation-spin';
 import { withTheme } from '../with-theme/with-theme';
+import { HeaderRefreshButtonConnected } from '../header-refresh-button/header-refresh-button.connected';
 
 function createStyleSheet(theme) {
   return StyleSheet.create({
@@ -35,7 +36,7 @@ function createStyleSheet(theme) {
 }
 
 function HeaderBase(props) {
-  const { city, isLoading, lastUpdate, onIconPress, radarStation, shortForecast, state, style, theme } = props;
+  const { city, lastUpdate, radarStation, shortForecast, state, style, theme } = props;
 
   const styles = createStyleSheet(theme);
   const containerStyles = { ...styles.container, ...style };
@@ -48,11 +49,7 @@ function HeaderBase(props) {
   return (
     <View style={containerStyles}>
       <Section>
-        <Pressable onPress={onIconPress}>
-          <AnimationSpin animate={isLoading} loop>
-            <WeatherIcon name="radar" size={scaledValue(36)} />
-          </AnimationSpin>
-        </Pressable>
+        <HeaderRefreshButtonConnected />
       </Section>
       <Section style={styles.secondary}>
         <Label value={`Radar Station: ${radarStation || EMPTY_VALUE_LABEL}`} />
@@ -82,9 +79,7 @@ function HeaderBase(props) {
 
 HeaderBase.propTypes = {
   city: PropTypes.string,
-  isLoading: PropTypes.bool,
   lastUpdate: PropTypes.string,
-  onIconPress: PropTypes.func,
   radarStation: PropTypes.string,
   shortForecast: PropTypes.string,
   state: PropTypes.string,
@@ -94,9 +89,7 @@ HeaderBase.propTypes = {
 
 HeaderBase.defaultProps = {
   city: undefined,
-  isLoading: false,
   lastUpdate: undefined,
-  onIconPress: undefined,
   radarStation: undefined,
   shortForecast: undefined,
   state: undefined,

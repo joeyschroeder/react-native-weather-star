@@ -6,7 +6,7 @@ import { max, min } from 'lodash';
 
 export const NAME = 'weather-forecast';
 
-const { reducer, requestThunk, selectData, selectLoading } = createAsyncReducer({
+const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
   name: NAME,
   requestFunc: (forecastUrl) => {
     return getWeatherByForecastUrl(forecastUrl);
@@ -17,7 +17,7 @@ export { reducer as weatherForecastReducer };
 export { requestThunk as requestWeatherForecast };
 
 export const selectWeatherForecast = selectData;
-export const selectWeatherForecastLoading = selectLoading;
+export const selectWeatherForecastLoading = selectStatus;
 
 export const selectWeatherForecastUpdateTime = (state) => selectWeatherForecast(state)?.updateTime;
 
