@@ -28,11 +28,11 @@ export const selectTheme = (state) => {
     colors: {
       ...COLOR_VALUES,
       background,
-      section,
-      valueBackground,
       primary,
       secondary,
+      section,
       text,
+      valueBackground,
     },
     dark: theme === COLOR_SCHEMES.DARK,
   };

@@ -19,7 +19,7 @@ const ZERO_SPACE_CHARS = ['.', ':'];
 
 const SPACE_CHAR = PADDING_CHAR;
 
-function createStyleSheet(theme) {
+function createStyleSheet({ theme }) {
   return StyleSheet.create({
     container: {
       backgroundColor: theme.colors.valueBackground,
@@ -45,7 +45,7 @@ function createStyleSheet(theme) {
 function DigitalValueBase(props) {
   const { color: colorProp, maxChars, minChars, size, style, value, valueType, theme, countUp } = props;
 
-  const styles = createStyleSheet(theme);
+  const styles = createStyleSheet(props);
 
   const color = colorProp || theme.colors.text;
   const containerStyle = [styles.container, style];

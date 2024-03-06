@@ -6,31 +6,36 @@ import { BORDER_RADIUS } from '../../constants/border-radius';
 import { SPACER } from '../../constants/spacer';
 import { FONTS } from '../../constants/fonts';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { COLORS } from '../../constants/colors';
+import { withTheme } from '../with-theme/with-theme';
 
-const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    borderRadius: BORDER_RADIUS,
-    padding: SPACER,
-  },
-  container: {
-    alignSelf: 'stretch',
-  },
-  text: {
-    color: COLORS.WHITE,
-    fontFamily: FONTS.SCRIPT.BOLD,
-    fontSize: scaledValue(18),
-    textAlign: 'center',
-  },
-});
+function createStyleSheet({ theme }) {
+  return StyleSheet.create({
+    button: {
+      alignItems: 'center',
+      alignSelf: 'stretch',
+      borderRadius: BORDER_RADIUS,
+      padding: SPACER,
+    },
+    container: {
+      alignSelf: 'stretch',
+    },
+    text: {
+      color: theme.colors.text,
+      fontFamily: FONTS.SANS_SERIF.BOLD,
+      fontSize: scaledValue(18),
+      textAlign: 'center',
+    },
+  });
+}
 
-export function BlockButton(props) {
-  const { style, label, onPress, color } = props;
+function BlockButtonBase(props) {
+  const { color, label, onPress, style, theme } = props;
+
+  const styles = createStyleSheet({ theme });
+  const backgroundColor = color || theme.colors.primary;
 
   const containerStyles = [styles.container, style];
-  const buttonStyle = [styles.button, { backgroundColor: color }];
+  const buttonStyle = [styles.button, { backgroundColor }];
 
   return (
     <View style={containerStyles}>
@@ -43,16 +48,18 @@ export function BlockButton(props) {
   );
 }
 
-BlockButton.propTypes = {
+BlockButtonBase.propTypes = {
   color: PropTypes.string,
   label: PropTypes.string,
   onPress: PropTypes.func,
   style: PropTypes.object,
 };
 
-BlockButton.defaultProps = {
+BlockButtonBase.defaultProps = {
+  color: undefined,
   label: 'Submit',
-  color: COLORS.BLACK,
   onPress: undefined,
   style: undefined,
 };
+
+export const BlockButton = withTheme(BlockButtonBase);

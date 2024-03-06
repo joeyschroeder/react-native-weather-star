@@ -38,14 +38,12 @@ CurrentPrecipSectionBase.propTypes = {
   precipProbability: PropTypes.number,
   relativeHumidity: PropTypes.number,
   style: PropTypes.object,
-  theme: PropTypes.object,
 };
 
 CurrentPrecipSectionBase.defaultProps = {
   precipProbability: undefined,
   relativeHumidity: undefined,
   style: undefined,
-  theme: undefined,
 };
 
 export const CurrentPrecipSection = withTheme(CurrentPrecipSectionBase);

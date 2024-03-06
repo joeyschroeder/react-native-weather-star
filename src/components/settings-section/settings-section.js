@@ -5,26 +5,29 @@ import { COLORS } from '../../constants/colors';
 import { BORDER_RADIUS } from '../../constants/border-radius';
 import { SPACER } from '../../constants/spacer';
 import { Label } from '../label/label';
-import { BORDER_WIDTH } from '../../constants/border-width';
+// import { BORDER_WIDTH } from '../../constants/border-width';
+import { withTheme } from '../with-theme/with-theme';
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'flex-start',
-    borderColor: COLORS.BLACK_TYPE,
-    borderRadius: BORDER_RADIUS,
-    borderWidth: BORDER_WIDTH,
-    marginBottom: SPACER,
-    marginTop: SPACER,
-    paddingBottom: SPACER,
-    paddingHorizontal: SPACER,
-  },
-  label: {
-    marginTop: -SPACER * 0.8,
-  },
-});
+function createStyleSheet({ theme }) {
+  return StyleSheet.create({
+    container: {
+      alignItems: 'flex-start',
+      borderColor: theme.colors.background,
+      borderRadius: BORDER_RADIUS,
+      // borderWidth: BORDER_WIDTH,
+      marginBottom: SPACER * 2,
+      // padding: SPACER,
+    },
+    label: {
+      marginBottom: SPACER / 2,
+    },
+  });
+}
 
-export function SettingsSection(props) {
+function SettingsSectionBase(props) {
   const { style, children, label } = props;
+
+  const styles = createStyleSheet(props);
   const containerStyle = [styles.container, style];
 
   return (
@@ -35,14 +38,16 @@ export function SettingsSection(props) {
   );
 }
 
-SettingsSection.propTypes = {
+SettingsSectionBase.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
   style: PropTypes.object,
 };
 
-SettingsSection.defaultProps = {
+SettingsSectionBase.defaultProps = {
+  children: null,
   label: undefined,
   style: undefined,
-  children: null,
 };
+
+export const SettingsSection = withTheme(SettingsSectionBase);

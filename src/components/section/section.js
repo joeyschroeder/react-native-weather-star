@@ -5,7 +5,7 @@ import { Label } from '../label/label';
 import { SPACER } from '../../constants/spacer';
 import { withTheme } from '../with-theme/with-theme';
 
-function createStyleSheet(theme) {
+function createStyleSheet({ theme }) {
   return StyleSheet.create({
     container: {
       alignItems: 'center',
@@ -20,9 +20,9 @@ function createStyleSheet(theme) {
 }
 
 function SectionBase(props) {
-  const { children, label, style, theme } = props;
+  const { children, label, style } = props;
 
-  const styles = createStyleSheet(theme);
+  const styles = createStyleSheet(props);
   const containerStyle = [styles.container, style];
 
   return (
@@ -37,12 +37,10 @@ SectionBase.propTypes = {
   children: PropTypes.node,
   label: PropTypes.string,
   style: PropTypes.object,
-  theme: PropTypes.object,
 };
 
 SectionBase.defaultProps = {
   children: null,
-  theme: undefined,
   label: undefined,
   style: undefined,
 };

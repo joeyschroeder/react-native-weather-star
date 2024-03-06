@@ -22,14 +22,12 @@ WeatherIconBase.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
   style: PropTypes.object,
-  theme: PropTypes.object,
 };
 
 WeatherIconBase.defaultProps = {
   name: undefined,
   size: scaledValue(16),
   style: undefined,
-  theme: undefined,
 };
 
 export const WeatherIcon = withTheme(WeatherIconBase);

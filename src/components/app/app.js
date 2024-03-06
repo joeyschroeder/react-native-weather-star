@@ -11,11 +11,12 @@ import { CurrentPrecipSectionConnected } from '../current-precip-section/current
 import { CurrentWindSectionConnected } from '../current-wind-section/current-wind-section.connected';
 import { withTheme } from '../with-theme/with-theme';
 import { withAppearanceChangeListener } from '../with-appearance-change-listener/with-appearance-change-listener';
+import { Settings } from '../settings/settings';
 
 const TIMER_INTERVAL = 1000 * 60;
 const DATA_REQUEST_INTERVAL = 1000 * 60 * 30;
 
-function createStyleSheet(theme) {
+function createStyleSheet({ theme }) {
   return StyleSheet.create({
     container: {
       backgroundColor: theme.colors.background,
@@ -28,7 +29,7 @@ function createStyleSheet(theme) {
 
 function AppBase(props) {
   const { onLayout, requestData, theme } = props;
-  const styles = createStyleSheet(theme);
+  const styles = createStyleSheet({ theme });
 
   useKeepAwake();
   const [now, setNow] = useState(moment().format());
@@ -51,30 +52,31 @@ function AppBase(props) {
   }, []);
 
   return (
-    <View style={styles.container} onLayout={onLayout}>
-      <HeaderConnected />
-      <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
-        <View style={{ gap: FLEX_GAP, flex: 1 }}>
-          <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
-            <CurrentWeatherSectionConnected style={{ flex: 3 }} />
-            <CurrentPrecipSectionConnected style={{ flex: 1 }} />
+    <>
+      <View style={styles.container} onLayout={onLayout}>
+        <HeaderConnected />
+        <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
+          <View style={{ gap: FLEX_GAP, flex: 1 }}>
+            <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
+              <CurrentWeatherSectionConnected style={{ flex: 3 }} />
+              <CurrentPrecipSectionConnected style={{ flex: 1 }} />
+            </View>
+            <DateTimeSection blink style={{ flex: 2 }} value={now} />
           </View>
-          <DateTimeSection blink style={{ flex: 2 }} value={now} />
+          <CurrentWindSectionConnected />
         </View>
-        <CurrentWindSectionConnected />
       </View>
-    </View>
+      <Settings visible />
+    </>
   );
 }
 
 AppBase.propTypes = {
   onLayout: PropTypes.func,
   requestData: PropTypes.func,
-  theme: PropTypes.object,
 };
 
 AppBase.defaultProps = {
-  theme: undefined,
   onLayout: undefined,
   requestData: () => {},
 };

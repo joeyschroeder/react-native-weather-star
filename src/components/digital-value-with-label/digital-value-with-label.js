@@ -8,7 +8,7 @@ import { FONTS } from '../../constants/fonts';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { withTheme } from '../with-theme/with-theme';
 
-function createStyleSheet(theme) {
+function createStyleSheet({ theme }) {
   return StyleSheet.create({
     append: {
       color: theme.colors.text,
@@ -30,9 +30,9 @@ function createStyleSheet(theme) {
 }
 
 function DigitalValueWithLabelBase(props) {
-  const { append, color, countUp, horizontal, label, minChars, size, style, theme, value } = props;
+  const { append, color, countUp, horizontal, label, minChars, size, style, value } = props;
 
-  const styles = createStyleSheet(theme);
+  const styles = createStyleSheet(props);
   const appendExists = Boolean(append);
   const containerStyle = [styles.container, horizontal && styles.horizontal, style];
 
@@ -58,7 +58,6 @@ DigitalValueWithLabelBase.propTypes = {
   minChars: PropTypes.number,
   size: PropTypes.number,
   style: PropTypes.object,
-  theme: PropTypes.object,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
@@ -71,7 +70,6 @@ DigitalValueWithLabelBase.defaultProps = {
   minChars: undefined,
   size: undefined,
   style: undefined,
-  theme: undefined,
   value: undefined,
 };
 

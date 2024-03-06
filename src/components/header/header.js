@@ -12,7 +12,7 @@ import { Label } from '../label/label';
 import { withTheme } from '../with-theme/with-theme';
 import { HeaderRefreshButtonConnected } from '../header-refresh-button/header-refresh-button.connected';
 
-function createStyleSheet(theme) {
+function createStyleSheet({ theme }) {
   return StyleSheet.create({
     container: {
       flexDirection: 'row',
@@ -34,9 +34,9 @@ function createStyleSheet(theme) {
 }
 
 function HeaderBase(props) {
-  const { city, lastUpdate, radarStation, shortForecast, state, style, theme } = props;
+  const { city, lastUpdate, radarStation, shortForecast, state, style } = props;
 
-  const styles = createStyleSheet(theme);
+  const styles = createStyleSheet(props);
   const containerStyles = [styles.container, style];
 
   const cityState = city && state ? `${city}, ${state}` : undefined;
@@ -82,7 +82,6 @@ HeaderBase.propTypes = {
   shortForecast: PropTypes.string,
   state: PropTypes.string,
   style: PropTypes.object,
-  theme: PropTypes.object,
 };
 
 HeaderBase.defaultProps = {
@@ -92,7 +91,6 @@ HeaderBase.defaultProps = {
   shortForecast: undefined,
   state: undefined,
   style: undefined,
-  theme: undefined,
 };
 
 export const Header = withTheme(HeaderBase);

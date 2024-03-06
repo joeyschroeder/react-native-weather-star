@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { withTheme } from '../with-theme/with-theme';
 import { useCountUp } from 'use-count-up';
 
-function createStyleSheet(theme) {
+function createStyleSheet({ theme }) {
   return StyleSheet.create({
     container: {
       gap: FLEX_GAP,
@@ -28,8 +28,7 @@ function createStyleSheet(theme) {
 
 function DigitalLevelBase(props) {
   const { maxLevels, style, theme, value } = props;
-
-  const styles = createStyleSheet(theme);
+  const styles = createStyleSheet(props);
 
   const containerStyle = [styles.container, style];
   const activeSegStyle = { backgroundColor: theme.colors.text };

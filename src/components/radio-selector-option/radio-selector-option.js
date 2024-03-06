@@ -6,6 +6,7 @@ import { COLORS } from '../../constants/colors';
 import { SPACER } from '../../constants/spacer';
 import { FONTS } from '../../constants/fonts';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
+import { withTheme } from '../with-theme/with-theme';
 
 const styles = StyleSheet.create({
   button: {
@@ -16,15 +17,18 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   text: {
-    fontFamily: FONTS.SCRIPT.BOLD,
+    fontFamily: FONTS.SANS_SERIF.BOLD,
     fontSize: scaledValue(12),
     textAlign: 'center',
     textTransform: 'uppercase',
   },
 });
 
-export function RadioSelectorOption(props) {
-  const { active, activeColor, onPress, textColor, value } = props;
+function RadioSelectorOptionBase(props) {
+  const { active, activeColor: activeColorProp, onPress, textColor: textColorProp, value, theme } = props;
+
+  const activeColor = activeColorProp || theme.colors.danger;
+  const textColor = textColorProp || theme.colors.text;
 
   const color = active ? textColor : activeColor;
   const textStyles = [styles.text, { color }];
@@ -32,7 +36,7 @@ export function RadioSelectorOption(props) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.button}>
-        <Text ellipsizeMode="tail" numberOfLines={1} style={textStyles}>
+        <Text ellipsisMode="tail" numberOfLines={1} style={textStyles}>
           {value}
         </Text>
       </View>
@@ -40,18 +44,22 @@ export function RadioSelectorOption(props) {
   );
 }
 
-RadioSelectorOption.propTypes = {
+RadioSelectorOptionBase.propTypes = {
   active: PropTypes.bool,
   activeColor: PropTypes.string,
   onPress: PropTypes.func,
   textColor: PropTypes.string,
+  theme: PropTypes.object,
   value: PropTypes.string,
 };
 
-RadioSelectorOption.defaultProps = {
+RadioSelectorOptionBase.defaultProps = {
   active: false,
   activeColor: COLORS.DANGER,
   onPress: undefined,
   textColor: COLORS.WHITE,
+  theme: undefined,
   value: '',
 };
+
+export const RadioSelectorOption = withTheme(RadioSelectorOptionBase);

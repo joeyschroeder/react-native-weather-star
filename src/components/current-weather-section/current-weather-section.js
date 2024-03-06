@@ -53,7 +53,6 @@ CurrentWeatherSection.propTypes = {
   tempHigh: PropTypes.number,
   tempLow: PropTypes.number,
   tempUnit: PropTypes.string,
-  theme: PropTypes.object,
 };
 
 CurrentWeatherSection.defaultProps = {
@@ -62,5 +61,4 @@ CurrentWeatherSection.defaultProps = {
   tempHigh: undefined,
   tempLow: undefined,
   tempUnit: undefined,
-  theme: undefined,
 };
