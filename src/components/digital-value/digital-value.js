@@ -116,7 +116,7 @@ DigitalValueBase.defaultProps = {
   countUp: false,
   maxChars: undefined,
   minChars: 2,
-  size: scaledValue(88),
+  size: scaledValue(110),
   style: undefined,
   theme: undefined,
   value: EMPTY_VALUE_LABEL,

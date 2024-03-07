@@ -35,7 +35,7 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
           append={tempUnitFormatted}
           color={tempCurrentColor}
           label="Current"
-          size={scaledValue(251)}
+          size={scaledValue(301)}
           value={tempCurrent}
         />
         <View style={styles.highLowContainer}>

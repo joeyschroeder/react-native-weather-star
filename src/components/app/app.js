@@ -14,7 +14,7 @@ import { withAppearanceChangeListener } from '../with-appearance-change-listener
 import { Settings } from '../settings/settings';
 
 const TIMER_INTERVAL = 1000 * 60;
-const DATA_REQUEST_INTERVAL = 1000 * 60 * 30;
+const DATA_REQUEST_INTERVAL = 1000 * 60 * 60;
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({
@@ -24,12 +24,35 @@ function createStyleSheet({ theme }) {
       gap: FLEX_GAP,
       justifyContent: 'center',
     },
+    currentWeather: {
+      flex: 3,
+    },
+    dateTime: {
+      flex: 2,
+    },
+    precip: {
+      flex: 1,
+    },
+    primary: {
+      flexDirection: 'row',
+      flex: 4,
+      gap: FLEX_GAP,
+    },
+    secondary: {
+      flex: 1,
+      gap: FLEX_GAP,
+    },
+    tertiary: {
+      flexDirection: 'row',
+      flex: 4,
+      gap: FLEX_GAP,
+    },
   });
 }
 
 function AppBase(props) {
-  const { onLayout, requestData, theme } = props;
-  const styles = createStyleSheet({ theme });
+  const { onLayout, requestData } = props;
+  const styles = createStyleSheet(props);
 
   useKeepAwake();
   const [now, setNow] = useState(moment().format());
@@ -55,18 +78,18 @@ function AppBase(props) {
     <>
       <View style={styles.container} onLayout={onLayout}>
         <HeaderConnected />
-        <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
-          <View style={{ gap: FLEX_GAP, flex: 1 }}>
-            <View style={{ flexDirection: 'row', flex: 4, gap: FLEX_GAP }}>
-              <CurrentWeatherSectionConnected style={{ flex: 3 }} />
-              <CurrentPrecipSectionConnected style={{ flex: 1 }} />
+        <View style={styles.primary}>
+          <View style={styles.secondary}>
+            <View style={styles.tertiary}>
+              <CurrentWeatherSectionConnected style={styles.currentWeather} />
+              <CurrentPrecipSectionConnected style={styles.precip} />
             </View>
-            <DateTimeSection blink style={{ flex: 2 }} value={now} />
+            <DateTimeSection blink style={styles.dateTime} value={now} />
           </View>
           <CurrentWindSectionConnected />
         </View>
       </View>
-      <Settings visible />
+      <Settings visible={false} />
     </>
   );
 }

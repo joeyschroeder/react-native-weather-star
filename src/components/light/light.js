@@ -1,21 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { withTheme } from '../with-theme/with-theme';
-
-const styles = StyleSheet.create({
-  light: {
-    borderRadius: '50%',
-  },
-});
 
 function LightBase(props) {
   const { active, color: colorProp, style, size, theme } = props;
 
   const color = colorProp || theme.colors.text;
+
   const backgroundColor = active ? color : theme.colors.valueBackground;
-  const lightStyles = [styles.light, { backgroundColor, width: size, height: size }];
+  const borderRadius = size / 2;
+
+  const lightStyles = { backgroundColor, width: size, height: size, borderRadius };
 
   return (
     <View style={style}>

@@ -50,14 +50,15 @@ function HeaderBase(props) {
         <HeaderRefreshButtonConnected />
       </Section>
       <Section style={styles.secondary}>
-        <Label value={`Radar Station: ${radarStation || EMPTY_VALUE_LABEL}`} />
+        <Label value={`Station: ${radarStation || EMPTY_VALUE_LABEL}`} />
         {cityStateExists ? <Text style={styles.text}>{cityState}</Text> : null}
       </Section>
       <Section style={styles.primary}>
         <DigitalValueWithLabel
           horizontal
           label="Current"
-          minChars={16}
+          minChars={25}
+          maxChars={25}
           size={scaledValue(25)}
           value={shortForecast || EMPTY_VALUE_LABEL}
         />

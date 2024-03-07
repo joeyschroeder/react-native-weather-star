@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 });
 
 export function Date(props) {
-  const { color, style, value } = props;
+  const { color, style, value, size } = props;
 
   if (!value) return null;
   const containerStyle = [styles.container, style];
@@ -24,8 +24,8 @@ export function Date(props) {
 
   return (
     <View style={containerStyle}>
-      <DigitalValueWithLabel value={month} label="Month" color={color} />
-      <DigitalValueWithLabel value={day} label="Day" color={color} />
+      <DigitalValueWithLabel value={month} label="Month" color={color} size={size} />
+      <DigitalValueWithLabel value={day} label="Day" color={color} size={size} />
       {/* <DigitalValueWithLabel value={year} label="Year" color={color} /> */}
     </View>
   );
@@ -33,12 +33,14 @@ export function Date(props) {
 
 Date.propTypes = {
   color: PropTypes.string,
+  size: PropTypes.number,
   style: PropTypes.object,
   value: PropTypes.string,
 };
 
 Date.defaultProps = {
   color: undefined,
-  value: undefined,
+  size: undefined,
   style: undefined,
+  value: undefined,
 };
