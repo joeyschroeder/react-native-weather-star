@@ -53,6 +53,7 @@ BlockButtonBase.propTypes = {
   label: PropTypes.string,
   onPress: PropTypes.func,
   style: PropTypes.object,
+  theme: PropTypes.object,
 };
 
 BlockButtonBase.defaultProps = {
@@ -60,6 +61,7 @@ BlockButtonBase.defaultProps = {
   label: 'Submit',
   onPress: undefined,
   style: undefined,
+  theme: undefined,
 };
 
 export const BlockButton = withTheme(BlockButtonBase);

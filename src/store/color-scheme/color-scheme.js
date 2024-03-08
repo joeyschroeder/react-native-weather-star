@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { COLOR_SCHEMES } from '../../constants/color-schemes';
 
 export const NAME = 'color-scheme';
-export const INITIAL_STATE = COLOR_SCHEMES.DARK;
+const INITIAL_STATE = COLOR_SCHEMES.DARK;
 
 const colorSchemeSlice = createSlice({
   name: NAME,

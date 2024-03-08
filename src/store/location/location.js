@@ -15,7 +15,7 @@ const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
 export { reducer as locationReducer };
 export { requestThunk as requestLocation };
 
-export const selectLocation = selectData;
+const selectLocation = selectData;
 export const selectLocationLoading = selectStatus;
 
 export const selectLocationLatitude = (state) => selectLocation(state)?.latitude;

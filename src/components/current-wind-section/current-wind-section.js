@@ -41,12 +41,14 @@ CurrentWindSectionBase.propTypes = {
   direction: PropTypes.string,
   speed: PropTypes.number,
   style: PropTypes.object,
+  theme: PropTypes.object,
 };
 
 CurrentWindSectionBase.defaultProps = {
   direction: undefined,
   speed: undefined,
   style: undefined,
+  theme: undefined,
 };
 
 export const CurrentWindSection = withTheme(CurrentWindSectionBase);
