@@ -5,6 +5,7 @@ export const NAME = 'weather-metadata';
 
 const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
   name: NAME,
+  requestOnce: true,
   requestFunc: ({ latitude, longitude }) => {
     return getWeatherMetadataByLatitudeLongitude({ latitude, longitude });
   },
