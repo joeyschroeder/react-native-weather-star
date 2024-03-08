@@ -8,13 +8,16 @@ import { FONT_ASSETS } from './fonts';
 import { StatusBar } from 'expo-status-bar';
 import { AppConnected } from './components/app/app.connected';
 import * as NavigationBar from 'expo-navigation-bar';
+import { isAndroid } from './utils/is-android/is-android';
 
 // Makes the native splash screen remain visible until hideAsync is called.
 SplashScreen.preventAutoHideAsync();
 
 // Hides the Android Navigation Bar
-NavigationBar.setVisibilityAsync('hidden');
-NavigationBar.setBehaviorAsync('inset-touch');
+if (isAndroid()) {
+  NavigationBar.setVisibilityAsync('hidden');
+  NavigationBar.setBehaviorAsync('inset-touch');
+}
 
 // eslint-disable-next-line import/no-unused-modules
 export function Main() {
