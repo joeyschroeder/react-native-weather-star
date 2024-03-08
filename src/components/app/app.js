@@ -29,7 +29,7 @@ function createStyleSheet({ theme }) {
       flex: 7,
     },
     dateTime: {
-      flex: 2,
+      flex: 4,
     },
     precip: {
       flex: 4,
@@ -45,7 +45,7 @@ function createStyleSheet({ theme }) {
     },
     tertiary: {
       flexDirection: 'row',
-      flex: 5,
+      flex: 9,
       gap: FLEX_GAP,
     },
   });
