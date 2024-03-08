@@ -26,13 +26,13 @@ function createStyleSheet({ theme }) {
       justifyContent: 'center',
     },
     currentWeather: {
-      flex: 5,
+      flex: 7,
     },
     dateTime: {
       flex: 2,
     },
     precip: {
-      flex: 3,
+      flex: 4,
     },
     primary: {
       flexDirection: 'row',

@@ -38,12 +38,26 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
           countUp
           horizontal
           minChars={3}
-          size={scaledValue(240)}
+          size={scaledValue(250)}
           value={tempCurrent}
         />
         <View style={styles.highLowContainer}>
-          <DigitalValueWithLabel minChars={3} countUp append="°" label="High" value={tempHigh} color={tempHighColor} />
-          <DigitalValueWithLabel minChars={3} countUp append="°" label="Low" value={tempLow} color={tempLowColor} />
+          <DigitalValueWithLabel
+            append={tempUnitFormatted}
+            color={tempHighColor}
+            countUp
+            label="High"
+            minChars={3}
+            value={tempHigh}
+          />
+          <DigitalValueWithLabel
+            append={tempUnitFormatted}
+            color={tempLowColor}
+            countUp
+            label="Low"
+            minChars={3}
+            value={tempLow}
+          />
         </View>
       </View>
     </Section>
