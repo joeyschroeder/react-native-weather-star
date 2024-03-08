@@ -1,13 +1,14 @@
 import moment from 'moment';
-import { getWeatherByForecastUrl } from '../../services/weather/weather';
-import { createAsyncReducer } from '../../utils/create-async-reducer/create-async-reducer';
-import { formatHourlyForecastObject } from '../../utils/format-hourly-forecast-object/format-hourly-forecast-object';
+import { getWeatherByForecastUrl } from '../../../services/weather/weather';
+import { createAsyncReducer } from '../../../utils/create-async-reducer/create-async-reducer';
+import { formatHourlyForecastObject } from '../../../utils/format-hourly-forecast-object/format-hourly-forecast-object';
 import { max, min } from 'lodash';
 
-export const NAME = 'weather-forecast';
+export const NAME = 'forecast';
 
 const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
   name: NAME,
+  parentName: 'weather',
   requestFunc: (forecastUrl) => {
     return getWeatherByForecastUrl(forecastUrl);
   },

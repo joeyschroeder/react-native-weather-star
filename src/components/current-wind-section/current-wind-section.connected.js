@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   selectWeatherForecastWindDirection,
   selectWeatherForecastWindSpeedMph,
-} from '../../store/weather-forecast/weather-forecast';
+} from '../../store/weather/weather-forecast/weather-forecast';
 import { CurrentWindSection } from './current-wind-section';
 
 const mapStateToProps = (state) => {

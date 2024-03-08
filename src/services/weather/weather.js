@@ -11,7 +11,7 @@ export const getWeatherMetadataByLatitudeLongitude = async ({ latitude, longitud
     url: new URL(`points/${latitude},${longitude}`, API_URL).href,
   });
 
-  return data.properties;
+  return data.properties || {};
 };
 
 export const getWeatherByForecastUrl = async (forecastUrl) => {
@@ -22,7 +22,7 @@ export const getWeatherByForecastUrl = async (forecastUrl) => {
     url: forecastUrl,
   });
 
-  return data.properties;
+  return data.properties || {};
 };
 
 export const getWeatherAlertsByLatitudeLongitude = async ({ latitude, longitude }) => {
@@ -42,5 +42,5 @@ export const getWeatherAlertsByLatitudeLongitude = async ({ latitude, longitude 
     },
   });
 
-  return data.features?.properties;
+  return data.features?.properties || {};
 };

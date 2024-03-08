@@ -1,10 +1,11 @@
-import { getWeatherAlertsByLatitudeLongitude } from '../../services/weather/weather';
-import { createAsyncReducer } from '../../utils/create-async-reducer/create-async-reducer';
+import { getWeatherAlertsByLatitudeLongitude } from '../../../services/weather/weather';
+import { createAsyncReducer } from '../../../utils/create-async-reducer/create-async-reducer';
 
-export const NAME = 'weather-alerts';
+export const NAME = 'alerts';
 
 const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
   name: NAME,
+  parentName: 'weather',
   requestFunc: ({ latitude, longitude }) => {
     return getWeatherAlertsByLatitudeLongitude({ latitude, longitude });
   },

@@ -3,10 +3,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { ASYNC_THUNK_STATUS_STATES } from '../../constants/async-thunk-status-states';
 import { ASYNC_THUNK_TYPES } from '../../constants/async-thunk-types';
+import { get } from 'lodash';
 
 export const createAsyncReducer = ({
   initialState = {},
   name,
+  parentName = '',
   requestFunc: requestFuncParam,
   requestOnce = false,
   resetOnReject = false,
@@ -14,7 +16,10 @@ export const createAsyncReducer = ({
   if (!name) throw new Error('name is required');
   if (!requestFuncParam) throw new Error('requestFunc is required');
 
-  const selectStatus = (state) => state[name]?.status || ASYNC_THUNK_STATUS_STATES.IDLE;
+  const statePath = [parentName, name].filter((value) => Boolean(value)).join('.');
+  const selectState = (state) => get(state, statePath, initialState);
+
+  const selectStatus = (state) => selectState(state).status || ASYNC_THUNK_STATUS_STATES.IDLE;
 
   function requestFunc(args, thunkAPI) {
     const { getState } = thunkAPI;
@@ -29,7 +34,7 @@ export const createAsyncReducer = ({
     name,
     initialState: {
       data: initialState,
-      loading: ASYNC_THUNK_STATUS_STATES.IDLE,
+      status: ASYNC_THUNK_STATUS_STATES.IDLE,
     },
     extraReducers: (builder) => {
       builder.addCase(request[ASYNC_THUNK_TYPES.PENDING], (state) => {
@@ -51,7 +56,7 @@ export const createAsyncReducer = ({
   return {
     reducer,
     requestThunk: request,
-    selectData: (state) => state[name]?.data || initialState,
-    selectStatus: (state) => state[name]?.status,
+    selectData: (state) => selectState(state).data,
+    selectStatus: (state) => selectState(state).status,
   };
 };

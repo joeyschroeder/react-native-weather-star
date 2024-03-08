@@ -3,7 +3,7 @@ import { CurrentPrecipSection } from './current-precip-section';
 import {
   selectWeatherForecastProbabilityOfPrecipitation,
   selectWeatherForecastRelativeHumidity,
-} from '../../store/weather-forecast/weather-forecast';
+} from '../../store/weather/weather-forecast/weather-forecast';
 
 const mapStateToProps = (state) => {
   return {

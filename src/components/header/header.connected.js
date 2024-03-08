@@ -4,11 +4,11 @@ import {
   selectWeatherMetadataCity,
   selectWeatherMetadataRadarStation,
   selectWeatherMetadataState,
-} from '../../store/weather-metadata/weather-metadata';
+} from '../../store/weather/weather-metadata/weather-metadata';
 import {
   selectWeatherForecastShortForecast,
   selectWeatherForecastUpdateTime,
-} from '../../store/weather-forecast/weather-forecast';
+} from '../../store/weather/weather-forecast/weather-forecast';
 
 const mapStateToProps = (state) => {
   return {
