@@ -11,11 +11,12 @@ function HeaderRefreshButtonBase(props) {
   const { isLoading, onPress, style, theme, hasError } = props;
   const iconSize = scaledValue(36);
 
-  const icon = hasError ? (
-    <MaterialIcons name="error" size={iconSize} color={theme.colors.danger} />
-  ) : (
-    <WeatherIcon name="radar" size={iconSize} />
-  );
+  const icon =
+    hasError && !isLoading ? (
+      <MaterialIcons name="error" size={iconSize} color={theme.colors.danger} />
+    ) : (
+      <WeatherIcon name="radar" size={iconSize} />
+    );
 
   return (
     <View style={style}>

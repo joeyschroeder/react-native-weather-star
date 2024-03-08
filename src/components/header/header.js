@@ -57,9 +57,9 @@ function HeaderBase(props) {
         <DigitalValueWithLabel
           horizontal
           label="Current"
-          minChars={25}
-          maxChars={25}
-          size={scaledValue(25)}
+          minChars={12}
+          maxChars={12}
+          size={scaledValue(40)}
           value={shortForecast || EMPTY_VALUE_LABEL}
         />
       </Section>
@@ -68,7 +68,7 @@ function HeaderBase(props) {
           horizontal
           label="Last Update"
           minChars={6}
-          size={scaledValue(25)}
+          size={scaledValue(40)}
           value={lastUpdateFormatted}
         />
       </Section>
