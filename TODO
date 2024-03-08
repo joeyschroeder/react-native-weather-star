@@ -16,3 +16,23 @@
 * add intro animation
 * add splash screen
 * add music?
+
+FIX THE BUILD
+* some reason the app does not build on the EAS build servers
+* when building locally, you have to do:
+  * add the following to eas.json:
+    * "preview": {
+        "android": {
+          "buildType": "apk"
+        },
+        "env": {
+          "ANDROID_SDK_ROOT": "/Users/joey/Library/Android/sdk"
+        }
+      },
+  * expo prebuild --platform android
+  * cd android/
+  * touch local.properties
+    * add "sdk.dir = /Users/joey/Library/Android/sdk" to file
+  * ./gradlew assembleRelease
+  * cd ..
+  * eas build --platform android --local --profile preview
