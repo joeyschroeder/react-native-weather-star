@@ -6,8 +6,14 @@ import { requestWeatherByLocation } from '../../thunks/request-weather-by-locati
 import { HeaderRefreshButton } from './header-refresh-button';
 import { selectAnyRequestPending } from '../../selectors/select-any-request-pending/select-any-request-pending';
 import { selectAnyRequestRejected } from '../../selectors/select-any-request-rejected/select-any-request-rejected';
+import { selectWeatherAlertsLoading } from '../../store/weather-alerts/weather-alerts';
 
-const REQUEST_SELECTORS = [selectLocationLoading, selectWeatherForecastLoading, selectWeatherMetadataLoading];
+const REQUEST_SELECTORS = [
+  selectLocationLoading,
+  selectWeatherAlertsLoading,
+  selectWeatherForecastLoading,
+  selectWeatherMetadataLoading,
+];
 
 const mapStateToProps = (state) => {
   return {

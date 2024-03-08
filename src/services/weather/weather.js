@@ -34,14 +34,13 @@ export const getWeatherAlertsByLatitudeLongitude = async ({ latitude, longitude 
     url: new URL('alerts/active', API_URL).href,
     params: {
       certainty: 'Observed,Likely',
-      limit: 500,
       message_type: 'alert',
       point: `${latitude},${longitude}`,
       severity: 'Extreme,Severe,Moderate',
       status: 'actual',
-      urgency: 'Immediate,Expected,Future',
+      urgency: 'Immediate,Expected',
     },
   });
 
-  return data.features;
+  return data.features?.properties;
 };

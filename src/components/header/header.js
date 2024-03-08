@@ -42,7 +42,7 @@ function HeaderBase(props) {
   const cityState = city && state ? `${city}, ${state}` : undefined;
   const cityStateExists = Boolean(cityState);
 
-  const lastUpdateFormatted = lastUpdate ? moment(lastUpdate).format('hh:mmA') : EMPTY_VALUE_LABEL;
+  const lastUpdateFormatted = lastUpdate ? moment(lastUpdate).format('hh:mmA') : undefined;
 
   return (
     <View style={containerStyles}>
@@ -60,7 +60,7 @@ function HeaderBase(props) {
           minChars={12}
           maxChars={12}
           size={scaledValue(40)}
-          value={shortForecast || EMPTY_VALUE_LABEL}
+          value={shortForecast}
         />
       </Section>
       <Section>

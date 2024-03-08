@@ -1,4 +1,5 @@
 import { requestLocation, selectLocationLatitude, selectLocationLongitude } from '../../store/location/location';
+import { requestWeatherAlerts } from '../../store/weather-alerts/weather-alerts';
 import { requestWeatherForecast } from '../../store/weather-forecast/weather-forecast';
 import {
   requestWeatherMetadata,
@@ -11,7 +12,8 @@ export const requestWeatherByLocation = () => async (dispatch, getState) => {
   const longitude = selectLocationLongitude(getState());
 
   await dispatch(requestWeatherMetadata({ latitude, longitude }));
-  const weatherMetadataForecastHourly = selectWeatherMetadataForecastHourly(getState());
+  await dispatch(requestWeatherAlerts({ latitude, longitude }));
 
+  const weatherMetadataForecastHourly = selectWeatherMetadataForecastHourly(getState());
   await dispatch(requestWeatherForecast(weatherMetadataForecastHourly));
 };

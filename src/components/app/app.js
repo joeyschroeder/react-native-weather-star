@@ -12,6 +12,7 @@ import { CurrentWindSectionConnected } from '../current-wind-section/current-win
 import { withTheme } from '../with-theme/with-theme';
 import { withAppearanceChangeListener } from '../with-appearance-change-listener/with-appearance-change-listener';
 import { Settings } from '../settings/settings';
+import { FooterConnected } from '../footer/footer.connected';
 
 const TIMER_INTERVAL = 1000 * 60;
 const DATA_REQUEST_INTERVAL = 1000 * 60 * 60;
@@ -88,6 +89,7 @@ function AppBase(props) {
           </View>
           <CurrentWindSectionConnected />
         </View>
+        <FooterConnected />
       </View>
       <Settings visible={false} />
     </>
