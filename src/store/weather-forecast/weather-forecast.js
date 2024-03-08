@@ -16,7 +16,7 @@ const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
 export { reducer as weatherForecastReducer };
 export { requestThunk as requestWeatherForecast };
 
-export const selectWeatherForecast = selectData;
+const selectWeatherForecast = selectData;
 export const selectWeatherForecastLoading = selectStatus;
 
 export const selectWeatherForecastUpdateTime = (state) => selectWeatherForecast(state)?.updateTime;
@@ -38,7 +38,7 @@ const selectPeriodLatest = (state) => {
   return first;
 };
 
-export const selectWeatherForecastDewpoint = (state) => selectPeriodLatest(state)?.dewpoint;
+// const selectWeatherForecastDewpoint = (state) => selectPeriodLatest(state)?.dewpoint;
 export const selectWeatherForecastProbabilityOfPrecipitation = (state) =>
   selectPeriodLatest(state)?.probabilityOfPrecipitation;
 export const selectWeatherForecastRelativeHumidity = (state) => selectPeriodLatest(state)?.relativeHumidity;
