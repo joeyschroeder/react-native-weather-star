@@ -24,3 +24,24 @@ export const getWeatherByForecastUrl = async (forecastUrl) => {
 
   return data.properties;
 };
+
+export const getWeatherAlertsByLatitudeLongitude = async ({ latitude, longitude }) => {
+  if (!latitude) throw new Error('Invalid latitude.');
+  if (!longitude) throw new Error('Invalid longitude.');
+
+  const { data } = await axios({
+    method: 'get',
+    url: new URL('alerts/active', API_URL).href,
+    params: {
+      certainty: 'Observed,Likely',
+      limit: 500,
+      message_type: 'alert',
+      point: `${latitude},${longitude}`,
+      severity: 'Extreme,Severe,Moderate',
+      status: 'actual',
+      urgency: 'Immediate,Expected,Future',
+    },
+  });
+
+  return data.features;
+};
