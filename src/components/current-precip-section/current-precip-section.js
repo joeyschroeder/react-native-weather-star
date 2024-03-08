@@ -20,6 +20,7 @@ function CurrentPrecipSectionBase(props) {
           color={precipProbabilityColor}
           countUp
           label="Rain"
+          minChars={3}
           value={precipProbability}
         />
         <DigitalValueWithLabel
@@ -27,6 +28,7 @@ function CurrentPrecipSectionBase(props) {
           color={relativeHumidityColor}
           countUp
           label="Humidity"
+          minChars={3}
           value={relativeHumidity}
         />
       </View>

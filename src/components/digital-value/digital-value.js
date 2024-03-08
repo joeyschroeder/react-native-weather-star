@@ -43,7 +43,7 @@ function createStyleSheet({ theme }) {
 }
 
 function DigitalValueBase(props) {
-  const { color: colorProp, maxChars, minChars, size, style, value, valueType, theme, countUp } = props;
+  const { color: colorProp, countUp, maxChars, minChars, size, style, theme, value, valueType } = props;
 
   const styles = createStyleSheet(props);
 

@@ -39,7 +39,7 @@ const selectPeriodLatest = (state) => {
   return first;
 };
 
-// const selectWeatherForecastDewpoint = (state) => selectPeriodLatest(state)?.dewpoint;
+// export const selectWeatherForecastDewpoint = (state) => selectPeriodLatest(state)?.dewpoint;
 export const selectWeatherForecastProbabilityOfPrecipitation = (state) =>
   selectPeriodLatest(state)?.probabilityOfPrecipitation;
 export const selectWeatherForecastRelativeHumidity = (state) => selectPeriodLatest(state)?.relativeHumidity;

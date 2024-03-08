@@ -10,11 +10,13 @@ import { withTheme } from '../with-theme/with-theme';
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     gap: SPACER,
   },
   highLowContainer: {
+    flexDirection: 'row',
     gap: SPACER,
+    justifyContent: 'center',
   },
 });
 
@@ -31,16 +33,17 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
     <Section style={style}>
       <View style={styles.container}>
         <DigitalValueWithLabel
-          countUp
           append={tempUnitFormatted}
           color={tempCurrentColor}
-          label="Current"
-          size={scaledValue(301)}
+          countUp
+          horizontal
+          minChars={3}
+          size={scaledValue(240)}
           value={tempCurrent}
         />
         <View style={styles.highLowContainer}>
-          <DigitalValueWithLabel countUp append="°" label="High" value={tempHigh} color={tempHighColor} />
-          <DigitalValueWithLabel countUp append="°" label="Low" value={tempLow} color={tempLowColor} />
+          <DigitalValueWithLabel minChars={3} countUp append="°" label="High" value={tempHigh} color={tempHighColor} />
+          <DigitalValueWithLabel minChars={3} countUp append="°" label="Low" value={tempLow} color={tempLowColor} />
         </View>
       </View>
     </Section>

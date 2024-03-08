@@ -26,13 +26,13 @@ function createStyleSheet({ theme }) {
       justifyContent: 'center',
     },
     currentWeather: {
-      flex: 3,
+      flex: 5,
     },
     dateTime: {
       flex: 2,
     },
     precip: {
-      flex: 1,
+      flex: 3,
     },
     primary: {
       flexDirection: 'row',
@@ -45,7 +45,7 @@ function createStyleSheet({ theme }) {
     },
     tertiary: {
       flexDirection: 'row',
-      flex: 4,
+      flex: 5,
       gap: FLEX_GAP,
     },
   });
