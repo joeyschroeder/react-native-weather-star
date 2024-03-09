@@ -19,7 +19,7 @@ function CurrentPrecipSectionBase(props) {
           append="%"
           color={precipProbabilityColor}
           countUp
-          label="Rain"
+          label="Rain Chance"
           minChars={3}
           value={precipProbability}
         />
@@ -27,7 +27,7 @@ function CurrentPrecipSectionBase(props) {
           append="%"
           color={relativeHumidityColor}
           countUp
-          label="Humidity"
+          label="Rel. Humidity"
           minChars={3}
           value={relativeHumidity}
         />

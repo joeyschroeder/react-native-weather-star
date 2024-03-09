@@ -13,6 +13,8 @@ import { withTheme } from '../with-theme/with-theme';
 import { withAppearanceChangeListener } from '../with-appearance-change-listener/with-appearance-change-listener';
 import { Settings } from '../settings/settings';
 import { FooterConnected } from '../footer/footer.connected';
+import { withDimensionsOrientationChangeListener } from '../with-dimensions-orientation-change-listener/with-dimensions-orientation-change-listener';
+import { compose } from '../../utils/compose/compose';
 
 const TIMER_INTERVAL = 1000 * 60;
 const DATA_REQUEST_INTERVAL = 1000 * 60 * 60;
@@ -106,4 +108,4 @@ AppBase.defaultProps = {
   requestData: () => {},
 };
 
-export const App = withAppearanceChangeListener(withTheme(AppBase));
+export const App = compose(withAppearanceChangeListener, withDimensionsOrientationChangeListener, withTheme)(AppBase);

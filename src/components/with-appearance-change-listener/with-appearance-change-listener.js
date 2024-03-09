@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unused-modules */
 import { Appearance } from 'react-native';
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
@@ -16,8 +15,12 @@ function withAppearanceChangeListenerBase(WrappedComponent) {
     const { onAppearanceChange, ...other } = props;
 
     useEffect(() => {
-      onAppearanceChange(Appearance.getColorScheme());
-      Appearance.addChangeListener(({ colorScheme }) => onAppearanceChange(colorScheme));
+      const initialValue = Appearance.getColorScheme();
+      onAppearanceChange(initialValue);
+
+      Appearance.addChangeListener(({ colorScheme }) => {
+        onAppearanceChange(colorScheme);
+      });
     }, []);
 
     // eslint-disable-next-line react/jsx-props-no-spreading

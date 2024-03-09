@@ -31,7 +31,7 @@ function createStyleSheet({ theme }) {
       opacity: 0,
     },
     shadow: {
-      opacity: 0.1,
+      opacity: 0.07,
       position: 'absolute',
     },
     text: {
