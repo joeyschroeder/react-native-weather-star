@@ -1,9 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { FLEX_GAP } from '../../constants/flex-gap';
-import { DateTimeSection } from '../date-time-section/date-time-section';
-import moment from 'moment';
 import { useKeepAwake } from 'expo-keep-awake';
 import { HeaderConnected } from '../header/header.connected';
 import { CurrentWeatherSectionConnected } from '../current-weather-section/current-weather-section.connected';
@@ -15,8 +13,8 @@ import { Settings } from '../settings/settings';
 import { FooterConnected } from '../footer/footer.connected';
 import { withDimensionsOrientationChangeListener } from '../with-dimensions-orientation-change-listener/with-dimensions-orientation-change-listener';
 import { compose } from '../../utils/compose/compose';
+import { CurrentDateTimeSection } from '../current-date-time-section/current-date-time-section';
 
-const TIMER_INTERVAL = 1000 * 60;
 const DATA_REQUEST_INTERVAL = 1000 * 60 * 60;
 
 function createStyleSheet({ theme }) {
@@ -58,7 +56,6 @@ function AppBase(props) {
   const styles = createStyleSheet(props);
 
   useKeepAwake();
-  const [now, setNow] = useState(moment().format());
 
   useEffect(() => {
     requestData();
@@ -67,14 +64,7 @@ function AppBase(props) {
       requestData();
     }, DATA_REQUEST_INTERVAL);
 
-    const timerInterval = setInterval(() => {
-      setNow(moment().format());
-    }, TIMER_INTERVAL);
-
-    return () => {
-      clearInterval(dataRequestInterval);
-      clearInterval(timerInterval);
-    };
+    return () => clearInterval(dataRequestInterval);
   }, []);
 
   return (
@@ -87,7 +77,7 @@ function AppBase(props) {
               <CurrentWeatherSectionConnected style={styles.currentWeather} />
               <CurrentPrecipSectionConnected style={styles.precip} />
             </View>
-            <DateTimeSection blink style={styles.dateTime} value={now} />
+            <CurrentDateTimeSection style={styles.dateTime} />
           </View>
           <CurrentWindSectionConnected />
         </View>
