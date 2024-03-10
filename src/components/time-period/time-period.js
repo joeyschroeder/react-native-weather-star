@@ -28,9 +28,9 @@ export function TimePeriod(props) {
   return (
     <View style={containerStyle}>
       <Label style={styles.label} value="AM" />
-      <Light active={amActive} color={color} style={styles.light} />
+      <Light color={color} isActive={amActive} style={styles.light} />
       <Label style={styles.label} value="PM" />
-      <Light active={!amActive} color={color} style={styles.light} />
+      <Light color={color} isActive={!amActive} style={styles.light} />
     </View>
   );
 }

@@ -55,7 +55,7 @@ function HeaderBase(props) {
       </Section>
       <Section style={styles.primary}>
         <DigitalValueWithLabel
-          horizontal
+          isHorizontal
           label="Current"
           maxChars={12}
           minChars={12}
@@ -65,7 +65,7 @@ function HeaderBase(props) {
       </Section>
       <Section>
         <DigitalValueWithLabel
-          horizontal
+          isHorizontal
           label="Last Update"
           minChars={6}
           size={scaledValue(40)}

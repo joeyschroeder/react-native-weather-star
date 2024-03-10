@@ -5,26 +5,26 @@ import { DateTime } from '../date-time/date-time';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 
 export function DateTimeSection(props) {
-  const { blink, color, label, style, value } = props;
+  const { isBlinking, color, label, style, value } = props;
 
   return (
     <Section label={label} style={style}>
-      <DateTime blink={blink} color={color} size={scaledValue(122)} value={value} />
+      <DateTime color={color} isBlinking={isBlinking} size={scaledValue(122)} value={value} />
     </Section>
   );
 }
 
 DateTimeSection.propTypes = {
-  blink: PropTypes.bool,
   color: PropTypes.string,
+  isBlinking: PropTypes.bool,
   label: PropTypes.string,
   style: PropTypes.object,
   value: PropTypes.string,
 };
 
 DateTimeSection.defaultProps = {
-  blink: undefined,
   color: undefined,
+  isBlinking: undefined,
   label: undefined,
   style: undefined,
   value: undefined,

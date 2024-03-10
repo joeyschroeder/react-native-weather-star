@@ -5,11 +5,11 @@ import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { withTheme } from '../with-theme/with-theme';
 
 function LightBase(props) {
-  const { active, color: colorProp, style, size, theme } = props;
+  const { isActive, color: colorProp, style, size, theme } = props;
 
   const color = colorProp || theme.colors.text;
 
-  const backgroundColor = active ? color : theme.colors.valueBackground;
+  const backgroundColor = isActive ? color : theme.colors.valueBackground;
   const borderRadius = size / 2;
 
   const lightStyles = { backgroundColor, width: size, height: size, borderRadius };
@@ -22,16 +22,16 @@ function LightBase(props) {
 }
 
 LightBase.propTypes = {
-  active: PropTypes.bool,
   color: PropTypes.string,
+  isActive: PropTypes.bool,
   size: PropTypes.number,
   style: PropTypes.object,
   theme: PropTypes.object,
 };
 
 LightBase.defaultProps = {
-  active: true,
   color: undefined,
+  isActive: true,
   size: scaledValue(14),
   style: undefined,
   theme: undefined,

@@ -17,7 +17,7 @@ export function CurrentDateTimeSection(props) {
     return () => clearInterval(timerInterval);
   }, []);
 
-  return <DateTimeSection blink style={style} value={now} />;
+  return <DateTimeSection isBlinking style={style} value={now} />;
 }
 
 CurrentDateTimeSection.propTypes = {

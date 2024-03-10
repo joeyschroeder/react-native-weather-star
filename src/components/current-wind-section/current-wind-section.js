@@ -25,7 +25,7 @@ function CurrentWindSectionBase(props) {
         <DigitalLevel maxLevels={maxLevels} value={levelValue} />
         <DigitalValueWithLabel
           color={speedColor}
-          countUp
+          isCountingUp
           label="Wind MPH"
           minChars={2}
           size={scaledValue(54)}

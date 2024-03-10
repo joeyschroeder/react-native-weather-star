@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 });
 
 export function Time(props) {
-  const { blink, color, size, style, value } = props;
+  const { isBlinking, color, size, style, value } = props;
 
   if (!value) return null;
   const containerStyle = [styles.container, style];
@@ -37,7 +37,8 @@ export function Time(props) {
 
   let active = true;
 
-  if (blink) {
+  if (isBlinking) {
+    // eslint-disable-next-line react/hook-use-state
     const activeState = useState(true);
     [active] = activeState;
 
@@ -55,8 +56,8 @@ export function Time(props) {
       <TimePeriod color={color} value={period} />
       <DigitalValueWithLabel color={color} isNumber label="Hour" size={size} value={hours} />
       <View style={styles.colon}>
-        <Light active={active} color={color} style={styles.topLight} />
-        <Light active={active} color={color} />
+        <Light color={color} isActive={active} style={styles.topLight} />
+        <Light color={color} isActive={active} />
       </View>
       <DigitalValueWithLabel color={color} isNumber label="Min" size={size} value={minutes} />
     </View>
@@ -64,16 +65,16 @@ export function Time(props) {
 }
 
 Time.propTypes = {
-  blink: PropTypes.bool,
   color: PropTypes.string,
+  isBlinking: PropTypes.bool,
   size: PropTypes.number,
   style: PropTypes.object,
   value: PropTypes.string,
 };
 
 Time.defaultProps = {
-  blink: false,
   color: undefined,
+  isBlinking: false,
   size: undefined,
   style: undefined,
   value: undefined,

@@ -20,7 +20,7 @@ function createStyleSheet({ theme }) {
     container: {
       alignItems: 'center',
     },
-    horizontal: {
+    isHorizontal: {
       flexDirection: 'row',
       gap: SPACER,
     },
@@ -31,13 +31,13 @@ function createStyleSheet({ theme }) {
 }
 
 function DigitalValueWithLabelBase(props) {
-  const { append, horizontal, isNumber, label, style, ...other } = props;
+  const { append, isHorizontal, isNumber, label, style, ...other } = props;
 
   const styles = createStyleSheet(props);
   const appendExists = Boolean(append);
-  const containerStyle = [styles.container, horizontal && styles.horizontal, style];
+  const containerStyle = [styles.container, isHorizontal && styles.isHorizontal, style];
 
-  const labelStyle = { marginBottom: horizontal ? undefined : SPACER / 2 };
+  const labelStyle = { marginBottom: isHorizontal ? undefined : SPACER / 2 };
 
   return (
     <View style={containerStyle}>
@@ -53,7 +53,7 @@ function DigitalValueWithLabelBase(props) {
 
 DigitalValueWithLabelBase.propTypes = {
   append: PropTypes.string,
-  horizontal: PropTypes.bool,
+  isHorizontal: PropTypes.bool,
   isNumber: PropTypes.bool,
   label: PropTypes.string,
   style: PropTypes.object,
@@ -61,7 +61,7 @@ DigitalValueWithLabelBase.propTypes = {
 
 DigitalValueWithLabelBase.defaultProps = {
   append: undefined,
-  horizontal: false,
+  isHorizontal: false,
   isNumber: false,
   label: undefined,
   style: undefined,

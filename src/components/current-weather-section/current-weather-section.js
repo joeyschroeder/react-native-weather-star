@@ -35,8 +35,8 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
         <DigitalValueWithLabel
           append={tempUnitFormatted}
           color={tempCurrentColor}
-          countUp
-          horizontal
+          isCountingUp
+          isHorizontal
           isNumber
           minChars={3}
           size={scaledValue(220)}
@@ -46,8 +46,8 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
           <DigitalValueWithLabel
             append={tempUnitFormatted}
             color={tempHighColor}
-            countUp
-            horizontal
+            isCountingUp
+            isHorizontal
             isNumber
             label="Hi"
             minChars={3}
@@ -57,8 +57,8 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
           <DigitalValueWithLabel
             append={tempUnitFormatted}
             color={tempLowColor}
-            countUp
-            horizontal
+            isCountingUp
+            isHorizontal
             isNumber
             label="Lo"
             minChars={3}

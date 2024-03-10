@@ -4,25 +4,25 @@ import PropTypes from 'prop-types';
 
 export class AnimationSpin extends Component {
   static propTypes = {
-    animate: PropTypes.bool,
     children: PropTypes.node,
     delay: PropTypes.number,
     duration: PropTypes.number,
     easing: PropTypes.func,
-    loop: PropTypes.bool,
+    isAnimating: PropTypes.bool,
+    isLooping: PropTypes.bool,
+    isUsingNativeDriver: PropTypes.bool,
     style: PropTypes.object,
-    useNativeDriver: PropTypes.bool,
   };
 
   static defaultProps = {
-    animate: true,
     children: null,
     delay: 0,
     duration: 1000,
     easing: Easing.linear,
-    loop: false,
+    isAnimating: true,
+    isLooping: false,
+    isUsingNativeDriver: true,
     style: undefined,
-    useNativeDriver: true,
   };
 
   constructor(props) {
@@ -34,14 +34,19 @@ export class AnimationSpin extends Component {
     this.animate();
   }
 
+  shouldComponentUpdate(nextProps) {
+    const { isAnimating } = this.props;
+    return isAnimating !== nextProps.isAnimating;
+  }
+
   componentDidUpdate() {
     this.animate();
   }
 
   animate() {
-    const { animate, delay, duration, easing, loop, useNativeDriver } = this.props;
+    const { isAnimating, delay, duration, easing, isLooping, isUsingNativeDriver } = this.props;
 
-    if (animate) {
+    if (isAnimating) {
       this.animation.setValue(0);
 
       const config = {
@@ -49,10 +54,10 @@ export class AnimationSpin extends Component {
         duration,
         easing,
         toValue: 1,
-        useNativeDriver,
+        useNativeDriver: isUsingNativeDriver,
       };
 
-      if (loop) {
+      if (isLooping) {
         Animated.loop(Animated.timing(this.animation, config)).start();
       } else {
         Animated.timing(this.animation, config).start();

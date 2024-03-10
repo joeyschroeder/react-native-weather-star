@@ -11,14 +11,14 @@ const COMMON_PROPS = {
 };
 
 export function DigitalValueNumeric(props) {
-  const { countUp, value, ...other } = props;
+  const { isCountingUp, value, ...other } = props;
 
   // eslint-disable-next-line react/jsx-props-no-spreading
   if (value === undefined || value === null) return <DigitalValue {...COMMON_PROPS} {...other} />;
 
   let normalizedValue = value;
 
-  if (countUp) {
+  if (isCountingUp) {
     const { value: countUpValue } = useCountUp({
       duration: 1,
       end: value,
@@ -36,7 +36,7 @@ export function DigitalValueNumeric(props) {
 
 DigitalValueNumeric.propTypes = {
   color: PropTypes.string,
-  countUp: PropTypes.bool,
+  isCountingUp: PropTypes.bool,
   maxChars: PropTypes.number,
   minChars: PropTypes.number,
   size: PropTypes.number,
@@ -47,7 +47,7 @@ DigitalValueNumeric.propTypes = {
 
 DigitalValueNumeric.defaultProps = {
   color: undefined,
-  countUp: false,
+  isCountingUp: false,
   maxChars: undefined,
   minChars: 2,
   size: scaledValue(110),

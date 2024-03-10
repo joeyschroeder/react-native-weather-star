@@ -40,15 +40,15 @@ function FooterBase(props) {
     <View style={containerStyles}>
       <Section>
         <Pressable onPress={onSettingsPress}>
-          <FontAwesome name="gear" size={scaledValue(36)} color={theme.colors.text} />
+          <FontAwesome color={theme.colors.text} name="gear" size={scaledValue(36)} />
         </Pressable>
       </Section>
       <Section style={styles.primary}>
         <DigitalValueWithLabel
-          horizontal
+          isHorizontal
           label="Alert"
-          minChars={20}
           maxChars={20}
+          minChars={20}
           size={scaledValue(40)}
           value={alert}
         />
@@ -56,7 +56,7 @@ function FooterBase(props) {
       <Section>
         <DigitalValueWithLabel
           color={severityColor}
-          horizontal
+          isHorizontal
           label="Severity"
           minChars={8}
           size={scaledValue(40)}
