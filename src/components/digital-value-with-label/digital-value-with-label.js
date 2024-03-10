@@ -7,6 +7,7 @@ import { Label } from '../label/label';
 import { FONTS } from '../../constants/fonts';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { withTheme } from '../with-theme/with-theme';
+import { DigitalValueNumeric } from '../digital-value-numeric/digital-value-numeric';
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({
@@ -30,7 +31,7 @@ function createStyleSheet({ theme }) {
 }
 
 function DigitalValueWithLabelBase(props) {
-  const { append, horizontal, label, style, ...other } = props;
+  const { append, horizontal, isNumber, label, style, ...other } = props;
 
   const styles = createStyleSheet(props);
   const appendExists = Boolean(append);
@@ -43,7 +44,7 @@ function DigitalValueWithLabelBase(props) {
       <Label style={labelStyle} value={label} />
       <View style={styles.valueContainer}>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-        <DigitalValue {...other} />
+        {isNumber ? <DigitalValueNumeric {...other} /> : <DigitalValue {...other} />}
         {appendExists && <Text style={styles.append}>{append}</Text>}
       </View>
     </View>
@@ -53,6 +54,7 @@ function DigitalValueWithLabelBase(props) {
 DigitalValueWithLabelBase.propTypes = {
   append: PropTypes.string,
   horizontal: PropTypes.bool,
+  isNumber: PropTypes.bool,
   label: PropTypes.string,
   style: PropTypes.object,
 };
@@ -60,6 +62,7 @@ DigitalValueWithLabelBase.propTypes = {
 DigitalValueWithLabelBase.defaultProps = {
   append: undefined,
   horizontal: false,
+  isNumber: false,
   label: undefined,
   style: undefined,
 };

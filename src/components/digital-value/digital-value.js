@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text } from 'react-native';
-import { FONTS } from '../../constants/fonts';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { SPACER } from '../../constants/spacer';
 import { BORDER_RADIUS } from '../../constants/border-radius';
 import { EMPTY_VALUE_LABEL } from '../../constants/empty-value-label';
 import { withTheme } from '../with-theme/with-theme';
-import { useCountUp } from 'use-count-up';
+import { FONTS } from '../../constants/fonts';
 
-const NUMBER_FONT = FONTS.MONO.NUMBER.ITALIC;
-const LETTER_FONT = FONTS.MONO.LETTER.ITALIC;
-
-const LETTER_EMPTY_CHAR = '~';
-const NUMBER_EMPTY_CHAR = '8';
 const PADDING_CHAR = '_';
 const ZERO_SPACE_CHARS = ['.', ':'];
 
@@ -43,37 +37,19 @@ function createStyleSheet({ theme }) {
 }
 
 function DigitalValueBase(props) {
-  const { color: colorProp, countUp, maxChars, minChars, size, style, theme, value, valueType } = props;
+  const { color: colorProp, fontFamily, maxChars, minChars, shadowChar, size, style, theme, value } = props;
 
   const styles = createStyleSheet(props);
 
   const color = colorProp || theme.colors.text;
   const containerStyle = [styles.container, style];
-  // eslint-disable-next-line no-restricted-globals
-  const isNumber = valueType === 'number' || !isNaN(value);
 
-  const fontFamily = isNumber ? NUMBER_FONT : LETTER_FONT;
-  const shadowChar = isNumber ? NUMBER_EMPTY_CHAR : LETTER_EMPTY_CHAR;
   const commonTextStyles = { color, fontFamily, fontSize: size };
-
   const textStyle = [styles.text, commonTextStyles];
 
-  let normalizedValue = value;
-  if (isNumber && countUp) {
-    const { value: countUpValue } = useCountUp({
-      isCounting: true,
-      end: value,
-      duration: 1,
-    });
+  let normalizedValue = value.replace(/\s/g, SPACE_CHAR);
 
-    normalizedValue = countUpValue.toString();
-  } else if (isNumber) {
-    normalizedValue = value.toString();
-  }
-
-  normalizedValue = normalizedValue.replace(/\s/g, SPACE_CHAR);
   const valueLength = normalizedValue.length;
-
   if (maxChars && valueLength > maxChars) normalizedValue = normalizedValue.substring(0, maxChars);
   if (minChars && valueLength < minChars) normalizedValue = normalizedValue.padStart(minChars, PADDING_CHAR);
 
@@ -101,26 +77,26 @@ function DigitalValueBase(props) {
 
 DigitalValueBase.propTypes = {
   color: PropTypes.string,
-  countUp: PropTypes.bool,
+  fontFamily: PropTypes.string,
   maxChars: PropTypes.number,
   minChars: PropTypes.number,
+  shadowChar: PropTypes.string,
   size: PropTypes.number,
   style: PropTypes.object,
   theme: PropTypes.object,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  valueType: PropTypes.oneOf(['letter', 'number']),
+  value: PropTypes.string,
 };
 
 DigitalValueBase.defaultProps = {
   color: undefined,
-  countUp: false,
+  fontFamily: FONTS.MONO.LETTER.ITALIC,
   maxChars: undefined,
   minChars: 2,
+  shadowChar: '~',
   size: scaledValue(110),
   style: undefined,
   theme: undefined,
   value: EMPTY_VALUE_LABEL,
-  valueType: undefined,
 };
 
 export const DigitalValue = withTheme(DigitalValueBase);
