@@ -24,8 +24,8 @@ export function Date(props) {
 
   return (
     <View style={containerStyle}>
-      <DigitalValueWithLabel value={month} label="Month" color={color} size={size} />
-      <DigitalValueWithLabel value={day} isNumber label="Day" color={color} size={size} />
+      <DigitalValueWithLabel color={color} label="Month" size={size} value={month} />
+      <DigitalValueWithLabel color={color} isNumber label="Day" size={size} value={day} />
       {/* <DigitalValueWithLabel value={year} label="Year" color={color} /> */}
     </View>
   );

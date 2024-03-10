@@ -13,7 +13,7 @@ function WeatherIconBase(props) {
 
   return (
     <View style={style}>
-      <MaterialCommunityIcons name={name} size={size} color={theme.colors.text} />
+      <MaterialCommunityIcons color={theme.colors.text} name={name} size={size} />
     </View>
   );
 }

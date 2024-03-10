@@ -53,10 +53,10 @@ export function Time(props) {
   return (
     <View style={containerStyle}>
       <TimePeriod color={color} value={period} />
-      <DigitalValueWithLabel isNumber value={hours} label="Hour" color={color} size={size} />
+      <DigitalValueWithLabel color={color} isNumber label="Hour" size={size} value={hours} />
       <View style={styles.colon}>
-        <Light style={styles.topLight} active={active} color={color} />
-        <Light color={color} active={active} />
+        <Light active={active} color={color} style={styles.topLight} />
+        <Light active={active} color={color} />
       </View>
       <DigitalValueWithLabel color={color} isNumber label="Min" size={size} value={minutes} />
     </View>

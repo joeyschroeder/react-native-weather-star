@@ -22,7 +22,7 @@ function CurrentWindSectionBase(props) {
   return (
     <Section style={style}>
       <View style={{ gap: SPACER }}>
-        <DigitalLevel value={levelValue} maxLevels={maxLevels} />
+        <DigitalLevel maxLevels={maxLevels} value={levelValue} />
         <DigitalValueWithLabel
           color={speedColor}
           countUp
@@ -31,7 +31,7 @@ function CurrentWindSectionBase(props) {
           size={scaledValue(54)}
           value={speed}
         />
-        <DigitalValueWithLabel label="Wind Dir." minChars={3} value={direction} size={scaledValue(37)} />
+        <DigitalValueWithLabel label="Wind Dir." minChars={3} size={scaledValue(37)} value={direction} />
       </View>
     </Section>
   );

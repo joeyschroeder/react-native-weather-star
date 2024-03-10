@@ -48,15 +48,15 @@ function SettingsBase(props) {
       <View style={styles.container}>
         <View style={styles.primary}>
           <SettingsSection label="Theme">
-            <RadioSelector style={styles.radioSelector} value="dark" options={['auto', 'light', 'dark']} />
-            <RadioSelector value="Red" options={['Red', 'Yellow', 'Green', 'Blue', 'White']} />
+            <RadioSelector options={['auto', 'light', 'dark']} style={styles.radioSelector} value="dark" />
+            <RadioSelector options={['Red', 'Yellow', 'Green', 'Blue', 'White']} value="Red" />
           </SettingsSection>
           <SettingsSection label="Clock">
-            <RadioSelector value="12-hour" options={['12-hour', '24-hour']} />
+            <RadioSelector options={['12-hour', '24-hour']} value="12-hour" />
           </SettingsSection>
           <View style={styles.actions}>
-            <BlockButton style={styles.action} label="Save" />
-            <BlockButton style={styles.action} label="Cancel" onPress={onDismiss} />
+            <BlockButton label="Save" style={styles.action} />
+            <BlockButton label="Cancel" onPress={onDismiss} style={styles.action} />
           </View>
         </View>
       </View>

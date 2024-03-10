@@ -8,7 +8,7 @@
     "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:react-native/all",
-    "plugin:react/recommended"
+    "plugin:react/all"
   ],
   "parser": "@babel/eslint-parser",
   "plugins": [
@@ -38,6 +38,9 @@
       }
     ],
     "quotes": ["error", "single"],
+    "react/jsx-newline": 0,
+    "react/jsx-no-literals": [0],
+    "react/jsx-max-depth": [0],
     "react-native/no-unused-styles": 0,
     "react/forbid-prop-types": [2, { "forbid": ["any"] }],
     "react/jsx-filename-extension": [0],

@@ -70,9 +70,9 @@ export class RadioSelector extends Component {
 
       return (
         <RadioSelectorOption
+          key={option}
           active={active}
           activeColor={activeColor}
-          key={option}
           onPress={onPress}
           textColor={textColor}
           value={option}

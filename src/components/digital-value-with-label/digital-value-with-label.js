@@ -45,7 +45,7 @@ function DigitalValueWithLabelBase(props) {
       <View style={styles.valueContainer}>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {isNumber ? <DigitalValueNumeric {...other} /> : <DigitalValue {...other} />}
-        {appendExists && <Text style={styles.append}>{append}</Text>}
+        {appendExists ? <Text style={styles.append}>{append}</Text> : null}
       </View>
     </View>
   );

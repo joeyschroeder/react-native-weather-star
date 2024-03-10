@@ -21,8 +21,8 @@ export function DateTime(props) {
 
   return (
     <View style={containerStyle}>
-      <Date value={value} color={color} size={size} />
-      <Time value={value} color={color} blink={blink} size={size} />
+      <Date color={color} size={size} value={value} />
+      <Time blink={blink} color={color} size={size} value={value} />
     </View>
   );
 }

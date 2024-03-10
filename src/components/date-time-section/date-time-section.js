@@ -9,7 +9,7 @@ export function DateTimeSection(props) {
 
   return (
     <Section label={label} style={style}>
-      <DateTime value={value} color={color} blink={blink} size={scaledValue(122)} />
+      <DateTime blink={blink} color={color} size={scaledValue(122)} value={value} />
     </Section>
   );
 }

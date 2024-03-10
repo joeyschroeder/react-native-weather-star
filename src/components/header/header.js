@@ -57,8 +57,8 @@ function HeaderBase(props) {
         <DigitalValueWithLabel
           horizontal
           label="Current"
-          minChars={12}
           maxChars={12}
+          minChars={12}
           size={scaledValue(40)}
           value={shortForecast}
         />

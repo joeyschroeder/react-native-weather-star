@@ -13,7 +13,7 @@ function HeaderRefreshButtonBase(props) {
 
   const icon =
     hasError && !isLoading ? (
-      <MaterialIcons name="error" size={iconSize} color={theme.colors.danger} />
+      <MaterialIcons color={theme.colors.danger} name="error" size={iconSize} />
     ) : (
       <WeatherIcon name="radar" size={iconSize} />
     );
