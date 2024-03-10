@@ -1,19 +1,16 @@
 * make sure on rotate the dimensions change, i think they are constant right now
 * make sure weather gets latest period when time changes
-* add danger color to serverity when severe value
 * blink severity when severe
 * add timeout to network reqeust
 * add settings to set location versus geolocation
 * add sound effects
 * add errors
-* perhaps scroll short forecasts
 * add settings fo color changes
 * add settings for units
 * add settings for clock
 * add settings for clock blink
 * add settings for weather refresh
 * add settings for danger levels for temp rain humidity and wind
-* add scroll/marquee for long text
 * add sunrise/sunset api (https://sunrisesunset.io/api/)
 * add weather icon
 * add app icon
