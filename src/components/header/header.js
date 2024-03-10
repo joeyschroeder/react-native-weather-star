@@ -12,6 +12,8 @@ import { Label } from '../label/label';
 import { withTheme } from '../with-theme/with-theme';
 import { HeaderRefreshButtonConnected } from '../header-refresh-button/header-refresh-button.connected';
 
+const CURRENT_CHARS = 12;
+
 function createStyleSheet({ theme }) {
   return StyleSheet.create({
     container: {
@@ -43,6 +45,7 @@ function HeaderBase(props) {
   const cityStateExists = Boolean(cityState);
 
   const lastUpdateFormatted = lastUpdate ? moment(lastUpdate).format('hh:mmA') : undefined;
+  const isMarquee = shortForecast && shortForecast.length > CURRENT_CHARS;
 
   return (
     <View style={containerStyles}>
@@ -56,6 +59,7 @@ function HeaderBase(props) {
       <Section style={styles.primary}>
         <DigitalValueWithLabel
           isHorizontal
+          isMarquee={isMarquee}
           label="Current"
           maxChars={12}
           minChars={12}

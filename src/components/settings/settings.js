@@ -1,4 +1,4 @@
-import { StyleSheet, View, Modal } from 'react-native';
+import { Modal, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { BORDER_RADIUS } from '../../constants/border-radius';

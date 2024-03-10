@@ -1,5 +1,5 @@
 import { registerRootComponent } from 'expo';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
@@ -25,8 +25,10 @@ export function Main() {
 
   useEffect(() => {
     async function loadAssets() {
-      // Load any fonts, images, assets, and/or make any asynchronous requests
-      // before the Splash Screen is hidden
+      /*
+       * Load any fonts, images, assets, and/or make any asynchronous requests
+       * before the Splash Screen is hidden
+       */
       await Font.loadAsync(FONT_ASSETS);
       setAppReady(true);
     }
@@ -36,11 +38,13 @@ export function Main() {
 
   const onLayout = useCallback(async () => {
     if (appReady) {
-      // This tells the splash screen to hide immediately! If we call this after
-      // `setAppIsReady`, then we may see a blank screen while the app is
-      // loading its initial state and rendering its first pixels. So instead,
-      // we hide the splash screen once we know the root view has already
-      // performed layout.
+      /*
+       * This tells the splash screen to hide immediately! If we call this after
+       * `setAppIsReady`, then we may see a blank screen while the app is
+       * loading its initial state and rendering its first pixels. So instead,
+       * we hide the splash screen once we know the root view has already
+       * performed layout.
+       */
       await SplashScreen.hideAsync();
     }
   }, [appReady]);

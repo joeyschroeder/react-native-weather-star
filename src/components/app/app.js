@@ -69,7 +69,7 @@ function AppBase(props) {
 
   return (
     <>
-      <View style={styles.container} onLayout={onLayout}>
+      <View onLayout={onLayout} style={styles.container}>
         <HeaderConnected />
         <View style={styles.primary}>
           <View style={styles.secondary}>

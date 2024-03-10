@@ -46,6 +46,7 @@ function FooterBase(props) {
       <Section style={styles.primary}>
         <DigitalValueWithLabel
           isHorizontal
+          isMarquee
           label="Alert"
           maxChars={20}
           minChars={20}
@@ -77,10 +78,10 @@ FooterBase.propTypes = {
 
 FooterBase.defaultProps = {
   alert: undefined,
-  theme: undefined,
-  severity: undefined,
   onSettingsPress: undefined,
+  severity: undefined,
   style: undefined,
+  theme: undefined,
 };
 
 export const Footer = withTheme(FooterBase);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { FLEX_GAP } from '../../constants/flex-gap';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { BORDER_RADIUS } from '../../constants/border-radius';

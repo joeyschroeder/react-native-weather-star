@@ -20,7 +20,6 @@
   "rules": {
     "comma-dangle": 0,
     "consistent-return": 0,
-
     "import/no-extraneous-dependencies": [0],
     "import/no-unresolved": 0,
     "import/no-unused-modules": [1, { "unusedExports": true }],
@@ -29,6 +28,7 @@
     "jsx-a11y/click-events-have-key-events": [0],
     "jsx-a11y/label-has-for": [0],
     "jsx-a11y/no-static-element-interactions": [0],
+    "multiline-comment-style": ["warn"],
     "prettier/prettier": [
       1,
       {
@@ -38,18 +38,24 @@
       }
     ],
     "quotes": ["error", "single"],
-    "react/jsx-newline": 0,
-    "react/jsx-no-literals": [0],
-    "react/jsx-max-depth": [0],
     "react-native/no-unused-styles": 0,
     "react/forbid-prop-types": [2, { "forbid": ["any"] }],
     "react/jsx-filename-extension": [0],
     "react/jsx-indent": 0,
     "react/jsx-indent-props": 0,
+    "react/jsx-max-depth": [0],
+    "react/jsx-newline": 0,
+    "react/jsx-no-literals": [0],
     "react/jsx-one-expression-per-line": [0],
     "react/no-unused-prop-types": 1,
     "react/sort-prop-types": [2],
     "react/static-property-placement": [2, "static public field"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "sort-imports": ["warn", {
+      "ignoreCase": false,
+      "ignoreDeclarationSort": true,
+      "ignoreMemberSort": false,
+      "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+    }]
   }
 }

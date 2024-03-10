@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { SPACER } from '../../constants/spacer';
 import { BORDER_RADIUS } from '../../constants/border-radius';

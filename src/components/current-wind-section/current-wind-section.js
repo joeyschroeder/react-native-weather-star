@@ -26,6 +26,7 @@ function CurrentWindSectionBase(props) {
         <DigitalValueWithLabel
           color={speedColor}
           isCountingUp
+          isNumber
           label="Wind MPH"
           minChars={2}
           size={scaledValue(54)}

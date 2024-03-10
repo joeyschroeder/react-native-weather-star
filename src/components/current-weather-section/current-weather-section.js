@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from '../section/section';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { SPACER } from '../../constants/spacer';

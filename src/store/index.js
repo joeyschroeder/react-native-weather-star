@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { locationReducer, NAME as LOCATION } from './location/location';
-import { colorSchemeReducer, NAME as COLOR_SCHEME } from './color-scheme/color-scheme';
-import { settingsReducer, NAME as SETTINGS } from './settings/settings';
-import { weatherReducer, NAME as WEATHER } from './weather/weather';
+import { NAME as LOCATION, locationReducer } from './location/location';
+import { NAME as COLOR_SCHEME, colorSchemeReducer } from './color-scheme/color-scheme';
+import { NAME as SETTINGS, settingsReducer } from './settings/settings';
+import { NAME as WEATHER, weatherReducer } from './weather/weather';
 import {
-  dimensionsOrientationReducer,
   NAME as DIMENSIONS_ORIENTATION,
+  dimensionsOrientationReducer,
 } from './dimensions-orientation/dimensions-orientation';
 
 export const STORE = configureStore({

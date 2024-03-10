@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { SPACER } from '../../constants/spacer';
 import { Date } from '../date/date';
 import { Time } from '../time/time';

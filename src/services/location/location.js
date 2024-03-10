@@ -1,4 +1,4 @@
-import { requestForegroundPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
+import { getCurrentPositionAsync, requestForegroundPermissionsAsync } from 'expo-location';
 
 export const getLocationForegroundPermissions = async () => {
   const response = await requestForegroundPermissionsAsync();

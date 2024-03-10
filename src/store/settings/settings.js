@@ -5,16 +5,18 @@ export const INITIAL_STATE = {
   clockHourFormat: undefined,
   colorScheme: undefined,
   dangerColor: undefined,
-  // humidityDangerThreshold: undefined,
-  // latitude: undefined,
-  // longitude: undefined,
-  // precipDangerThreshold: undefined,
-  // tempHighThreshold: undefined,
-  // tempLowThreshold: undefined,
-  // tempUnit: undefined,
-  // useGeolocation: undefined,
-  // windDangerThreshold: undefined,
-  // windSpeedUnit: undefined,
+  /*
+   * humidityDangerThreshold: undefined,
+   * latitude: undefined,
+   * longitude: undefined,
+   * precipDangerThreshold: undefined,
+   * tempHighThreshold: undefined,
+   * tempLowThreshold: undefined,
+   * tempUnit: undefined,
+   * useGeolocation: undefined,
+   * windDangerThreshold: undefined,
+   * windSpeedUnit: undefined,
+   */
 };
 
 const settingsSlice = createSlice({

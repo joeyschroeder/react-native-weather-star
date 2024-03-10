@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Label } from '../label/label';
 import { SPACER } from '../../constants/spacer';
 import { withTheme } from '../with-theme/with-theme';
