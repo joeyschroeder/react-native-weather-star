@@ -39,6 +39,16 @@ const selectPeriodLatest = (state) => {
   return first;
 };
 
+const selectPeriodsSameDay = (state) => {
+  const now = moment();
+  const periods = selectPeriods(state);
+
+  return periods.filter((period) => {
+    const endTime = moment(period.endTime);
+    return moment(endTime).isSame(now, 'day');
+  });
+};
+
 // export const selectWeatherForecastDewpoint = (state) => selectPeriodLatest(state)?.dewpoint;
 export const selectWeatherForecastProbabilityOfPrecipitation = (state) =>
   selectPeriodLatest(state)?.probabilityOfPrecipitation;
@@ -50,11 +60,15 @@ export const selectWeatherForecastWindDirection = (state) => selectPeriodLatest(
 export const selectWeatherForecastWindSpeedMph = (state) => selectPeriodLatest(state)?.windSpeedMph;
 
 export const selectWeatherForecastTemperatureHigh = (state) => {
-  const temperatures = selectPeriods(state).map((period) => period.temperature);
+  const periods = selectPeriodsSameDay(state);
+  const temperatures = periods.map((period) => period.temperature);
+
   return max(temperatures);
 };
 
 export const selectWeatherForecastTemperatureLow = (state) => {
-  const temperatures = selectPeriods(state).map((period) => period.temperature);
+  const periods = selectPeriodsSameDay(state);
+  const temperatures = periods.map((period) => period.temperature);
+
   return min(temperatures);
 };

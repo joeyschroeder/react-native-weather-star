@@ -21,7 +21,7 @@ function HeaderRefreshButtonBase(props) {
   return (
     <View style={style}>
       <Pressable onPress={onPress}>
-        <AnimationSpin animate={isLoading} loop>
+        <AnimationSpin isAnimating={isLoading} isLooping>
           {icon}
         </AnimationSpin>
       </Pressable>
