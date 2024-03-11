@@ -3,7 +3,13 @@ import { createAsyncReducer } from '../../../utils/create-async-reducer/create-a
 
 export const NAME = 'metadata';
 
-const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
+// eslint-disable-next-line import/no-unused-modules
+export const {
+  reducer: weatherMetadataReducer,
+  requestThunk: requestWeatherMetadata,
+  selectData: selectWeatherMetadata,
+  selectStatus: selectWeatherMetadataLoading,
+} = createAsyncReducer({
   name: NAME,
   parentName: 'weather',
   requestOnce: true,
@@ -11,12 +17,6 @@ const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
     return getWeatherMetadataByLatitudeLongitude({ latitude, longitude });
   },
 });
-
-export { reducer as weatherMetadataReducer };
-export { requestThunk as requestWeatherMetadata };
-
-const selectWeatherMetadata = selectData;
-export const selectWeatherMetadataLoading = selectStatus;
 
 // const selectWeatherMetadataForecast = (state) => selectWeatherMetadata(state)?.forecast;
 export const selectWeatherMetadataForecastHourly = (state) => selectWeatherMetadata(state)?.forecastHourly;

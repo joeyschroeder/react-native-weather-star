@@ -3,7 +3,13 @@ import { createAsyncReducer } from '../../utils/create-async-reducer/create-asyn
 
 export const NAME = 'location';
 
-const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
+// eslint-disable-next-line import/no-unused-modules
+export const {
+  reducer: locationReducer,
+  requestThunk: requestLocation,
+  selectData: selectLocation,
+  selectStatus: selectLocationLoading,
+} = createAsyncReducer({
   name: NAME,
   requestOnce: true,
   requestFunc: async () => {
@@ -11,12 +17,6 @@ const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
     return getLocation();
   },
 });
-
-export { reducer as locationReducer };
-export { requestThunk as requestLocation };
-
-const selectLocation = selectData;
-export const selectLocationLoading = selectStatus;
 
 export const selectLocationLatitude = (state) => selectLocation(state)?.latitude;
 export const selectLocationLongitude = (state) => selectLocation(state)?.longitude;

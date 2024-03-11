@@ -8,19 +8,19 @@ import { closestMatch } from 'closest-match';
 
 export const NAME = 'forecast';
 
-const { reducer, requestThunk, selectData, selectStatus } = createAsyncReducer({
+// eslint-disable-next-line import/no-unused-modules
+export const {
+  reducer: weatherForecastReducer,
+  requestThunk: requestWeatherForecast,
+  selectData: selectWeatherForecast,
+  selectStatus: selectWeatherForecastLoading,
+} = createAsyncReducer({
   name: NAME,
   parentName: 'weather',
   requestFunc: (forecastUrl) => {
     return getWeatherByForecastUrl(forecastUrl);
   },
 });
-
-export { reducer as weatherForecastReducer };
-export { requestThunk as requestWeatherForecast };
-
-const selectWeatherForecast = selectData;
-export const selectWeatherForecastLoading = selectStatus;
 
 export const selectWeatherForecastUpdateTime = (state) => selectWeatherForecast(state)?.updateTime;
 
