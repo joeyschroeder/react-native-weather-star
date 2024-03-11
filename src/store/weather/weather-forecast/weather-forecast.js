@@ -3,6 +3,8 @@ import { getWeatherByForecastUrl } from '../../../services/weather/weather';
 import { createAsyncReducer } from '../../../utils/create-async-reducer/create-async-reducer';
 import { formatHourlyForecastObject } from '../../../utils/format-hourly-forecast-object/format-hourly-forecast-object';
 import { max, min } from 'lodash';
+import { EXPO_MATERIAL_COMMUNITY_WEATHER_ICON_KEYS } from '../../../constants/expo-material-community-weather-icon-keys';
+import { closestMatch } from 'closest-match';
 
 export const NAME = 'forecast';
 
@@ -58,6 +60,19 @@ export const selectWeatherForecastTemperature = (state) => selectPeriodLatest(st
 export const selectWeatherForecastTemperatureUnit = (state) => selectPeriodLatest(state)?.temperatureUnit;
 export const selectWeatherForecastWindDirection = (state) => selectPeriodLatest(state)?.windDirection;
 export const selectWeatherForecastWindSpeedMph = (state) => selectPeriodLatest(state)?.windSpeedMph;
+export const selectWeatherForecastIsDaytime = (state) => selectPeriodLatest(state)?.isDaytime;
+
+export const selectWeatherForecastIcon = (state) => {
+  const shortForecast = selectWeatherForecastShortForecast(state);
+
+  if (!shortForecast) return undefined;
+  const isDaytime = selectWeatherForecastIsDaytime(state);
+
+  const normalizeShortForcast = shortForecast.toLowerCase().replace(/ /g, '-');
+  const query = `weather-${!isDaytime ? 'night-' : ''}${normalizeShortForcast}`;
+
+  return closestMatch(query, EXPO_MATERIAL_COMMUNITY_WEATHER_ICON_KEYS);
+};
 
 export const selectWeatherForecastTemperatureHigh = (state) => {
   const periods = selectPeriodsSameDay(state);

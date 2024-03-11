@@ -11,6 +11,9 @@ import moment from 'moment';
 import { Label } from '../label/label';
 import { withTheme } from '../with-theme/with-theme';
 import { HeaderRefreshButtonConnected } from '../header-refresh-button/header-refresh-button.connected';
+import { WeatherIcon } from '../weather-icon/weather-icon';
+import { BORDER_RADIUS } from '../../constants/border-radius';
+import { SPACER } from '../../constants/spacer';
 
 const CURRENT_CHARS = 12;
 
@@ -20,9 +23,17 @@ function createStyleSheet({ theme }) {
       flexDirection: 'row',
       gap: FLEX_GAP,
     },
+    icon: {
+      backgroundColor: theme.colors.valueBackground,
+      borderRadius: BORDER_RADIUS,
+      flexDirection: 'row',
+      marginLeft: SPACER / 2,
+      padding: SPACER / 2,
+    },
     primary: {
-      alignItems: 'flex-end',
       flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
     },
     secondary: {
       alignItems: 'flex-start',
@@ -36,7 +47,7 @@ function createStyleSheet({ theme }) {
 }
 
 function HeaderBase(props) {
-  const { city, lastUpdate, radarStation, shortForecast, state, style } = props;
+  const { city, lastUpdate, radarStation, shortForecast, state, style, theme, icon } = props;
 
   const styles = createStyleSheet(props);
   const containerStyles = [styles.container, style];
@@ -46,6 +57,7 @@ function HeaderBase(props) {
 
   const lastUpdateFormatted = lastUpdate ? moment(lastUpdate).format('hh:mmA') : undefined;
   const isMarquee = shortForecast && shortForecast.length > CURRENT_CHARS;
+  const showIcon = Boolean(icon);
 
   return (
     <View style={containerStyles}>
@@ -61,11 +73,14 @@ function HeaderBase(props) {
           isHorizontal
           isMarquee={isMarquee}
           label="Current"
-          maxChars={12}
-          minChars={12}
+          maxChars={11}
+          minChars={11}
           size={scaledValue(40)}
           value={shortForecast}
         />
+        <View style={styles.icon}>
+          {showIcon ? <WeatherIcon color={theme.colors.text} name={icon} size={scaledValue(39)} /> : null}
+        </View>
       </Section>
       <Section>
         <DigitalValueWithLabel
@@ -82,20 +97,24 @@ function HeaderBase(props) {
 
 HeaderBase.propTypes = {
   city: PropTypes.string,
+  icon: PropTypes.string,
   lastUpdate: PropTypes.string,
   radarStation: PropTypes.string,
   shortForecast: PropTypes.string,
   state: PropTypes.string,
   style: PropTypes.object,
+  theme: PropTypes.object,
 };
 
 HeaderBase.defaultProps = {
   city: undefined,
+  icon: undefined,
   lastUpdate: undefined,
   radarStation: undefined,
   shortForecast: undefined,
   state: undefined,
   style: undefined,
+  theme: undefined,
 };
 
 export const Header = withTheme(HeaderBase);

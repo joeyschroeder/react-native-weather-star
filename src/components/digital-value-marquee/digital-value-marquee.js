@@ -16,7 +16,7 @@ export function DigitalValueMarquee(props) {
 
   // eslint-disable-next-line react/jsx-props-no-spreading
   if (!value) return <DigitalValue {...other} />;
-  const [marqueeValue, setMarqueeValue] = useState(`${value}{'   '}`);
+  const [marqueeValue, setMarqueeValue] = useState(`${value} || `);
 
   useEffect(() => {
     const timerInterval = setInterval(() => setMarqueeValue(getUpdatedValue(marqueeValue)), 500);

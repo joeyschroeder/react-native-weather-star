@@ -10,7 +10,6 @@ function CurrentPrecipSectionBase(props) {
   const { precipProbability, relativeHumidity, style, theme } = props;
 
   const precipProbabilityColor = precipProbability > 25 ? theme.colors.danger : theme.colors.text;
-  const relativeHumidityColor = relativeHumidity > 50 ? theme.colors.danger : theme.colors.text;
 
   return (
     <Section style={style}>
@@ -26,7 +25,7 @@ function CurrentPrecipSectionBase(props) {
         />
         <DigitalValueWithLabel
           append="%"
-          color={relativeHumidityColor}
+          color={theme.colors.text}
           isCountingUp
           isNumber
           label="Rel. Humidity"

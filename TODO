@@ -3,7 +3,6 @@
 * blink severity when severe
 * add timeout to network reqeust
 * add settings to set location versus geolocation
-* add sound effects
 * add errors
 * add settings fo color changes
 * add settings for units
@@ -11,11 +10,10 @@
 * add settings for clock blink
 * add settings for weather refresh
 * add settings for danger levels for temp rain humidity and wind
-* add sunrise/sunset api (https://sunrisesunset.io/api/)
-* add weather icon
 * add app icon
 * add intro animation
 * add splash screen
+* add sound effects
 * add music?
 
 FIX THE BUILD

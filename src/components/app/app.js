@@ -14,8 +14,10 @@ import { FooterConnected } from '../footer/footer.connected';
 import { withDimensionsOrientationChangeListener } from '../with-dimensions-orientation-change-listener/with-dimensions-orientation-change-listener';
 import { compose } from '../../utils/compose/compose';
 import { CurrentDateTimeSection } from '../current-date-time-section/current-date-time-section';
+import Constants from 'expo-constants';
 
-const DATA_REQUEST_INTERVAL = 1000 * 60 * 60;
+const { dataRequestIntervalMinutes } = Constants.expoConfig.extra || {};
+const DATA_REQUEST_INTERVAL = 1000 * 60 * (dataRequestIntervalMinutes || 60);
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({
