@@ -3,9 +3,9 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
-# 🌈 react-native-weather-sta
+# 🕤 react-native-weather-star
 
-A [React-Native](https://facebook.github.io/react-native/) application that displays the local weather.
+A [React-Native](https://facebook.github.io/react-native/) weather application.
 
 ## Versioning
 
@@ -28,3 +28,5 @@ This project is licensed under the MIT License - see the [MIT Open Source Initia
 ## Acknowledgments
 
 Hat tip to anyone who's code was used! 🤠
+
+- [DSEG](https://www.keshikan.net/fonts-e.html): DSEG is a free font family, which imitates seven and fourteen segment displays (7SEG, 14SEG).

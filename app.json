@@ -1,0 +1,51 @@
+{
+  "expo": {
+    "name": "Geolocation Weather Station",
+    "slug": "geolocation-weather-station",
+    "privacy": "unlisted",
+    "platforms": [
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "landscape",
+    "icon": "./src/images/icon.png",
+    "splash": {
+      "image": "./src/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.schrjos.geolocationweatherstation"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ],
+    "userInterfaceStyle": "automatic",
+    "extra": {
+      "dataRequestIntervalMinutes": 60,
+      "eas": {
+        "projectId": "e635a3d3-58ed-4ea4-930e-a08495a6215d"
+      }
+    },
+    "android": {
+      "package": "com.schrjos.geolocationweatherstation",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
+    }
+  }
+}
