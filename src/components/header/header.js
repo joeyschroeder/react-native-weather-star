@@ -78,9 +78,11 @@ function HeaderBase(props) {
           size={scaledValue(40)}
           value={shortForecast}
         />
-        <View style={styles.icon}>
-          {showIcon ? <WeatherIcon color={theme.colors.text} name={icon} size={scaledValue(39)} /> : null}
-        </View>
+        {showIcon ? (
+          <View style={styles.icon}>
+            <WeatherIcon color={theme.colors.text} name={icon} size={scaledValue(39)} />
+          </View>
+        ) : null}
       </Section>
       <Section>
         <DigitalValueWithLabel
