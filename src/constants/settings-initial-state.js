@@ -1,4 +1,7 @@
+import { COLOR_SCHEMES } from './color-schemes';
+import { COLORS } from './colors';
+
 export const SETTINGS_INITIAL_STATE = {
-  colorScheme: 'auto',
-  color: undefined,
+  colorScheme: COLOR_SCHEMES.AUTO,
+  color: COLORS.RED,
 };

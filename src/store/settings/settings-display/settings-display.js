@@ -19,3 +19,6 @@ export const {
     return getAsyncStorageItem(SETTINGS_ASYNC_STORAGE_KEY);
   },
 });
+
+export const selectSettingsDisplayColorScheme = (state) => selectSettingsDisplay(state).colorScheme;
+export const selectSettingsDisplayColor = (state) => selectSettingsDisplay(state).color;
