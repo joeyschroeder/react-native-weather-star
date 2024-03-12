@@ -8,7 +8,7 @@ export const {
   reducer: weatherAlertsReducer,
   requestThunk: requestWeatherAlerts,
   selectData: selectWeatherAlerts,
-  selectStatus: selectWeatherAlertsLoading,
+  selectStatus: selectWeatherAlertsStatus,
 } = createAsyncReducer({
   name: NAME,
   parentName: 'weather',

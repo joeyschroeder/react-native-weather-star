@@ -8,7 +8,7 @@ export const {
   reducer: locationReducer,
   requestThunk: requestLocation,
   selectData: selectLocation,
-  selectStatus: selectLocationLoading,
+  selectStatus: selectLocationStatus,
 } = createAsyncReducer({
   name: NAME,
   requestOnce: true,
