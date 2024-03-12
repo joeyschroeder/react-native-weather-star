@@ -11,7 +11,7 @@ import { withTheme } from '../with-theme/with-theme';
 const MAX_MPH = 30;
 
 function CurrentWindSectionBase(props) {
-  const { style, speed, direction, theme } = props;
+  const { direction, speed, style, theme } = props;
 
   const dangerMph = MAX_MPH / 2;
   const speedColor = speed > dangerMph ? theme.colors.danger : theme.colors.text;

@@ -25,7 +25,7 @@ function createStyleSheet({ theme }) {
 }
 
 function SettingsSectionBase(props) {
-  const { style, children, label } = props;
+  const { children, label, style } = props;
 
   const styles = createStyleSheet(props);
   const containerStyle = [styles.container, style];

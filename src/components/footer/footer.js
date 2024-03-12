@@ -28,7 +28,7 @@ function createStyleSheet({ theme }) {
 }
 
 function FooterBase(props) {
-  const { alert, style, onSettingsPress, theme, severity } = props;
+  const { alert, onSettingsPress, severity, style, theme } = props;
 
   const styles = createStyleSheet(props);
   const containerStyles = [styles.container, style];

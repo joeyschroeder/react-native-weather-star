@@ -47,7 +47,7 @@ function createStyleSheet({ theme }) {
 }
 
 function HeaderBase(props) {
-  const { city, lastUpdate, radarStation, shortForecast, state, style, theme, icon } = props;
+  const { city, icon, lastUpdate, radarStation, shortForecast, state, style, theme } = props;
 
   const styles = createStyleSheet(props);
   const containerStyles = [styles.container, style];

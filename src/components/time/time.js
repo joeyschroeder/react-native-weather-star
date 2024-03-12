@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 });
 
 export function Time(props) {
-  const { isBlinking, color, size, style, value } = props;
+  const { color, isBlinking, size, style, value } = props;
 
   if (!value) return null;
   const containerStyle = [styles.container, style];

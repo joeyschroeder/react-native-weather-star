@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 });
 
 export function TimePicker(props) {
-  const { value, onChange, style } = props;
+  const { onChange, style, value } = props;
 
   if (!value) return null;
   const [modalActive, setModalActive] = useState(false);

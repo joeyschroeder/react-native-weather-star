@@ -44,7 +44,7 @@ export class AnimationSpin extends Component {
   }
 
   animate() {
-    const { isAnimating, delay, duration, easing, isLooping, isUsingNativeDriver } = this.props;
+    const { delay, duration, easing, isAnimating, isLooping, isUsingNativeDriver } = this.props;
 
     if (isAnimating) {
       this.animation.setValue(0);

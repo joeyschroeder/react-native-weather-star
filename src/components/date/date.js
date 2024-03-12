@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 });
 
 export function Date(props) {
-  const { color, style, value, size } = props;
+  const { color, size, style, value } = props;
 
   if (!value) return null;
   const containerStyle = [styles.container, style];

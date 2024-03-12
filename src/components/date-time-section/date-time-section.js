@@ -5,7 +5,7 @@ import { DateTime } from '../date-time/date-time';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
 
 export function DateTimeSection(props) {
-  const { isBlinking, color, label, style, value } = props;
+  const { color, isBlinking, label, style, value } = props;
 
   return (
     <Section label={label} style={style}>

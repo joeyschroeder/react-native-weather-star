@@ -6,7 +6,7 @@ import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { withTheme } from '../with-theme/with-theme';
 
 function WeatherIconBase(props) {
-  const { name, style, size, theme } = props;
+  const { name, size, style, theme } = props;
   const nameExists = Boolean(name);
 
   if (!nameExists) return null;

@@ -5,7 +5,7 @@ import { scaledValue } from '../../utils/scaled-value/scaled-value';
 import { withTheme } from '../with-theme/with-theme';
 
 function LightBase(props) {
-  const { isActive, color: colorProp, style, size, theme } = props;
+  const { color: colorProp, isActive, size, style, theme } = props;
 
   const color = colorProp || theme.colors.text;
 

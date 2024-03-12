@@ -104,7 +104,7 @@ export class RadioSelector extends Component {
   }
 
   render() {
-    const { activeColor, style, options } = this.props;
+    const { activeColor, options, style } = this.props;
 
     const optionsLength = options.length;
     const optionsExist = Boolean(optionsLength);

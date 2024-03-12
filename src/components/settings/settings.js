@@ -40,7 +40,7 @@ function createStyleSheet({ theme }) {
 }
 
 function SettingsBase(props) {
-  const { onDismiss, isVisible } = props;
+  const { isVisible, onDismiss, theme } = props;
   const styles = createStyleSheet(props);
 
   return (
@@ -52,8 +52,8 @@ function SettingsBase(props) {
             <RadioSelector options={['Red', 'Yellow', 'Green', 'Blue', 'White']} value="Red" />
           </SettingsSection>
           <View style={styles.actions}>
-            <BlockButton label="Save" style={styles.action} />
-            <BlockButton label="Cancel" onPress={onDismiss} style={styles.action} />
+            <BlockButton color={theme.colors.success} label="Save" style={styles.action} />
+            <BlockButton color={theme.colors.danger} label="Cancel" onPress={onDismiss} style={styles.action} />
           </View>
         </View>
       </View>
@@ -64,11 +64,13 @@ function SettingsBase(props) {
 SettingsBase.propTypes = {
   isVisible: PropTypes.bool,
   onDismiss: PropTypes.func,
+  theme: PropTypes.object,
 };
 
 SettingsBase.defaultProps = {
   isVisible: false,
   onDismiss: undefined,
+  theme: undefined,
 };
 
 export const Settings = withTheme(SettingsBase);

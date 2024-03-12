@@ -8,7 +8,7 @@ import { withTheme } from '../with-theme/with-theme';
 import { MaterialIcons } from '@expo/vector-icons';
 
 function HeaderRefreshButtonBase(props) {
-  const { isLoading, onPress, style, theme, hasError } = props;
+  const { hasError, isLoading, onPress, style, theme } = props;
   const iconSize = scaledValue(36);
 
   const icon =
