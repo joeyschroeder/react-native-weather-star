@@ -25,12 +25,12 @@ const styles = StyleSheet.create({
 });
 
 function RadioSelectorOptionBase(props) {
-  const { active, activeColor: activeColorProp, onPress, textColor: textColorProp, value, theme } = props;
+  const { activeColor: activeColorProp, isActive, onPress, textColor: textColorProp, theme, value } = props;
 
   const activeColor = activeColorProp || theme.colors.danger;
   const textColor = textColorProp || theme.colors.text;
 
-  const color = active ? textColor : activeColor;
+  const color = isActive ? textColor : activeColor;
   const textStyles = [styles.text, { color }];
 
   return (
@@ -45,8 +45,8 @@ function RadioSelectorOptionBase(props) {
 }
 
 RadioSelectorOptionBase.propTypes = {
-  active: PropTypes.bool,
   activeColor: PropTypes.string,
+  isActive: PropTypes.bool,
   onPress: PropTypes.func,
   textColor: PropTypes.string,
   theme: PropTypes.object,
@@ -54,10 +54,10 @@ RadioSelectorOptionBase.propTypes = {
 };
 
 RadioSelectorOptionBase.defaultProps = {
-  active: false,
   activeColor: COLORS.DANGER,
+  isActive: false,
   onPress: undefined,
-  textColor: COLORS.WHITE,
+  textColor: undefined,
   theme: undefined,
   value: '',
 };

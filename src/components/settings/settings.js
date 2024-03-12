@@ -40,19 +40,16 @@ function createStyleSheet({ theme }) {
 }
 
 function SettingsBase(props) {
-  const { onDismiss, visible } = props;
+  const { onDismiss, isVisible } = props;
   const styles = createStyleSheet(props);
 
   return (
-    <Modal animationType="fade" transparent visible={visible}>
+    <Modal animationType="fade" transparent visible={isVisible}>
       <View style={styles.container}>
         <View style={styles.primary}>
           <SettingsSection label="Theme">
             <RadioSelector options={['auto', 'light', 'dark']} style={styles.radioSelector} value="dark" />
             <RadioSelector options={['Red', 'Yellow', 'Green', 'Blue', 'White']} value="Red" />
-          </SettingsSection>
-          <SettingsSection label="Clock">
-            <RadioSelector options={['12-hour', '24-hour']} value="12-hour" />
           </SettingsSection>
           <View style={styles.actions}>
             <BlockButton label="Save" style={styles.action} />
@@ -65,13 +62,13 @@ function SettingsBase(props) {
 }
 
 SettingsBase.propTypes = {
+  isVisible: PropTypes.bool,
   onDismiss: PropTypes.func,
-  visible: PropTypes.bool,
 };
 
 SettingsBase.defaultProps = {
+  isVisible: false,
   onDismiss: undefined,
-  visible: false,
 };
 
 export const Settings = withTheme(SettingsBase);

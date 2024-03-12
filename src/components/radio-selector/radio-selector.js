@@ -57,6 +57,17 @@ export class RadioSelector extends Component {
     this.animation = new Animated.Value(initialAnimationValue);
   }
 
+  shouldComponentUpdate(nextProps) {
+    const { activeColor, options, textColor, value } = this.props;
+
+    return (
+      activeColor !== nextProps.activeColor ||
+      options !== nextProps.options ||
+      textColor !== nextProps.textColor ||
+      value !== nextProps.value
+    );
+  }
+
   componentDidUpdate() {
     this.animate();
   }
@@ -65,14 +76,14 @@ export class RadioSelector extends Component {
     const { activeColor, onToggle, options, textColor, value } = this.props;
 
     return options.map((option) => {
-      const active = value === option;
+      const isActive = value === option;
       const onPress = () => onToggle(option);
 
       return (
         <RadioSelectorOption
           key={option}
-          active={active}
           activeColor={activeColor}
+          isActive={isActive}
           onPress={onPress}
           textColor={textColor}
           value={option}
