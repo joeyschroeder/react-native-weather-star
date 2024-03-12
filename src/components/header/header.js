@@ -15,7 +15,7 @@ import { WeatherIcon } from '../weather-icon/weather-icon';
 import { BORDER_RADIUS } from '../../constants/border-radius';
 import { SPACER } from '../../constants/spacer';
 
-const CURRENT_CHARS = 12;
+const CURRENT_CHARS = 11;
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({
@@ -73,8 +73,8 @@ function HeaderBase(props) {
           isHorizontal
           isMarquee={isMarquee}
           label="Current"
-          maxChars={11}
-          minChars={11}
+          maxChars={CURRENT_CHARS}
+          minChars={CURRENT_CHARS}
           size={scaledValue(40)}
           value={shortForecast}
         />
