@@ -1,6 +1,7 @@
 * make sure on rotate the dimensions change, i think they are constant right now
 * make sure weather gets latest period when time changes
 * blink severity when severe
+* add babel module resolver
 * add timeout to network reqeust
 * add settings to set location versus geolocation
 * add errors

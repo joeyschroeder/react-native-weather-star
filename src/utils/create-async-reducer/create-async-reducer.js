@@ -6,7 +6,7 @@ import { ASYNC_THUNK_TYPES } from '../../constants/async-thunk-types';
 import { get } from 'lodash';
 
 export const createAsyncReducer = ({
-  initialState = {},
+  initialState: initialStateParam = {},
   name,
   parentName = '',
   requestFunc: requestFuncParam,
@@ -15,6 +15,11 @@ export const createAsyncReducer = ({
 }) => {
   if (!name) throw new Error('name is required');
   if (!requestFuncParam) throw new Error('requestFunc is required');
+
+  const initialState = {
+    data: initialStateParam,
+    status: ASYNC_THUNK_STATUS_STATES.IDLE,
+  };
 
   const statePath = [parentName, name].filter((value) => Boolean(value)).join('.');
   const selectState = (state) => get(state, statePath, initialState);
@@ -32,10 +37,7 @@ export const createAsyncReducer = ({
 
   const slice = createSlice({
     name,
-    initialState: {
-      data: initialState,
-      status: ASYNC_THUNK_STATUS_STATES.IDLE,
-    },
+    initialState,
     extraReducers: (builder) => {
       builder.addCase(request[ASYNC_THUNK_TYPES.PENDING], (state) => {
         state.status = ASYNC_THUNK_STATUS_STATES.PENDING;

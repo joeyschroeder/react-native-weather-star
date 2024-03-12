@@ -1,40 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { combineReducers } from '@reduxjs/toolkit';
+import { NAME as SETTINGS_DISPLAY, settingsDisplayReducer } from './settings-display/settings-display';
+import { NAME as SETTINGS_EDIT, settingsEditReducer } from './settings-edit/settings-edit';
 
 export const NAME = 'settings';
-export const INITIAL_STATE = {
-  clockHourFormat: undefined,
-  colorScheme: undefined,
-  dangerColor: undefined,
-  /*
-   * humidityDangerThreshold: undefined,
-   * latitude: undefined,
-   * longitude: undefined,
-   * precipDangerThreshold: undefined,
-   * tempHighThreshold: undefined,
-   * tempLowThreshold: undefined,
-   * tempUnit: undefined,
-   * useGeolocation: undefined,
-   * windDangerThreshold: undefined,
-   * windSpeedUnit: undefined,
-   */
-};
 
-const settingsSlice = createSlice({
-  name: NAME,
-  initialState: INITIAL_STATE,
-  reducers: {
-    updateColorScheme(state, { payload: colorScheme }) {
-      return colorScheme;
-    },
-  },
+export const settingsReducer = combineReducers({
+  [SETTINGS_DISPLAY]: settingsDisplayReducer,
+  [SETTINGS_EDIT]: settingsEditReducer,
 });
-
-const { actions, reducer } = settingsSlice;
-
-export { reducer as settingsReducer };
-
-// actions
-export const { updateColorScheme } = actions;
-
-// selectors
-export const selectSettings = (state) => state[NAME] || INITIAL_STATE;
