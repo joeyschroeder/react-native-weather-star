@@ -8,11 +8,19 @@ import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { DigitalLevel } from 'components/digital-level/digital-level';
 import { withTheme } from 'components/with-theme/with-theme';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
+import { useSelector } from 'react-redux';
+import {
+  selectWeatherForecastWindDirection,
+  selectWeatherForecastWindSpeedMph,
+} from 'store/weather/weather-forecast/weather-forecast';
 
 const MAX_MPH = 30;
 
 function CurrentWindSectionBase(props) {
-  const { direction, speed, style, theme } = props;
+  const { style, theme } = props;
+
+  const speed = useSelector(selectWeatherForecastWindSpeedMph);
+  const direction = useSelector(selectWeatherForecastWindDirection);
 
   const dangerMph = MAX_MPH / 2;
   const speedColor = speed > dangerMph ? theme.colors.danger : theme.colors.text;
@@ -40,15 +48,11 @@ function CurrentWindSectionBase(props) {
 }
 
 CurrentWindSectionBase.propTypes = {
-  direction: PropTypes.string,
-  speed: PropTypes.number,
   style: PropTypes.object,
   theme: PropTypes.object,
 };
 
 CurrentWindSectionBase.defaultProps = {
-  direction: undefined,
-  speed: undefined,
   style: undefined,
   theme: THEME_DEFAULT_PROP_TYPE,
 };

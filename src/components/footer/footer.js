@@ -9,6 +9,8 @@ import { DigitalValueWithLabel } from 'components/digital-value-with-label/digit
 import { withTheme } from 'components/with-theme/with-theme';
 import { FontAwesome } from '@expo/vector-icons';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
+import { useSelector } from 'react-redux';
+import { selectWeatherAlertsConcat, selectWeatherAlertsSeverity } from 'store/weather/weather-alerts/weather-alerts';
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
@@ -29,7 +31,10 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
 }
 
 function FooterBase(props) {
-  const { alert, onSettingsPress, severity, style, theme } = props;
+  const { onSettingsPress, style, theme } = props;
+
+  const alert = useSelector(selectWeatherAlertsConcat);
+  const severity = useSelector(selectWeatherAlertsSeverity);
 
   const styles = createStyleSheet(props);
   const containerStyles = [styles.container, style];
@@ -70,17 +75,13 @@ function FooterBase(props) {
 }
 
 FooterBase.propTypes = {
-  alert: PropTypes.string,
   onSettingsPress: PropTypes.func,
-  severity: PropTypes.string,
   style: PropTypes.object,
   theme: PropTypes.object,
 };
 
 FooterBase.defaultProps = {
-  alert: undefined,
   onSettingsPress: undefined,
-  severity: undefined,
   style: undefined,
   theme: THEME_DEFAULT_PROP_TYPE,
 };

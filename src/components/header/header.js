@@ -10,11 +10,22 @@ import { DigitalValueWithLabel } from 'components/digital-value-with-label/digit
 import moment from 'moment';
 import { Label } from 'components/label/label';
 import { withTheme } from 'components/with-theme/with-theme';
-import { HeaderRefreshButtonConnected } from './header-refresh-button/header-refresh-button.connected';
 import { WeatherIcon } from 'components/weather-icon/weather-icon';
 import { BORDER_RADIUS } from 'constants/border-radius';
 import { SPACER } from 'constants/spacer';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
+import { useSelector } from 'react-redux';
+import {
+  selectWeatherMetadataCity,
+  selectWeatherMetadataRadarStation,
+  selectWeatherMetadataState,
+} from 'store/weather/weather-metadata/weather-metadata';
+import {
+  selectWeatherForecastIcon,
+  selectWeatherForecastShortForecast,
+  selectWeatherForecastUpdateTime,
+} from 'store/weather/weather-forecast/weather-forecast';
+import { HeaderRefreshButton } from './header-refresh-button/header-refresh-button';
 
 const CURRENT_CHARS = 12;
 
@@ -48,7 +59,14 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
 }
 
 function HeaderBase(props) {
-  const { city, icon, lastUpdate, radarStation, shortForecast, state, style, theme } = props;
+  const { style, theme } = props;
+
+  const city = useSelector(selectWeatherMetadataCity);
+  const icon = useSelector(selectWeatherForecastIcon);
+  const lastUpdate = useSelector(selectWeatherForecastUpdateTime);
+  const radarStation = useSelector(selectWeatherMetadataRadarStation);
+  const shortForecast = useSelector(selectWeatherForecastShortForecast);
+  const state = useSelector(selectWeatherMetadataState);
 
   const styles = createStyleSheet(props);
   const containerStyles = [styles.container, style];
@@ -63,7 +81,7 @@ function HeaderBase(props) {
   return (
     <View style={containerStyles}>
       <Section>
-        <HeaderRefreshButtonConnected />
+        <HeaderRefreshButton />
       </Section>
       <Section style={styles.secondary}>
         <Label value={`Station: ${radarStation || EMPTY_VALUE_LABEL}`} />
@@ -99,23 +117,11 @@ function HeaderBase(props) {
 }
 
 HeaderBase.propTypes = {
-  city: PropTypes.string,
-  icon: PropTypes.string,
-  lastUpdate: PropTypes.string,
-  radarStation: PropTypes.string,
-  shortForecast: PropTypes.string,
-  state: PropTypes.string,
   style: PropTypes.object,
   theme: PropTypes.object,
 };
 
 HeaderBase.defaultProps = {
-  city: undefined,
-  icon: undefined,
-  lastUpdate: undefined,
-  radarStation: undefined,
-  shortForecast: undefined,
-  state: undefined,
   style: undefined,
   theme: THEME_DEFAULT_PROP_TYPE,
 };

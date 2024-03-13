@@ -1,44 +1,30 @@
 import { Appearance } from 'react-native';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { updateColorScheme } from 'store/color-scheme/color-scheme';
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAppearanceChange: (colorScheme) => dispatch(updateColorScheme(colorScheme)),
-  };
-};
 
 function withAppearanceChangeListenerBase(WrappedComponent) {
   function WithAppearanceChangeListener(props) {
-    const { onAppearanceChange, ...other } = props;
+    const dispatch = useDispatch();
 
     useEffect(() => {
       const initialValue = Appearance.getColorScheme();
-      onAppearanceChange(initialValue);
+      dispatch(updateColorScheme(initialValue));
 
       Appearance.addChangeListener(({ colorScheme }) => {
-        onAppearanceChange(colorScheme);
+        dispatch(updateColorScheme(colorScheme));
       });
     }, []);
 
     // eslint-disable-next-line react/jsx-props-no-spreading
-    return <WrappedComponent {...other} />;
+    return <WrappedComponent {...props} />;
   }
 
   WithAppearanceChangeListener.displayName = `${WrappedComponent.displayName || WrappedComponent.name}WithAppearanceChangeListener`;
-  WithAppearanceChangeListener.propTypes = {
-    onAppearanceChange: PropTypes.func,
-  };
-
-  WithAppearanceChangeListener.defaultProps = {
-    onAppearanceChange: () => {},
-  };
 
   return WithAppearanceChangeListener;
 }
 
 export function withAppearanceChangeListener(WrappedComponent) {
-  return connect(undefined, mapDispatchToProps)(withAppearanceChangeListenerBase(WrappedComponent));
+  return withAppearanceChangeListenerBase(WrappedComponent);
 }

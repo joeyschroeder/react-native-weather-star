@@ -3,19 +3,21 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { FLEX_GAP } from 'constants/flex-gap';
 import { useKeepAwake } from 'expo-keep-awake';
-import { HeaderConnected } from 'components/header/header.connected';
-import { CurrentWeatherSectionConnected } from 'components/current-weather-section/current-weather-section.connected';
-import { CurrentPrecipSectionConnected } from 'components/current-precip-section/current-precip-section.connected';
-import { CurrentWindSectionConnected } from 'components/current-wind-section/current-wind-section.connected';
+import { CurrentWeatherSection } from 'components/current-weather-section/current-weather-section';
 import { withTheme } from 'components/with-theme/with-theme';
 import { withAppearanceChangeListener } from 'components/with-appearance-change-listener/with-appearance-change-listener';
 import { Settings } from 'components/settings/settings';
-import { FooterConnected } from 'components/footer/footer.connected';
 import { withDimensionsOrientationChangeListener } from 'components/with-dimensions-orientation-change-listener/with-dimensions-orientation-change-listener';
 import { compose } from 'utils/compose/compose';
 import { CurrentDateTimeSection } from 'components/current-date-time-section/current-date-time-section';
 import Constants from 'expo-constants';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
+import { useDispatch } from 'react-redux';
+import { requestWeatherByLocation } from 'thunks/request-weather-by-location/request-weather-by-location';
+import { CurrentPrecipSection } from 'components/current-precip-section/current-precip-section';
+import { CurrentWindSection } from 'components/current-wind-section/current-wind-section';
+import { Footer } from 'components/footer/footer';
+import { Header } from 'components/header/header';
 
 const { dataRequestIntervalMinutes } = Constants.expoConfig.extra || {};
 const DATA_REQUEST_INTERVAL = 1000 * 60 * (dataRequestIntervalMinutes || 60);
@@ -55,16 +57,17 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
 }
 
 function AppBase(props) {
-  const { onLayout, requestData } = props;
+  const { onLayout } = props;
   const styles = createStyleSheet(props);
 
   useKeepAwake();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    requestData();
+    dispatch(requestWeatherByLocation());
 
     const dataRequestInterval = setInterval(() => {
-      requestData();
+      dispatch(requestWeatherByLocation());
     }, DATA_REQUEST_INTERVAL);
 
     return () => clearInterval(dataRequestInterval);
@@ -73,32 +76,31 @@ function AppBase(props) {
   return (
     <>
       <View onLayout={onLayout} style={styles.container}>
-        <HeaderConnected />
+        <Header />
         <View style={styles.primary}>
           <View style={styles.secondary}>
             <View style={styles.tertiary}>
-              <CurrentWeatherSectionConnected style={styles.currentWeather} />
-              <CurrentPrecipSectionConnected style={styles.precip} />
+              <CurrentWeatherSection style={styles.currentWeather} />
+              <CurrentPrecipSection style={styles.precip} />
             </View>
             <CurrentDateTimeSection style={styles.dateTime} />
           </View>
-          <CurrentWindSectionConnected />
+          <CurrentWindSection />
         </View>
-        <FooterConnected />
+        <Footer />
       </View>
-      <Settings visible={false} />
+      <Settings isVisible />
     </>
   );
 }
 
 AppBase.propTypes = {
   onLayout: PropTypes.func,
-  requestData: PropTypes.func,
 };
 
 AppBase.defaultProps = {
   onLayout: undefined,
-  requestData: () => {},
 };
 
-export const App = compose(withAppearanceChangeListener, withDimensionsOrientationChangeListener, withTheme)(AppBase);
+// export const App = compose(withAppearanceChangeListener, withDimensionsOrientationChangeListener, withTheme)(AppBase);
+export const App = AppBase;

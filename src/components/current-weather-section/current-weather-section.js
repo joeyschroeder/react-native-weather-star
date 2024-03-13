@@ -7,6 +7,13 @@ import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
 import { convertTempToColor } from 'utils/convert-temp-to-color/convert-temp-to-color';
 import { withTheme } from 'components/with-theme/with-theme';
+import { useSelector } from 'react-redux';
+import {
+  selectWeatherForecastTemperature,
+  selectWeatherForecastTemperatureHigh,
+  selectWeatherForecastTemperatureLow,
+  selectWeatherForecastTemperatureUnit,
+} from 'store/weather/weather-forecast/weather-forecast';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +28,12 @@ const styles = StyleSheet.create({
 });
 
 export const CurrentWeatherSection = withTheme(function Base(props) {
-  const { style, tempCurrent, tempHigh, tempLow, tempUnit, theme } = props;
+  const { style, theme } = props;
+
+  const tempCurrent = useSelector(selectWeatherForecastTemperature);
+  const tempHigh = useSelector(selectWeatherForecastTemperatureHigh);
+  const tempLow = useSelector(selectWeatherForecastTemperatureLow);
+  const tempUnit = useSelector(selectWeatherForecastTemperatureUnit);
 
   const tempUnitFormatted = tempUnit === 'F' ? '°F' : '°C';
 
@@ -73,16 +85,8 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
 
 CurrentWeatherSection.propTypes = {
   style: PropTypes.object,
-  tempCurrent: PropTypes.number,
-  tempHigh: PropTypes.number,
-  tempLow: PropTypes.number,
-  tempUnit: PropTypes.string,
 };
 
 CurrentWeatherSection.defaultProps = {
   style: undefined,
-  tempCurrent: undefined,
-  tempHigh: undefined,
-  tempLow: undefined,
-  tempUnit: undefined,
 };

@@ -1,10 +1,19 @@
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import React from 'react';
 import { selectTheme } from 'selectors/select-theme/select-theme';
 
-const mapStateToProps = (state) => {
-  return {
-    theme: selectTheme(state),
-  };
-};
+function withThemeBase(WrappedComponent) {
+  function WithTheme(props) {
+    const theme = useSelector(selectTheme);
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    return <WrappedComponent {...props} theme={theme} />;
+  }
 
-export const withTheme = (component) => connect(mapStateToProps)(component);
+  WithTheme.displayName = `${WrappedComponent.displayName || WrappedComponent.name}WithTheme`;
+
+  return WithTheme;
+}
+
+export function withTheme(WrappedComponent) {
+  return withThemeBase(WrappedComponent);
+}

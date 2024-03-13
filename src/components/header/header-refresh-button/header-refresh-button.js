@@ -7,9 +7,30 @@ import { AnimationSpin } from 'components/animation-spin/animation-spin';
 import { withTheme } from 'components/with-theme/with-theme';
 import { MaterialIcons } from '@expo/vector-icons';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAnyRequestRejected } from 'selectors/select-any-request-rejected/select-any-request-rejected';
+import { selectAnyRequestPending } from 'selectors/select-any-request-pending/select-any-request-pending';
+import { selectLocationStatus } from 'store/location/location';
+import { selectWeatherAlertsStatus } from 'store/weather/weather-alerts/weather-alerts';
+import { selectWeatherForecastStatus } from 'store/weather/weather-forecast/weather-forecast';
+import { selectWeatherMetadataStatus } from 'store/weather/weather-metadata/weather-metadata';
+import { requestWeatherByLocation } from 'thunks/request-weather-by-location/request-weather-by-location';
+
+const REQUEST_SELECTORS = [
+  selectLocationStatus,
+  selectWeatherAlertsStatus,
+  selectWeatherForecastStatus,
+  selectWeatherMetadataStatus,
+];
 
 function HeaderRefreshButtonBase(props) {
-  const { hasError, isLoading, onPress, style, theme } = props;
+  const { style, theme } = props;
+
+  const dispatch = useDispatch();
+  const onPress = () => dispatch(requestWeatherByLocation());
+
+  const hasError = useSelector((state) => selectAnyRequestRejected(state, REQUEST_SELECTORS));
+  const isLoading = useSelector((state) => selectAnyRequestPending(state, REQUEST_SELECTORS));
   const iconSize = scaledValue(36);
 
   const icon =
@@ -31,17 +52,11 @@ function HeaderRefreshButtonBase(props) {
 }
 
 HeaderRefreshButtonBase.propTypes = {
-  hasError: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  onPress: PropTypes.func,
   style: PropTypes.object,
   theme: PropTypes.object,
 };
 
 HeaderRefreshButtonBase.defaultProps = {
-  hasError: false,
-  isLoading: false,
-  onPress: undefined,
   style: undefined,
   theme: THEME_DEFAULT_PROP_TYPE,
 };

@@ -6,9 +6,17 @@ import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
 import { withTheme } from 'components/with-theme/with-theme';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
+import { useSelector } from 'react-redux';
+import {
+  selectWeatherForecastProbabilityOfPrecipitation,
+  selectWeatherForecastRelativeHumidity,
+} from 'store/weather/weather-forecast/weather-forecast';
 
 function CurrentPrecipSectionBase(props) {
-  const { precipProbability, relativeHumidity, style, theme } = props;
+  const { style, theme } = props;
+
+  const precipProbability = useSelector(selectWeatherForecastProbabilityOfPrecipitation);
+  const relativeHumidity = useSelector(selectWeatherForecastRelativeHumidity);
 
   const precipProbabilityColor = precipProbability > 25 ? theme.colors.danger : theme.colors.text;
 
@@ -39,15 +47,11 @@ function CurrentPrecipSectionBase(props) {
 }
 
 CurrentPrecipSectionBase.propTypes = {
-  precipProbability: PropTypes.number,
-  relativeHumidity: PropTypes.number,
   style: PropTypes.object,
   theme: PropTypes.object,
 };
 
 CurrentPrecipSectionBase.defaultProps = {
-  precipProbability: undefined,
-  relativeHumidity: undefined,
   style: undefined,
   theme: THEME_DEFAULT_PROP_TYPE,
 };
