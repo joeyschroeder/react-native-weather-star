@@ -53,10 +53,12 @@ export const createAsyncReducer = ({
     },
     // reducerPath: statePath,
     // selectors: {
-    //   selectData: (state) => state?.data || initialState.data,
+    //   selectData: state => state?.data || initialState.data,
     //   selectStatus: (state) => state?.status || initialState.status,
     // },
   });
+
+  // const { selectData } = slice.getSelectors();
 
   return {
     slice,

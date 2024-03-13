@@ -12,19 +12,25 @@ export const dimensionsOrientationSlice = createSlice({
   name: NAME,
   initialState: INITIAL_STATE,
   reducers: {
-    updateDimensionsOrientation(state, { payload }) {
+    update(state, { payload }) {
       return payload;
     },
   },
+  selectors: {
+    selectOrientation: (state) => state.orientation,
+    selectWidth: (state) => state.width,
+    selectHeight: (state) => state.height,
+  },
 });
 
-const { actions } = dimensionsOrientationSlice;
+const { actions, selectors } = dimensionsOrientationSlice;
 
 // actions
-export const { updateDimensionsOrientation } = actions;
+export const { update: updateDimensionsOrientation } = actions;
 
 // selectors
-const selectDimensionsOrientation = (state) => state[NAME] || INITIAL_STATE;
-export const selectDimensionsOrientationOrientation = (state) => selectDimensionsOrientation(state).orientation;
-export const selectDimensionsOrientationWidth = (state) => selectDimensionsOrientation(state).width;
-export const selectDimensionsOrientationHeight = (state) => selectDimensionsOrientation(state).height;
+export const {
+  selectHeight: selectDimensionsOrientationHeight,
+  selectOrientation: selectDimensionsOrientationOrientation,
+  selectWidth: selectDimensionsOrientationWidth,
+} = selectors;

@@ -13,17 +13,19 @@ export const colorSchemeSlice = createSlice({
   name: NAME,
   initialState: INITIAL_STATE,
   reducers: {
-    updateColorScheme(state, { payload: colorScheme }) {
+    update(state, { payload: colorScheme }) {
       return colorScheme;
     },
   },
+  selectors: {
+    selectColorScheme: (state) => state,
+  },
 });
 
-const { actions } = colorSchemeSlice;
+const { actions, selectors } = colorSchemeSlice;
 
 // actions
-export const { updateColorScheme } = actions;
+export const { update: updateColorScheme } = actions;
 
 // selectors
-// eslint-disable-next-line import/no-unused-modules
-export const selectColorScheme = (state) => state[NAME] || INITIAL_STATE;
+export const { selectColorScheme } = selectors;
