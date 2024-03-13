@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { updateDimensionsOrientation } from '../../store/dimensions-orientation/dimensions-orientation';
+import { updateDimensionsOrientation } from 'store/dimensions-orientation/dimensions-orientation';
 import { Dimensions } from 'react-native';
-import { getOrientationFromWindow } from '../../utils/get-orientation-from-window/get-orientation-from-window';
+import { getOrientationFromWindow } from 'utils/get-orientation-from-window/get-orientation-from-window';
 
 const mapDispatchToProps = (dispatch) => {
   return {

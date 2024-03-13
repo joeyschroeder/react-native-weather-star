@@ -1,5 +1,5 @@
-import { getWeatherMetadataByLatitudeLongitude } from '../../../services/weather/weather';
-import { createAsyncReducer } from '../../../utils/create-async-reducer/create-async-reducer';
+import { getWeatherMetadataByLatitudeLongitude } from 'services/weather/weather';
+import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 
 export const NAME = 'metadata';
 

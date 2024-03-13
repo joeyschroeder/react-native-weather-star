@@ -1,12 +1,12 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FONTS } from '../../constants/fonts';
-import { Section } from '../section/section';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { FLEX_GAP } from '../../constants/flex-gap';
-import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
-import { withTheme } from '../with-theme/with-theme';
+import { FONTS } from 'constants/fonts';
+import { Section } from 'components/section/section';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { FLEX_GAP } from 'constants/flex-gap';
+import { DigitalValueWithLabel } from 'components/digital-value-with-label/digital-value-with-label';
+import { withTheme } from 'components/with-theme/with-theme';
 import { FontAwesome } from '@expo/vector-icons';
 
 function createStyleSheet({ theme }) {

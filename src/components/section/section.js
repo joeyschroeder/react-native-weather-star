@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
-import { Label } from '../label/label';
-import { SPACER } from '../../constants/spacer';
-import { withTheme } from '../with-theme/with-theme';
+import { Label } from 'components/label/label';
+import { SPACER } from 'constants/spacer';
+import { withTheme } from 'components/with-theme/with-theme';
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({

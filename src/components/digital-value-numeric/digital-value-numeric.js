@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FONTS } from '../../constants/fonts';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
+import { FONTS } from 'constants/fonts';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { useCountUp } from 'use-count-up';
-import { DigitalValue } from '../digital-value/digital-value';
+import { DigitalValue } from 'components/digital-value/digital-value';
 
 const COMMON_PROPS = {
   fontFamily: FONTS.MONO.NUMBER.ITALIC,

@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
-import { SPACER } from '../../constants/spacer';
-import { DigitalValue } from '../digital-value/digital-value';
-import { Label } from '../label/label';
-import { FONTS } from '../../constants/fonts';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { withTheme } from '../with-theme/with-theme';
-import { DigitalValueNumeric } from '../digital-value-numeric/digital-value-numeric';
-import { DigitalValueMarquee } from '../digital-value-marquee/digital-value-marquee';
+import { SPACER } from 'constants/spacer';
+import { DigitalValue } from 'components/digital-value/digital-value';
+import { Label } from 'components/label/label';
+import { FONTS } from 'constants/fonts';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { withTheme } from 'components/with-theme/with-theme';
+import { DigitalValueNumeric } from 'components/digital-value-numeric/digital-value-numeric';
+import { DigitalValueMarquee } from 'components/digital-value-marquee/digital-value-marquee';
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({

@@ -1,5 +1,5 @@
-import { getLocation, getLocationForegroundPermissions } from '../../services/location/location';
-import { createAsyncReducer } from '../../utils/create-async-reducer/create-async-reducer';
+import { getLocation, getLocationForegroundPermissions } from 'services/location/location';
+import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 
 export const NAME = 'location';
 

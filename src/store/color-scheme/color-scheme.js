@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { COLOR_SCHEMES } from '../../constants/color-schemes';
+import { COLOR_SCHEMES } from 'constants/color-schemes';
 
 export const NAME = 'color-scheme';
 const INITIAL_STATE = COLOR_SCHEMES.DARK;

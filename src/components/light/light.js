@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { withTheme } from '../with-theme/with-theme';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { withTheme } from 'components/with-theme/with-theme';
 
 function LightBase(props) {
   const { color: colorProp, isActive, size, style, theme } = props;

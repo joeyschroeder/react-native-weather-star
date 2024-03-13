@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { DEVICE_ORIENTATIONS } from '../../constants/device-orientations';
+import { DEVICE_ORIENTATIONS } from 'constants/device-orientations';
 
 export const NAME = 'dimensions-orientation';
 const INITIAL_STATE = {

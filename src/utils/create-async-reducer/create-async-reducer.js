@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { ASYNC_THUNK_STATUS_STATES } from '../../constants/async-thunk-status-states';
-import { ASYNC_THUNK_TYPES } from '../../constants/async-thunk-types';
+import { ASYNC_THUNK_STATUS_STATES } from 'constants/async-thunk-status-states';
+import { ASYNC_THUNK_TYPES } from 'constants/async-thunk-types';
 import { get } from 'lodash';
 
 export const createAsyncReducer = ({

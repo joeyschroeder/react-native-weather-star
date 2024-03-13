@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
-import { FONTS } from '../../constants/fonts';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { withTheme } from '../with-theme/with-theme';
+import { FONTS } from 'constants/fonts';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { withTheme } from 'components/with-theme/with-theme';
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({

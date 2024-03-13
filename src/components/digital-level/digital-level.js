@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { FLEX_GAP } from '../../constants/flex-gap';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { BORDER_RADIUS } from '../../constants/border-radius';
-import { SPACER } from '../../constants/spacer';
+import { FLEX_GAP } from 'constants/flex-gap';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { BORDER_RADIUS } from 'constants/border-radius';
+import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
-import { withTheme } from '../with-theme/with-theme';
+import { withTheme } from 'components/with-theme/with-theme';
 import { useCountUp } from 'use-count-up';
 
 function createStyleSheet({ theme }) {

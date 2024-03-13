@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { COLORS } from '../../constants/colors';
+import { COLORS } from 'constants/colors';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { FONTS } from '../../constants/fonts';
-import { BORDER_RADIUS } from '../../constants/border-radius';
-import { BORDER_WIDTH } from '../../constants/border-width';
+import { FONTS } from 'constants/fonts';
+import { BORDER_RADIUS } from 'constants/border-radius';
+import { BORDER_WIDTH } from 'constants/border-width';
 import moment from 'moment';
-import { SPACER } from '../../constants/spacer';
+import { SPACER } from 'constants/spacer';
 
 const styles = StyleSheet.create({
   container: {

@@ -1,7 +1,7 @@
-import { SETTINGS_ASYNC_STORAGE_KEY } from '../../../constants/settings-async-storage-key';
-import { SETTINGS_INITIAL_STATE } from '../../../constants/settings-initial-state';
-import { setAsyncStorageItem } from '../../../services/async-storage/async-storage';
-import { createAsyncReducer } from '../../../utils/create-async-reducer/create-async-reducer';
+import { SETTINGS_ASYNC_STORAGE_KEY } from 'constants/settings-async-storage-key';
+import { SETTINGS_INITIAL_STATE } from 'constants/settings-initial-state';
+import { setAsyncStorageItem } from 'services/async-storage/async-storage';
+import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 
 export const NAME = 'edit';
 

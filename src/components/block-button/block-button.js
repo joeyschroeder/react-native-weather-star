@@ -2,11 +2,11 @@ import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { BORDER_RADIUS } from '../../constants/border-radius';
-import { SPACER } from '../../constants/spacer';
-import { FONTS } from '../../constants/fonts';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { withTheme } from '../with-theme/with-theme';
+import { BORDER_RADIUS } from 'constants/border-radius';
+import { SPACER } from 'constants/spacer';
+import { FONTS } from 'constants/fonts';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { withTheme } from 'components/with-theme/with-theme';
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Section } from '../section/section';
-import { DateTime } from '../date-time/date-time';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
+import { Section } from 'components/section/section';
+import { DateTime } from 'components/date-time/date-time';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
 
 export function DateTimeSection(props) {
   const { color, isBlinking, label, style, value } = props;

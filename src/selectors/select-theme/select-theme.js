@@ -1,16 +1,16 @@
-import { COLORS } from '../../constants/colors';
+import { COLORS } from 'constants/colors';
 import Color from 'color';
 import {
   selectDimensionsOrientationHeight,
   selectDimensionsOrientationOrientation,
   selectDimensionsOrientationWidth,
-} from '../../store/dimensions-orientation/dimensions-orientation';
-import { selectWeatherForecastIsDaytime } from '../../store/weather/weather-forecast/weather-forecast';
+} from 'store/dimensions-orientation/dimensions-orientation';
+import { selectWeatherForecastIsDaytime } from 'store/weather/weather-forecast/weather-forecast';
 import {
   selectSettingsDisplayColor,
   selectSettingsDisplayColorScheme,
-} from '../../store/settings/settings-display/settings-display';
-import { COLOR_SCHEMES } from '../../constants/color-schemes';
+} from 'store/settings/settings-display/settings-display';
+import { COLOR_SCHEMES } from 'constants/color-schemes';
 
 const COLOR_VALUES = Object.keys(COLORS).reduce((acc, key) => {
   const lowercaseKey = key.toLowerCase();

@@ -1,9 +1,6 @@
 import { connect } from 'react-redux';
 import { Footer } from './footer';
-import {
-  selectWeatherAlertsConcat,
-  selectWeatherAlertsSeverity,
-} from '../../store/weather/weather-alerts/weather-alerts';
+import { selectWeatherAlertsConcat, selectWeatherAlertsSeverity } from 'store/weather/weather-alerts/weather-alerts';
 
 const mapStateToProps = (state) => {
   return {

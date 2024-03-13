@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { App } from './app';
-import { requestWeatherByLocation } from '../../thunks/request-weather-by-location/request-weather-by-location';
+import { requestWeatherByLocation } from 'thunks/request-weather-by-location/request-weather-by-location';
 
 const mapStateToProps = () => {
   return {};

@@ -1,28 +1,28 @@
-import DSeg14ClassicBold from './dseg-14-classic/dseg-14-classic-bold.ttf';
-import DSeg14ClassicBoldItalic from './dseg-14-classic/dseg-14-classic-bold-italic.ttf';
-import DSeg14ClassicItalic from './dseg-14-classic/dseg-14-classic-italic.ttf';
-import DSeg14ClassicLight from './dseg-14-classic/dseg-14-classic-light.ttf';
-import DSeg14ClassicLightItalic from './dseg-14-classic/dseg-14-classic-light-italic.ttf';
-import DSeg14ClassicRegular from './dseg-14-classic/dseg-14-classic-regular.ttf';
+import DSeg14ClassicBold from 'fonts/dseg-14-classic/dseg-14-classic-bold.ttf';
+import DSeg14ClassicBoldItalic from 'fonts/dseg-14-classic/dseg-14-classic-bold-italic.ttf';
+import DSeg14ClassicItalic from 'fonts/dseg-14-classic/dseg-14-classic-italic.ttf';
+import DSeg14ClassicLight from 'fonts/dseg-14-classic/dseg-14-classic-light.ttf';
+import DSeg14ClassicLightItalic from 'fonts/dseg-14-classic/dseg-14-classic-light-italic.ttf';
+import DSeg14ClassicRegular from 'fonts/dseg-14-classic/dseg-14-classic-regular.ttf';
 
-import DSeg7ClassicBold from './dseg-7-classic/dseg-7-classic-bold.ttf';
-import DSeg7ClassicBoldItalic from './dseg-7-classic/dseg-7-classic-bold-italic.ttf';
-import DSeg7ClassicItalic from './dseg-7-classic/dseg-7-classic-italic.ttf';
-import DSeg7ClassicLight from './dseg-7-classic/dseg-7-classic-light.ttf';
-import DSeg7ClassicLightItalic from './dseg-7-classic/dseg-7-classic-light-italic.ttf';
-import DSeg7ClassicRegular from './dseg-7-classic/dseg-7-classic-regular.ttf';
+import DSeg7ClassicBold from 'fonts/dseg-7-classic/dseg-7-classic-bold.ttf';
+import DSeg7ClassicBoldItalic from 'fonts/dseg-7-classic/dseg-7-classic-bold-italic.ttf';
+import DSeg7ClassicItalic from 'fonts/dseg-7-classic/dseg-7-classic-italic.ttf';
+import DSeg7ClassicLight from 'fonts/dseg-7-classic/dseg-7-classic-light.ttf';
+import DSeg7ClassicLightItalic from 'fonts/dseg-7-classic/dseg-7-classic-light-italic.ttf';
+import DSeg7ClassicRegular from 'fonts/dseg-7-classic/dseg-7-classic-regular.ttf';
 
-import HelveticaNeueBold from './helvetica-neue/helvetica-neue-bold.otf';
-import HelveticaNeueBoldItalic from './helvetica-neue/helvetica-neue-bold-italic.otf';
-import HelveticaNeueLight from './helvetica-neue/helvetica-neue-light.otf';
-import HelveticaNeueLightItalic from './helvetica-neue/helvetica-neue-light-italic.otf';
-import HelveticaNeueRegular from './helvetica-neue/helvetica-neue-regular.otf';
-import HelveticaNeueRegularItalic from './helvetica-neue/helvetica-neue-regular-italic.otf';
-import HelveticaNeueUltraLight from './helvetica-neue/helvetica-neue-ultra-light.otf';
-import HelveticaNeueUltraLightItalic from './helvetica-neue/helvetica-neue-ultra-light-italic.otf';
+import HelveticaNeueBold from 'fonts/helvetica-neue/helvetica-neue-bold.otf';
+import HelveticaNeueBoldItalic from 'fonts/helvetica-neue/helvetica-neue-bold-italic.otf';
+import HelveticaNeueLight from 'fonts/helvetica-neue/helvetica-neue-light.otf';
+import HelveticaNeueLightItalic from 'fonts/helvetica-neue/helvetica-neue-light-italic.otf';
+import HelveticaNeueRegular from 'fonts/helvetica-neue/helvetica-neue-regular.otf';
+import HelveticaNeueRegularItalic from 'fonts/helvetica-neue/helvetica-neue-regular-italic.otf';
+import HelveticaNeueUltraLight from 'fonts/helvetica-neue/helvetica-neue-ultra-light.otf';
+import HelveticaNeueUltraLightItalic from 'fonts/helvetica-neue/helvetica-neue-ultra-light-italic.otf';
 
-import SyncopateBold from './syncopate/syncopate-bold.ttf';
-import SyncopateRegular from './syncopate/syncopate-regular.ttf';
+import SyncopateBold from 'fonts/syncopate/syncopate-bold.ttf';
+import SyncopateRegular from 'fonts/syncopate/syncopate-regular.ttf';
 
 export const FONT_ASSETS = {
   'dseg-14-classic-bold': DSeg14ClassicBold,

@@ -1,5 +1,5 @@
-import { getWeatherAlertsByLatitudeLongitude } from '../../../services/weather/weather';
-import { createAsyncReducer } from '../../../utils/create-async-reducer/create-async-reducer';
+import { getWeatherAlertsByLatitudeLongitude } from 'services/weather/weather';
+import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 
 export const NAME = 'alerts';
 

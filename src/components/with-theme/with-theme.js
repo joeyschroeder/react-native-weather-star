@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { selectTheme } from '../../selectors/select-theme/select-theme';
+import { selectTheme } from 'selectors/select-theme/select-theme';
 
 const mapStateToProps = (state) => {
   return {

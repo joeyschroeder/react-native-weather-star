@@ -1,10 +1,10 @@
 import { Pressable, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { WeatherIcon } from '../../weather-icon/weather-icon';
-import { scaledValue } from '../../../utils/scaled-value/scaled-value';
-import { AnimationSpin } from '../../animation-spin/animation-spin';
-import { withTheme } from '../../with-theme/with-theme';
+import { WeatherIcon } from 'components/weather-icon/weather-icon';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { AnimationSpin } from 'components/animation-spin/animation-spin';
+import { withTheme } from 'components/with-theme/with-theme';
 import { MaterialIcons } from '@expo/vector-icons';
 
 function HeaderRefreshButtonBase(props) {

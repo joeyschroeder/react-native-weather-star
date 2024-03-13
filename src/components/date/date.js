@@ -1,9 +1,9 @@
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
+import { DigitalValueWithLabel } from 'components/digital-value-with-label/digital-value-with-label';
 import moment from 'moment';
-import { SPACER } from '../../constants/spacer';
+import { SPACER } from 'constants/spacer';
 
 const styles = StyleSheet.create({
   container: {

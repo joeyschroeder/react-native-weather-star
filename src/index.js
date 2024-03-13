@@ -3,12 +3,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import { STORE } from './store';
-import { FONT_ASSETS } from './fonts';
+import { STORE } from 'store';
+import { FONT_ASSETS } from 'fonts';
 import { StatusBar } from 'expo-status-bar';
-import { AppConnected } from './components/app/app.connected';
+import { AppConnected } from 'components/app/app.connected';
 import * as NavigationBar from 'expo-navigation-bar';
-import { isAndroid } from './utils/is-android/is-android';
+import { isAndroid } from 'utils/is-android/is-android';
 
 // Makes the native splash screen remain visible until hideAsync is called.
 SplashScreen.preventAutoHideAsync();

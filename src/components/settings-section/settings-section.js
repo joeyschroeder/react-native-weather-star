@@ -1,12 +1,12 @@
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { COLORS } from '../../constants/colors';
-import { BORDER_RADIUS } from '../../constants/border-radius';
-import { SPACER } from '../../constants/spacer';
-import { Label } from '../label/label';
-// import { BORDER_WIDTH } from '../../constants/border-width';
-import { withTheme } from '../with-theme/with-theme';
+import { COLORS } from 'constants/colors';
+import { BORDER_RADIUS } from 'constants/border-radius';
+import { SPACER } from 'constants/spacer';
+import { Label } from 'components/label/label';
+// import { BORDER_WIDTH } from 'constants/border-width';
+import { withTheme } from 'components/with-theme/with-theme';
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({

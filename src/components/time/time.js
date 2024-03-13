@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
+import { DigitalValueWithLabel } from 'components/digital-value-with-label/digital-value-with-label';
 import moment from 'moment';
-import { SPACER } from '../../constants/spacer';
-import { Light } from '../light/light';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
+import { SPACER } from 'constants/spacer';
+import { Light } from 'components/light/light';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { TimePeriod } from './time-period/time-period';
 
 const BLINK_INTERVAL = 650;

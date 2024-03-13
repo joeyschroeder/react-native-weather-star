@@ -2,12 +2,12 @@ import { Animated, StyleSheet, View } from 'react-native';
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
-import { BORDER_RADIUS } from '../../constants/border-radius';
+import { BORDER_RADIUS } from 'constants/border-radius';
 import { RadioSelectorOption } from './radio-selector-option/radio-selector-option';
-import { ANIMATION_EASING } from '../../constants/animation-easing';
-import { ANIMATION_DURATION } from '../../constants/animation-duration';
-import { COLORS } from '../../constants/colors';
-import { BORDER_WIDTH } from '../../constants/border-width';
+import { ANIMATION_EASING } from 'constants/animation-easing';
+import { ANIMATION_DURATION } from 'constants/animation-duration';
+import { COLORS } from 'constants/colors';
+import { BORDER_WIDTH } from 'constants/border-width';
 
 const styles = StyleSheet.create({
   activeIndicatorContainer: {

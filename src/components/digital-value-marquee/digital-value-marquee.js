@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { DigitalValue } from '../digital-value/digital-value';
+import { DigitalValue } from 'components/digital-value/digital-value';
 
 const getUpdatedValue = (value) => {
   if (!value) return '';

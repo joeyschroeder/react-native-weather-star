@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View } from 'react-native';
-import { SPACER } from '../../constants/spacer';
-import { Date } from '../date/date';
-import { Time } from '../time/time';
+import { SPACER } from 'constants/spacer';
+import { Date } from 'components/date/date';
+import { Time } from 'components/time/time';
 
 const styles = StyleSheet.create({
   container: {

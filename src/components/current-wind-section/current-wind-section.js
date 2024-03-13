@@ -1,12 +1,12 @@
 import React from 'react';
-import { Section } from '../section/section';
+import { Section } from 'components/section/section';
 import { View } from 'react-native';
-import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
-import { SPACER } from '../../constants/spacer';
+import { DigitalValueWithLabel } from 'components/digital-value-with-label/digital-value-with-label';
+import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { DigitalLevel } from '../digital-level/digital-level';
-import { withTheme } from '../with-theme/with-theme';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { DigitalLevel } from 'components/digital-level/digital-level';
+import { withTheme } from 'components/with-theme/with-theme';
 
 const MAX_MPH = 30;
 

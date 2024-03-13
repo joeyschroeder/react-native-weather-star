@@ -1,9 +1,9 @@
 import moment from 'moment';
-import { getWeatherByForecastUrl } from '../../../services/weather/weather';
-import { createAsyncReducer } from '../../../utils/create-async-reducer/create-async-reducer';
-import { formatHourlyForecastObject } from '../../../utils/format-hourly-forecast-object/format-hourly-forecast-object';
+import { getWeatherByForecastUrl } from 'services/weather/weather';
+import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
+import { formatHourlyForecastObject } from 'utils/format-hourly-forecast-object/format-hourly-forecast-object';
 import { max, min } from 'lodash';
-import { EXPO_MATERIAL_COMMUNITY_WEATHER_ICON_KEYS } from '../../../constants/expo-material-community-weather-icon-keys';
+import { EXPO_MATERIAL_COMMUNITY_WEATHER_ICON_KEYS } from 'constants/expo-material-community-weather-icon-keys';
 import { closestMatch } from 'closest-match';
 
 export const NAME = 'forecast';

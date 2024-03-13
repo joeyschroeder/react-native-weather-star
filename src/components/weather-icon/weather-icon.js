@@ -2,8 +2,8 @@ import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { withTheme } from '../with-theme/with-theme';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { withTheme } from 'components/with-theme/with-theme';
 
 function WeatherIconBase(props) {
   const { name, size, style, theme } = props;

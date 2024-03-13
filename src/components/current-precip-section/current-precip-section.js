@@ -1,10 +1,10 @@
 import React from 'react';
-import { Section } from '../section/section';
+import { Section } from 'components/section/section';
 import { View } from 'react-native';
-import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value-with-label';
-import { SPACER } from '../../constants/spacer';
+import { DigitalValueWithLabel } from 'components/digital-value-with-label/digital-value-with-label';
+import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
-import { withTheme } from '../with-theme/with-theme';
+import { withTheme } from 'components/with-theme/with-theme';
 
 function CurrentPrecipSectionBase(props) {
   const { precipProbability, relativeHumidity, style, theme } = props;

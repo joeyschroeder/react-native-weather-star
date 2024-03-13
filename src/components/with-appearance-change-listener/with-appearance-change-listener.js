@@ -2,7 +2,7 @@ import { Appearance } from 'react-native';
 import { connect } from 'react-redux';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { updateColorScheme } from '../../store/color-scheme/color-scheme';
+import { updateColorScheme } from 'store/color-scheme/color-scheme';
 
 const mapDispatchToProps = (dispatch) => {
   return {

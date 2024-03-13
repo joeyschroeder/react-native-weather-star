@@ -1,4 +1,4 @@
-import { DIMENSIONS } from '../../constants/dimensions';
+import { DIMENSIONS } from 'constants/dimensions';
 
 export const scaledValue = (value) => {
   if (typeof value !== 'number') return 0;

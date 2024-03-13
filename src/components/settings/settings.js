@@ -1,14 +1,14 @@
 import { Modal, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { BORDER_RADIUS } from '../../constants/border-radius';
-import { SPACER } from '../../constants/spacer';
-import { BlockButton } from '../block-button/block-button';
-import { RadioSelector } from '../radio-selector/radio-selector';
-import { DIMENSIONS } from '../../constants/dimensions';
-import { SettingsSection } from '../settings-section/settings-section';
+import { BORDER_RADIUS } from 'constants/border-radius';
+import { SPACER } from 'constants/spacer';
+import { BlockButton } from 'components/block-button/block-button';
+import { RadioSelector } from 'components/radio-selector/radio-selector';
+import { DIMENSIONS } from 'constants/dimensions';
+import { SettingsSection } from 'components/settings-section/settings-section';
 import Color from 'color';
-import { withTheme } from '../with-theme/with-theme';
+import { withTheme } from 'components/with-theme/with-theme';
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({

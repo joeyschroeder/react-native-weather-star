@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, Text, View } from 'react-native';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { SPACER } from '../../constants/spacer';
-import { BORDER_RADIUS } from '../../constants/border-radius';
-import { EMPTY_VALUE_LABEL } from '../../constants/empty-value-label';
-import { withTheme } from '../with-theme/with-theme';
-import { FONTS } from '../../constants/fonts';
+import { scaledValue } from 'utils/scaled-value/scaled-value';
+import { SPACER } from 'constants/spacer';
+import { BORDER_RADIUS } from 'constants/border-radius';
+import { EMPTY_VALUE_LABEL } from 'constants/empty-value-label';
+import { withTheme } from 'components/with-theme/with-theme';
+import { FONTS } from 'constants/fonts';
 
 const PADDING_CHAR = '_';
 const ZERO_SPACE_CHARS = ['.', ':'];

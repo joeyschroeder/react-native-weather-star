@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import { DateTimeSection } from '../date-time-section/date-time-section';
+import { DateTimeSection } from 'components/date-time-section/date-time-section';
 import moment from 'moment';
 
 const TIMER_INTERVAL = 1000 * 60;
