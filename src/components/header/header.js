@@ -15,7 +15,7 @@ import { WeatherIcon } from 'components/weather-icon/weather-icon';
 import { BORDER_RADIUS } from 'constants/border-radius';
 import { SPACER } from 'constants/spacer';
 
-const CURRENT_CHARS = 11;
+const CURRENT_CHARS = 12;
 
 function createStyleSheet({ theme }) {
   return StyleSheet.create({

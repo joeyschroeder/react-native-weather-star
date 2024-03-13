@@ -12,11 +12,14 @@ const getUpdatedValue = (value) => {
 };
 
 export function DigitalValueMarquee(props) {
-  const { value, ...other } = props;
+  const { maxChars, value, ...other } = props;
 
   // eslint-disable-next-line react/jsx-props-no-spreading
   if (!value) return <DigitalValue {...other} />;
-  const [marqueeValue, setMarqueeValue] = useState(`${value} || `);
+  const padEnd = maxChars || 20;
+  const initialValue = value.padEnd(padEnd, ' ');
+
+  const [marqueeValue, setMarqueeValue] = useState(initialValue);
 
   useEffect(() => {
     const timerInterval = setInterval(() => setMarqueeValue(getUpdatedValue(marqueeValue)), 500);
@@ -24,13 +27,15 @@ export function DigitalValueMarquee(props) {
   });
 
   // eslint-disable-next-line react/jsx-props-no-spreading
-  return <DigitalValue value={marqueeValue} {...other} />;
+  return <DigitalValue maxChars={maxChars} value={marqueeValue} {...other} />;
 }
 
 DigitalValueMarquee.propTypes = {
+  maxChars: PropTypes.number,
   value: PropTypes.string,
 };
 
 DigitalValueMarquee.defaultProps = {
+  maxChars: undefined,
   value: undefined,
 };
