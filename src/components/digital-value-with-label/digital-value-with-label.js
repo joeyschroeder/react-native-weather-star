@@ -10,7 +10,7 @@ import { withTheme } from 'components/with-theme/with-theme';
 import { DigitalValueNumeric } from 'components/digital-value-numeric/digital-value-numeric';
 import { DigitalValueMarquee } from 'components/digital-value-marquee/digital-value-marquee';
 
-function createStyleSheet({ theme }) {
+function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
     append: {
       color: theme.colors.text,

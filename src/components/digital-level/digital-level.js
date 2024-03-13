@@ -7,8 +7,9 @@ import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
 import { withTheme } from 'components/with-theme/with-theme';
 import { useCountUp } from 'use-count-up';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
-function createStyleSheet({ theme }) {
+function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
     container: {
       gap: FLEX_GAP,
@@ -71,7 +72,7 @@ DigitalLevelBase.propTypes = {
 DigitalLevelBase.defaultProps = {
   maxLevels: 20,
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
   value: 0,
 };
 

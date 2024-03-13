@@ -8,8 +8,9 @@ import { FLEX_GAP } from 'constants/flex-gap';
 import { DigitalValueWithLabel } from 'components/digital-value-with-label/digital-value-with-label';
 import { withTheme } from 'components/with-theme/with-theme';
 import { FontAwesome } from '@expo/vector-icons';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
-function createStyleSheet({ theme }) {
+function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
     container: {
       flexDirection: 'row',
@@ -81,7 +82,7 @@ FooterBase.defaultProps = {
   onSettingsPress: undefined,
   severity: undefined,
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const Footer = withTheme(FooterBase);

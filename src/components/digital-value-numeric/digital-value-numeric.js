@@ -41,7 +41,6 @@ DigitalValueNumeric.propTypes = {
   minChars: PropTypes.number,
   size: PropTypes.number,
   style: PropTypes.object,
-  theme: PropTypes.object,
   value: PropTypes.number,
 };
 
@@ -52,6 +51,5 @@ DigitalValueNumeric.defaultProps = {
   minChars: 2,
   size: scaledValue(110),
   style: undefined,
-  theme: undefined,
   value: undefined,
 };

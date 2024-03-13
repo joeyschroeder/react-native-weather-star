@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { withTheme } from 'components/with-theme/with-theme';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 function LightBase(props) {
   const { color: colorProp, isActive, size, style, theme } = props;
@@ -34,7 +35,7 @@ LightBase.defaultProps = {
   isActive: true,
   size: scaledValue(14),
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const Light = withTheme(LightBase);

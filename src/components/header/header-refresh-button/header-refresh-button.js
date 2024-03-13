@@ -6,6 +6,7 @@ import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { AnimationSpin } from 'components/animation-spin/animation-spin';
 import { withTheme } from 'components/with-theme/with-theme';
 import { MaterialIcons } from '@expo/vector-icons';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 function HeaderRefreshButtonBase(props) {
   const { hasError, isLoading, onPress, style, theme } = props;
@@ -42,7 +43,7 @@ HeaderRefreshButtonBase.defaultProps = {
   isLoading: false,
   onPress: undefined,
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const HeaderRefreshButton = withTheme(HeaderRefreshButtonBase);

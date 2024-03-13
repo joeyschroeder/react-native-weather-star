@@ -5,6 +5,7 @@ import { DigitalValueWithLabel } from 'components/digital-value-with-label/digit
 import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
 import { withTheme } from 'components/with-theme/with-theme';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 function CurrentPrecipSectionBase(props) {
   const { precipProbability, relativeHumidity, style, theme } = props;
@@ -48,7 +49,7 @@ CurrentPrecipSectionBase.defaultProps = {
   precipProbability: undefined,
   relativeHumidity: undefined,
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const CurrentPrecipSection = withTheme(CurrentPrecipSectionBase);

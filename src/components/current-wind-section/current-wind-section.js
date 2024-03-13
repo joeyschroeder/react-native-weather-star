@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { DigitalLevel } from 'components/digital-level/digital-level';
 import { withTheme } from 'components/with-theme/with-theme';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 const MAX_MPH = 30;
 
@@ -49,7 +50,7 @@ CurrentWindSectionBase.defaultProps = {
   direction: undefined,
   speed: undefined,
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const CurrentWindSection = withTheme(CurrentWindSectionBase);

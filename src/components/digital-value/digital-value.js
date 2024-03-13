@@ -7,13 +7,14 @@ import { BORDER_RADIUS } from 'constants/border-radius';
 import { EMPTY_VALUE_LABEL } from 'constants/empty-value-label';
 import { withTheme } from 'components/with-theme/with-theme';
 import { FONTS } from 'constants/fonts';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 const PADDING_CHAR = '_';
 const ZERO_SPACE_CHARS = ['.', ':'];
 
 const SPACE_CHAR = PADDING_CHAR;
 
-function createStyleSheet({ theme }) {
+function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
     container: {
       backgroundColor: theme.colors.valueBackground,
@@ -95,7 +96,7 @@ DigitalValueBase.defaultProps = {
   shadowChar: '~',
   size: scaledValue(110),
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
   value: EMPTY_VALUE_LABEL,
 };
 

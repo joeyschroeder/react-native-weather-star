@@ -7,8 +7,9 @@ import { SPACER } from 'constants/spacer';
 import { FONTS } from 'constants/fonts';
 import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { withTheme } from 'components/with-theme/with-theme';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
-function createStyleSheet({ theme }) {
+function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
     button: {
       alignItems: 'center',
@@ -61,7 +62,7 @@ BlockButtonBase.defaultProps = {
   label: 'Submit',
   onPress: undefined,
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const BlockButton = withTheme(BlockButtonBase);

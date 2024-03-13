@@ -9,8 +9,9 @@ import { DIMENSIONS } from 'constants/dimensions';
 import { SettingsSection } from 'components/settings-section/settings-section';
 import Color from 'color';
 import { withTheme } from 'components/with-theme/with-theme';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
-function createStyleSheet({ theme }) {
+function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
     action: {
       flex: 1,
@@ -70,7 +71,7 @@ SettingsBase.propTypes = {
 SettingsBase.defaultProps = {
   isVisible: false,
   onDismiss: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const Settings = withTheme(SettingsBase);

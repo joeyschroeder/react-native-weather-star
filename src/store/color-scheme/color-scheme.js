@@ -7,7 +7,7 @@ const INITIAL_STATE = COLOR_SCHEMES.DARK;
 /*
  * This state is not being used. The weather API provides an "isDaytime" property
  * that is used to determine the color scheme. It seems the Android device
- * Appearce API is not reliably firing change events.
+ * Appearance API is not reliably firing change events.
  */
 const colorSchemeSlice = createSlice({
   name: NAME,

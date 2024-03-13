@@ -8,7 +8,7 @@ import { Label } from 'components/label/label';
 // import { BORDER_WIDTH } from 'constants/border-width';
 import { withTheme } from 'components/with-theme/with-theme';
 
-function createStyleSheet({ theme }) {
+function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
     container: {
       alignItems: 'flex-start',

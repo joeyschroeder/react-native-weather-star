@@ -14,10 +14,11 @@ import { HeaderRefreshButtonConnected } from './header-refresh-button/header-ref
 import { WeatherIcon } from 'components/weather-icon/weather-icon';
 import { BORDER_RADIUS } from 'constants/border-radius';
 import { SPACER } from 'constants/spacer';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 const CURRENT_CHARS = 12;
 
-function createStyleSheet({ theme }) {
+function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
     container: {
       flexDirection: 'row',
@@ -116,7 +117,7 @@ HeaderBase.defaultProps = {
   shortForecast: undefined,
   state: undefined,
   style: undefined,
-  theme: undefined,
+  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const Header = withTheme(HeaderBase);
