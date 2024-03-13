@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 import { BORDER_RADIUS } from '../../constants/border-radius';
-import { RadioSelectorOption } from '../radio-selector-option/radio-selector-option';
+import { RadioSelectorOption } from './radio-selector-option/radio-selector-option';
 import { ANIMATION_EASING } from '../../constants/animation-easing';
 import { ANIMATION_DURATION } from '../../constants/animation-duration';
 import { COLORS } from '../../constants/colors';

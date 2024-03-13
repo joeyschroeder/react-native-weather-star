@@ -2,11 +2,11 @@ import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { COLORS } from '../../constants/colors';
-import { SPACER } from '../../constants/spacer';
-import { FONTS } from '../../constants/fonts';
-import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { withTheme } from '../with-theme/with-theme';
+import { COLORS } from '../../../constants/colors';
+import { SPACER } from '../../../constants/spacer';
+import { FONTS } from '../../../constants/fonts';
+import { scaledValue } from '../../../utils/scaled-value/scaled-value';
+import { withTheme } from '../../with-theme/with-theme';
 
 const styles = StyleSheet.create({
   button: {

@@ -10,7 +10,7 @@ import { DigitalValueWithLabel } from '../digital-value-with-label/digital-value
 import moment from 'moment';
 import { Label } from '../label/label';
 import { withTheme } from '../with-theme/with-theme';
-import { HeaderRefreshButtonConnected } from '../header-refresh-button/header-refresh-button.connected';
+import { HeaderRefreshButtonConnected } from './header-refresh-button/header-refresh-button.connected';
 import { WeatherIcon } from '../weather-icon/weather-icon';
 import { BORDER_RADIUS } from '../../constants/border-radius';
 import { SPACER } from '../../constants/spacer';

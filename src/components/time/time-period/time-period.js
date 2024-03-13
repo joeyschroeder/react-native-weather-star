@@ -1,9 +1,9 @@
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SPACER } from '../../constants/spacer';
-import { Light } from '../light/light';
-import { Label } from '../label/label';
+import { SPACER } from '../../../constants/spacer';
+import { Light } from '../../light/light';
+import { Label } from '../../label/label';
 
 const styles = StyleSheet.create({
   container: {

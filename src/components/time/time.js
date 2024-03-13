@@ -6,7 +6,7 @@ import moment from 'moment';
 import { SPACER } from '../../constants/spacer';
 import { Light } from '../light/light';
 import { scaledValue } from '../../utils/scaled-value/scaled-value';
-import { TimePeriod } from '../time-period/time-period';
+import { TimePeriod } from './time-period/time-period';
 
 const BLINK_INTERVAL = 650;
 
