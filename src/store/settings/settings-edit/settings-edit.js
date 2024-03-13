@@ -1,21 +1,30 @@
-import { SETTINGS_ASYNC_STORAGE_KEY } from 'constants/settings-async-storage-key';
-import { SETTINGS_INITIAL_STATE } from 'constants/settings-initial-state';
-import { setAsyncStorageItem } from 'services/async-storage/async-storage';
-import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
+import { createSlice } from '@reduxjs/toolkit';
+import { SETTINGS_INITIAL_STATE } from '../../../constants/settings-initial-state';
 
-export const NAME = 'edit';
+const NAME = 'edit';
+const INITIAL_STATE = SETTINGS_INITIAL_STATE;
 
-// eslint-disable-next-line import/no-unused-modules
-export const {
-  reducer: settingsEditReducer,
-  requestThunk: requestSettingsEdit,
-  selectData: selectSettingsEdit,
-  selectStatus: selectSettingsEditStatus,
-} = createAsyncReducer({
+export const settingsEditSlice = createSlice({
   name: NAME,
-  parentName: 'settings',
-  initialState: SETTINGS_INITIAL_STATE,
-  requestFunc: (settings) => {
-    return setAsyncStorageItem(SETTINGS_ASYNC_STORAGE_KEY, settings);
+  initialState: INITIAL_STATE,
+  reducers: {
+    updateColorScheme(state, { payload: colorScheme }) {
+      state.colorScheme = colorScheme;
+    },
+    updateColor(state, { payload: color }) {
+      state.color = color;
+    },
+  },
+  selectors: {
+    selectColorScheme: (state) => state.colorScheme,
+    selectColor: (state) => state.color,
   },
 });
+
+const { actions, selectors } = settingsEditSlice;
+
+// actions
+export const { updateColor, updateColorScheme } = actions;
+
+// selectors
+export const { selectColor: selectSettingsEditColor, selectColorScheme: selectSettingsEditColorScheme } = selectors;

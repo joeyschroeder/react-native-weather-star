@@ -1,12 +1,8 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import { NAME as WEATHER_ALERTS, weatherAlertsReducer } from './weather-alerts/weather-alerts';
-import { NAME as WEATHER_FORECAST, weatherForecastReducer } from './weather-forecast/weather-forecast';
-import { NAME as WEATHER_METADATA, weatherMetadataReducer } from './weather-metadata/weather-metadata';
+import { combineSlices } from '@reduxjs/toolkit';
+import { weatherAlertsSlice } from 'store/weather/weather-alerts/weather-alerts';
+import { weatherForecastSlice } from 'store/weather/weather-forecast/weather-forecast';
+import { weatherMetadataSlice } from 'store/weather/weather-metadata/weather-metadata';
 
 export const NAME = 'weather';
 
-export const weatherReducer = combineReducers({
-  [WEATHER_ALERTS]: weatherAlertsReducer,
-  [WEATHER_FORECAST]: weatherForecastReducer,
-  [WEATHER_METADATA]: weatherMetadataReducer,
-});
+export const weatherSlice = combineSlices(weatherAlertsSlice, weatherForecastSlice, weatherMetadataSlice);

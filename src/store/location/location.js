@@ -5,10 +5,10 @@ export const NAME = 'location';
 
 // eslint-disable-next-line import/no-unused-modules
 export const {
-  reducer: locationReducer,
   requestThunk: requestLocation,
   selectData: selectLocation,
   selectStatus: selectLocationStatus,
+  slice: locationSlice,
 } = createAsyncReducer({
   name: NAME,
   requestOnce: true,

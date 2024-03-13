@@ -9,7 +9,7 @@ const INITIAL_STATE = COLOR_SCHEMES.DARK;
  * that is used to determine the color scheme. It seems the Android device
  * Appearance API is not reliably firing change events.
  */
-const colorSchemeSlice = createSlice({
+export const colorSchemeSlice = createSlice({
   name: NAME,
   initialState: INITIAL_STATE,
   reducers: {
@@ -19,9 +19,7 @@ const colorSchemeSlice = createSlice({
   },
 });
 
-const { actions, reducer } = colorSchemeSlice;
-
-export { reducer as colorSchemeReducer };
+const { actions } = colorSchemeSlice;
 
 // actions
 export const { updateColorScheme } = actions;

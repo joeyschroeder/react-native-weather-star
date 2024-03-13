@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   width: null,
 };
 
-const dimensionsOrientationSlice = createSlice({
+export const dimensionsOrientationSlice = createSlice({
   name: NAME,
   initialState: INITIAL_STATE,
   reducers: {
@@ -18,9 +18,7 @@ const dimensionsOrientationSlice = createSlice({
   },
 });
 
-const { actions, reducer } = dimensionsOrientationSlice;
-
-export { reducer as dimensionsOrientationReducer };
+const { actions } = dimensionsOrientationSlice;
 
 // actions
 export const { updateDimensionsOrientation } = actions;

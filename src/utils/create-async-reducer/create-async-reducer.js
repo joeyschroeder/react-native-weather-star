@@ -51,14 +51,17 @@ export const createAsyncReducer = ({
         if (resetOnReject) state.data = initialState.data;
       });
     },
+    // reducerPath: statePath,
+    // selectors: {
+    //   selectData: (state) => state?.data || initialState.data,
+    //   selectStatus: (state) => state?.status || initialState.status,
+    // },
   });
 
-  const { reducer } = slice;
-
   return {
-    reducer,
+    slice,
     requestThunk: request,
-    selectData: (state) => selectState(state).data,
-    selectStatus: (state) => selectState(state).status,
+    selectData: (state) => selectState(state)?.data,
+    selectStatus: (state) => selectStatus(state),
   };
 };

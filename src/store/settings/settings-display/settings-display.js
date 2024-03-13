@@ -3,14 +3,14 @@ import { SETTINGS_INITIAL_STATE } from 'constants/settings-initial-state';
 import { getAsyncStorageItem } from 'services/async-storage/async-storage';
 import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 
-export const NAME = 'display';
+const NAME = 'display';
 
 // eslint-disable-next-line import/no-unused-modules
 export const {
-  reducer: settingsDisplayReducer,
   requestThunk: requestSettingsDisplay,
   selectData: selectSettingsDisplay,
   selectStatus: selectSettingsDisplayStatus,
+  slice: settingsDisplaySlice,
 } = createAsyncReducer({
   name: NAME,
   parentName: 'settings',

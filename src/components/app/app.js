@@ -102,5 +102,4 @@ AppBase.defaultProps = {
   onLayout: undefined,
 };
 
-// export const App = compose(withAppearanceChangeListener, withDimensionsOrientationChangeListener, withTheme)(AppBase);
-export const App = AppBase;
+export const App = compose(withAppearanceChangeListener, withDimensionsOrientationChangeListener, withTheme)(AppBase);

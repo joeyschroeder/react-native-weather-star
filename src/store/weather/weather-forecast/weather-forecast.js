@@ -6,14 +6,14 @@ import { max, min } from 'lodash';
 import { EXPO_MATERIAL_COMMUNITY_WEATHER_ICON_KEYS } from 'constants/expo-material-community-weather-icon-keys';
 import { closestMatch } from 'closest-match';
 
-export const NAME = 'forecast';
+const NAME = 'forecast';
 
 // eslint-disable-next-line import/no-unused-modules
 export const {
-  reducer: weatherForecastReducer,
   requestThunk: requestWeatherForecast,
   selectData: selectWeatherForecast,
   selectStatus: selectWeatherForecastStatus,
+  slice: weatherForecastSlice,
 } = createAsyncReducer({
   name: NAME,
   parentName: 'weather',
