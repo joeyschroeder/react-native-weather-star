@@ -1,18 +1,18 @@
 {
-  "compileOnSave": {
+  "compilerOptions": {
     "baseUrl": ".",
     "module": "CommonJS",
     "target": "ES6",
     "paths": {
-      "components*": ["./src/components*"],
-      "constants*": ["./src/constants*"],
-      "fonts*": ["./src/fonts*"],
-      "images*": ["./src/images*"],
-      "selectors*": ["./src/selectors*"],
-      "services*": ["./src/services*"],
-      "store*": ["./src/store*"],
-      "thunks*": ["./src/thunks*"],
-      "utils*": ["./src/utils*"],
+      "components*": ["src/components*"],
+      "constants*": ["src/constants*"],
+      "fonts*": ["src/fonts*"],
+      "images*": ["src/images*"],
+      "selectors*": ["src/selectors*"],
+      "services*": ["src/services*"],
+      "store*": ["src/store*"],
+      "thunks*": ["src/thunks*"],
+      "utils*": ["src/utils*"],
     }
   }
 }
