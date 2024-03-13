@@ -11,6 +11,7 @@ import {
   selectSettingsDisplayColorScheme,
 } from 'store/settings/settings-display/settings-display';
 import { COLOR_SCHEMES } from 'constants/color-schemes';
+import { createSelector } from 'reselect';
 
 const COLOR_VALUES = Object.keys(COLORS).reduce((acc, key) => {
   const lowercaseKey = key.toLowerCase();
@@ -21,23 +22,14 @@ const COLOR_VALUES = Object.keys(COLORS).reduce((acc, key) => {
 
 const MIX_WHITE = Color(COLORS.WHITE);
 
-export const selectTheme = (state) => {
-  const colorScheme = selectSettingsDisplayColorScheme(state);
+function combiner(colorScheme, height, isDaytime, orientation, primary, width) {
   const colorSchemeIsAuto = colorScheme === COLOR_SCHEMES.AUTO;
-
-  const height = selectDimensionsOrientationHeight(state);
-  const orientation = selectDimensionsOrientationOrientation(state);
-  const width = selectDimensionsOrientationWidth(state);
-  const isDaytime = selectWeatherForecastIsDaytime(state);
-
   const isDark = (colorSchemeIsAuto && !isDaytime) || colorScheme === COLOR_SCHEMES.DARK;
 
   const background = isDark ? COLORS.BLACK : Color(COLORS.BLACK).mix(MIX_WHITE, 0.8).string();
   const section = isDark ? COLORS.GREY : COLORS.WHITE;
   const valueBackground = isDark ? COLORS.BLACK_TYPE : Color(COLORS.BLACK).mix(MIX_WHITE, 0.9).string();
   const text = isDark ? COLORS.WHITE : COLORS.BLACK_TYPE;
-
-  const primary = selectSettingsDisplayColor(state);
 
   return {
     colors: {
@@ -55,4 +47,16 @@ export const selectTheme = (state) => {
       width,
     },
   };
-};
+}
+
+export const selectTheme = createSelector(
+  [
+    selectSettingsDisplayColorScheme,
+    selectDimensionsOrientationHeight,
+    selectWeatherForecastIsDaytime,
+    selectDimensionsOrientationOrientation,
+    selectSettingsDisplayColor,
+    selectDimensionsOrientationWidth,
+  ],
+  combiner,
+);
