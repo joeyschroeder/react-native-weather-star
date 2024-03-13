@@ -10,6 +10,14 @@
     "plugin:react-native/all",
     "plugin:react/all"
   ],
+  "ignorePatterns": [
+    ".expo-shared/",
+    ".expo/",
+    "assets/",
+    "coverage/",
+    "node_modules/",
+    "npm-debug.*"
+  ],
   "parser": "@babel/eslint-parser",
   "plugins": [
     "jest",
