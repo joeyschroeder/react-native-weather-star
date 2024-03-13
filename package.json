@@ -1,6 +1,6 @@
 {
-  "name": "expo-react-native-redux-starter",
-  "description": "A React-Native starter application including Expo, Redux and more!",
+  "name": "react-native-weather-star",
+  "description": "A React-Native weather application.",
   "main": "src/index.js",
   "scripts": {
     "eslint": "./node_modules/.bin/eslint src/ && echo \"\\x1b[102m\\x1b[1m ESLINT \\x1b[0m\" No JavaScript ESLint errors to fix",
