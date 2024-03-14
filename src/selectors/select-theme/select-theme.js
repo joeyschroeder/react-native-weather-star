@@ -11,7 +11,7 @@ import {
   selectSettingsDisplayColorScheme,
 } from 'store/settings/settings-display/settings-display';
 import { COLOR_SCHEMES } from 'constants/color-schemes';
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 
 const COLOR_VALUES = Object.keys(COLORS).reduce((acc, key) => {
   const lowercaseKey = key.toLowerCase();

@@ -48,7 +48,6 @@
     "react-native": "0.73.4",
     "react-native-web": "~0.19.6",
     "react-redux": "^8.0.5",
-    "reselect": "^5.1.0",
     "use-count-up": "^3.0.1"
   },
   "devDependencies": {
