@@ -5,6 +5,7 @@ const NAME = 'alerts';
 
 // eslint-disable-next-line import/no-unused-modules
 export const {
+  reducer: weatherAlertsReducer,
   requestThunk: requestWeatherAlerts,
   selectData: selectWeatherAlerts,
   selectStatus: selectWeatherAlertsStatus,

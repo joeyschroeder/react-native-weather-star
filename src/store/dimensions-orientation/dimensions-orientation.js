@@ -1,16 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { DEVICE_ORIENTATIONS } from 'constants/device-orientations';
 
-export const NAME = 'dimensions-orientation';
-const INITIAL_STATE = {
-  height: null,
-  orientation: DEVICE_ORIENTATIONS.PORTRAIT,
-  width: null,
-};
-
 export const dimensionsOrientationSlice = createSlice({
-  name: NAME,
-  initialState: INITIAL_STATE,
+  name: 'dimensions-orientation',
+  initialState: {
+    height: null,
+    orientation: DEVICE_ORIENTATIONS.PORTRAIT,
+    width: null,
+  },
   reducers: {
     update(state, { payload }) {
       return payload;
@@ -23,14 +20,12 @@ export const dimensionsOrientationSlice = createSlice({
   },
 });
 
-const { actions, selectors } = dimensionsOrientationSlice;
-
 // actions
-export const { update: updateDimensionsOrientation } = actions;
+export const { update: updateDimensionsOrientation } = dimensionsOrientationSlice.actions;
 
 // selectors
 export const {
   selectHeight: selectDimensionsOrientationHeight,
   selectOrientation: selectDimensionsOrientationOrientation,
   selectWidth: selectDimensionsOrientationWidth,
-} = selectors;
+} = dimensionsOrientationSlice.getSelectors();

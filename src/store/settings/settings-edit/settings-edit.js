@@ -21,10 +21,10 @@ export const settingsEditSlice = createSlice({
   },
 });
 
-const { actions, selectors } = settingsEditSlice;
-
 // actions
-export const { updateColor, updateColorScheme } = actions;
+export const { updateColor: updateSettingsEditColor, updateColorScheme: updateSettingsEditColorScheme } =
+  settingsEditSlice.actions;
 
 // selectors
-export const { selectColor: selectSettingsEditColor, selectColorScheme: selectSettingsEditColorScheme } = selectors;
+export const { selectColor: selectSettingsEditColor, selectColorScheme: selectSettingsEditColorScheme } =
+  settingsEditSlice.getSelectors();

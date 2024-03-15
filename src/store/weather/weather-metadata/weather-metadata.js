@@ -5,6 +5,7 @@ const NAME = 'metadata';
 
 // eslint-disable-next-line import/no-unused-modules
 export const {
+  reducer: weatherMetadataReducer,
   requestThunk: requestWeatherMetadata,
   selectData: selectWeatherMetadata,
   selectStatus: selectWeatherMetadataStatus,

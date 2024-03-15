@@ -10,6 +10,7 @@ const NAME = 'forecast';
 
 // eslint-disable-next-line import/no-unused-modules
 export const {
+  reducer: weatherForecastReducer,
   requestThunk: requestWeatherForecast,
   selectData: selectWeatherForecast,
   selectStatus: selectWeatherForecastStatus,

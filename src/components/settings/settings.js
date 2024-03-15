@@ -10,6 +10,11 @@ import { SettingsSection } from 'components/settings-section/settings-section';
 import Color from 'color';
 import { withTheme } from 'components/with-theme/with-theme';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
+import { useSelector } from 'react-redux';
+import { selectSettingsEditColor, selectSettingsEditColorScheme } from 'store/settings/settings-edit/settings-edit';
+import { COLOR_SCHEMES } from 'constants/color-schemes';
+
+const COLOR_SCHEME_OPTIONS = Object.values(COLOR_SCHEMES);
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
@@ -44,13 +49,16 @@ function SettingsBase(props) {
   const { isVisible, onDismiss, theme } = props;
   const styles = createStyleSheet(props);
 
+  const colorScheme = useSelector(selectSettingsEditColorScheme);
+  const color = useSelector(selectSettingsEditColor);
+
   return (
     <Modal animationType="fade" transparent visible={isVisible}>
       <View style={styles.container}>
         <View style={styles.primary}>
           <SettingsSection label="Theme">
-            <RadioSelector options={['auto', 'light', 'dark']} style={styles.radioSelector} value="dark" />
-            <RadioSelector options={['Red', 'Yellow', 'Green', 'Blue', 'White']} value="Red" />
+            <RadioSelector options={COLOR_SCHEME_OPTIONS} style={styles.radioSelector} value={colorScheme} />
+            <RadioSelector options={['Red', 'Yellow', 'Green', 'Blue', 'White']} value={color} />
           </SettingsSection>
           <View style={styles.actions}>
             <BlockButton color={theme.colors.success} label="Save" style={styles.action} />
