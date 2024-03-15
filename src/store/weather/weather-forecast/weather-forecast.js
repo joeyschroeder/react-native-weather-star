@@ -6,8 +6,6 @@ import { max, min } from 'lodash';
 import { EXPO_MATERIAL_COMMUNITY_WEATHER_ICON_KEYS } from 'constants/expo-material-community-weather-icon-keys';
 import { closestMatch } from 'closest-match';
 
-const NAME = 'forecast';
-
 // eslint-disable-next-line import/no-unused-modules
 export const {
   reducer: weatherForecastReducer,
@@ -16,7 +14,7 @@ export const {
   selectStatus: selectWeatherForecastStatus,
   slice: weatherForecastSlice,
 } = createAsyncReducer({
-  name: NAME,
+  name: 'forecast',
   parentName: 'weather',
   requestFunc: (forecastUrl) => {
     return getWeatherByForecastUrl(forecastUrl);

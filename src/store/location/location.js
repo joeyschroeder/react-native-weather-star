@@ -1,8 +1,6 @@
 import { getLocation, getLocationForegroundPermissions } from 'services/location/location';
 import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 
-export const NAME = 'location';
-
 // eslint-disable-next-line import/no-unused-modules
 export const {
   requestThunk: requestLocation,
@@ -10,7 +8,7 @@ export const {
   selectStatus: selectLocationStatus,
   slice: locationSlice,
 } = createAsyncReducer({
-  name: NAME,
+  name: 'location',
   requestOnce: true,
   requestFunc: async () => {
     await getLocationForegroundPermissions();

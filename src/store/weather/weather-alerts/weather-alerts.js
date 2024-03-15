@@ -1,8 +1,6 @@
 import { getWeatherAlertsByLatitudeLongitude } from 'services/weather/weather';
 import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 
-const NAME = 'alerts';
-
 // eslint-disable-next-line import/no-unused-modules
 export const {
   reducer: weatherAlertsReducer,
@@ -11,7 +9,7 @@ export const {
   selectStatus: selectWeatherAlertsStatus,
   slice: weatherAlertsSlice,
 } = createAsyncReducer({
-  name: NAME,
+  name: 'alerts',
   parentName: 'weather',
   requestFunc: ({ latitude, longitude }) => {
     return getWeatherAlertsByLatitudeLongitude({ latitude, longitude });

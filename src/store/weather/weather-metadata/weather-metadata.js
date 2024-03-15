@@ -1,8 +1,6 @@
 import { getWeatherMetadataByLatitudeLongitude } from 'services/weather/weather';
 import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 
-const NAME = 'metadata';
-
 // eslint-disable-next-line import/no-unused-modules
 export const {
   reducer: weatherMetadataReducer,
@@ -11,7 +9,7 @@ export const {
   selectStatus: selectWeatherMetadataStatus,
   slice: weatherMetadataSlice,
 } = createAsyncReducer({
-  name: NAME,
+  name: 'metadata',
   parentName: 'weather',
   requestOnce: true,
   requestFunc: ({ latitude, longitude }) => {

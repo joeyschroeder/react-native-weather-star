@@ -1,14 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-
 import { ASYNC_THUNK_STATUS_STATES } from 'constants/async-thunk-status-states';
 import { ASYNC_THUNK_TYPES } from 'constants/async-thunk-types';
-import { get } from 'lodash';
+import { buildStateSelector } from 'utils/build-state-selector/build-state-selector';
 
 export const createAsyncReducer = ({
   initialState: initialStateParam = {},
   name,
-  parentName = '',
+  parentName,
   requestFunc: requestFuncParam,
   requestOnce = false,
   resetOnReject = false,
@@ -21,10 +20,8 @@ export const createAsyncReducer = ({
     status: ASYNC_THUNK_STATUS_STATES.IDLE,
   };
 
-  const statePath = [parentName, name].filter((value) => Boolean(value)).join('.');
-  const selectState = (state) => get(state, statePath, initialState);
-
-  const selectStatus = (state) => selectState(state).status || ASYNC_THUNK_STATUS_STATES.IDLE;
+  const selectState = buildStateSelector([parentName, name], initialState);
+  const selectStatus = (state) => selectState(state)?.status || ASYNC_THUNK_STATUS_STATES.IDLE;
 
   function requestFunc(args, thunkAPI) {
     const { getState } = thunkAPI;

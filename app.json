@@ -4,7 +4,8 @@
     "slug": "geolocation-weather-station",
     "privacy": "unlisted",
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ],
     "version": "1.0.0",
     "orientation": "landscape",

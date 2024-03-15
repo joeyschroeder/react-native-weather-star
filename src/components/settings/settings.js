@@ -10,9 +10,13 @@ import { SettingsSection } from 'components/settings-section/settings-section';
 import Color from 'color';
 import { withTheme } from 'components/with-theme/with-theme';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectSettingsEditColor, selectSettingsEditColorScheme } from 'store/settings/settings-edit/settings-edit';
 import { COLOR_SCHEMES } from 'constants/color-schemes';
+import {
+  closeSettingsModal,
+  selectSettingsEditModalActive,
+} from 'store/settings/settings-modal-active/settings-modal-active';
 
 const COLOR_SCHEME_OPTIONS = Object.values(COLOR_SCHEMES);
 
@@ -46,7 +50,12 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
 }
 
 function SettingsBase(props) {
-  const { isVisible, onDismiss, theme } = props;
+  const { theme } = props;
+
+  const isVisible = useSelector(selectSettingsEditModalActive);
+  const dispatch = useDispatch();
+  const onCancelPress = () => dispatch(closeSettingsModal());
+
   const styles = createStyleSheet(props);
 
   const colorScheme = useSelector(selectSettingsEditColorScheme);
@@ -62,7 +71,7 @@ function SettingsBase(props) {
           </SettingsSection>
           <View style={styles.actions}>
             <BlockButton color={theme.colors.success} label="Save" style={styles.action} />
-            <BlockButton color={theme.colors.danger} label="Cancel" onPress={onDismiss} style={styles.action} />
+            <BlockButton color={theme.colors.danger} label="Cancel" onPress={onCancelPress} style={styles.action} />
           </View>
         </View>
       </View>
@@ -72,13 +81,11 @@ function SettingsBase(props) {
 
 SettingsBase.propTypes = {
   isVisible: PropTypes.bool,
-  onDismiss: PropTypes.func,
   theme: PropTypes.object,
 };
 
 SettingsBase.defaultProps = {
   isVisible: false,
-  onDismiss: undefined,
   theme: THEME_DEFAULT_PROP_TYPE,
 };
 
