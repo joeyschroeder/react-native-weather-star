@@ -1,17 +1,16 @@
 import { isInitialStatePrimitive } from '../is-initial-state-primitive/is-initial-state-primitive';
 
+// This is a utility action for update the entire state of the duck.
+const update = (state, { payload }) => {
+  return payload;
+};
+
 export function createReducers(initialState) {
   let reducers;
 
   // If initialState is a single value, then we only need a single update reducer, else if
   // initialState is an object, then we need an update reducer for each key in the object.
-  if (isInitialStatePrimitive(initialState)) {
-    reducers = {
-      update: (state, { payload }) => {
-        return payload;
-      },
-    };
-  } else {
+  if (!isInitialStatePrimitive(initialState)) {
     reducers = Object.keys(initialState).reduce((accumulator, key) => {
       const actionName = `update${key[0].toUpperCase()}${key.slice(1)}`;
       accumulator[actionName] = (state, { payload }) => {
@@ -23,5 +22,8 @@ export function createReducers(initialState) {
     }, {});
   }
 
-  return reducers;
+  return {
+    ...reducers,
+    update,
+  };
 }
