@@ -30,7 +30,6 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
       position: 'absolute',
     },
     text: {
-      color: theme.colors.text,
       textTransform: 'uppercase',
       zIndex: 1,
     },
@@ -42,7 +41,7 @@ function DigitalValueBase(props) {
 
   const styles = createStyleSheet(props);
 
-  const color = colorProp || theme.colors.text;
+  const color = colorProp || theme.colors.primary;
   const containerStyle = [styles.container, style];
 
   const commonTextStyles = { color, fontFamily, fontSize: size };

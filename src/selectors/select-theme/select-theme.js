@@ -23,6 +23,8 @@ function combiner(colorScheme, height, isDaytime, orientation, primary, width) {
   const section = isDark ? COLORS.GREY : COLORS.WHITE;
   const valueBackground = isDark ? COLORS.BLACK_TYPE : Color(COLORS.BLACK).mix(MIX_WHITE, 0.9).string();
   const text = isDark ? COLORS.WHITE : COLORS.BLACK_TYPE;
+  // const text = COLORS.GREEN;
+  // const
 
   return {
     colors: {

@@ -18,7 +18,7 @@ function CurrentPrecipSectionBase(props) {
   const precipProbability = useSelector(selectWeatherForecastProbabilityOfPrecipitation);
   const relativeHumidity = useSelector(selectWeatherForecastRelativeHumidity);
 
-  const precipProbabilityColor = precipProbability > 25 ? theme.colors.primary : theme.colors.text;
+  const precipProbabilityColor = precipProbability > 25 ? theme.colors.danger : theme.colors.primary;
 
   return (
     <Section style={style}>
@@ -34,7 +34,6 @@ function CurrentPrecipSectionBase(props) {
         />
         <DigitalValueWithLabel
           append="%"
-          color={theme.colors.text}
           isCountingUp
           isNumber
           label="Rel. Humidity"
