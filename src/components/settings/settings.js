@@ -16,11 +16,17 @@ import { settingsModalActiveDuck } from 'store/settings/settings-modal-active/se
 import { settingsEditDuck } from 'store/settings/settings-edit/settings-edit';
 import { SETTINGS_COLOR_OPTIONS } from 'constants/settings-color-options';
 import { cancelEditSettings, requestSaveSettings } from 'store/settings/settings';
+import { ActivityIndicatorOverlay } from 'components/activity-indicator-overlay/activity-indicator-overlay';
+import { selectAnyRequestPending } from 'selectors/select-any-request-pending/select-any-request-pending';
+import { settingsEditSaveDuck } from 'store/settings/settings-edit-save/settings-edit-save';
+import { settingsDisplayDuck } from 'store/settings/settings-display/settings-display';
 
 const COLOR_SCHEME_OPTIONS = Object.values(COLOR_SCHEMES);
 const COLOR_OPTIONS = Object.keys(SETTINGS_COLOR_OPTIONS);
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
+  const backgroundColor = theme.dark ? theme.colors.white : theme.colors.black;
+
   return StyleSheet.create({
     action: {
       flex: 1,
@@ -31,7 +37,7 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
     },
     container: {
       alignItems: 'center',
-      backgroundColor: Color(theme.colors.background).alpha(0.5).string(),
+      backgroundColor: Color(backgroundColor).alpha(0.3).string(),
       flex: 1,
       justifyContent: 'center',
       padding: SPACER,
@@ -63,6 +69,10 @@ function SettingsBase(props) {
   const colorScheme = useSelector(settingsEditDuck.select.colorScheme);
   const isVisible = useSelector(settingsModalActiveDuck.select.state);
 
+  const isLoading = useSelector((state) =>
+    selectAnyRequestPending(state, [settingsEditSaveDuck.select.status, settingsDisplayDuck.select.status]),
+  );
+
   const styles = createStyleSheet(props);
 
   return (
@@ -90,6 +100,7 @@ function SettingsBase(props) {
           </View>
         </View>
       </View>
+      <ActivityIndicatorOverlay isActive={isLoading} />
     </Modal>
   );
 }

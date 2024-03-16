@@ -23,7 +23,7 @@ export const cancelEditSettings = () => async (dispatch, getState) => {
 export const requestSaveSettings = () => async (dispatch, getState) => {
   const newSettings = settingsEditDuck.select.state(getState());
 
-  await dispatch(closeSettingsModal());
   await dispatch(settingsEditSaveDuck.request(newSettings));
   await dispatch(settingsDisplayDuck.request());
+  await dispatch(closeSettingsModal());
 };

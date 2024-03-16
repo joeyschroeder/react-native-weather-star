@@ -19,7 +19,6 @@ import { CurrentWindSection } from 'components/current-wind-section/current-wind
 import { Footer } from 'components/footer/footer';
 import { Header } from 'components/header/header';
 import { initializeApp } from 'thunks/initialize-app/initialize-app';
-import { ActivityIndicatorOverlay } from 'components/activity-indicator-overlay/activity-indicator-overlay';
 import { selectAnyRequestPending } from 'selectors/select-any-request-pending/select-any-request-pending';
 import { settingsEditSaveDuck } from 'store/settings/settings-edit-save/settings-edit-save';
 import { settingsDisplayDuck } from 'store/settings/settings-display/settings-display';
@@ -78,10 +77,6 @@ function AppBase(props) {
     return () => clearInterval(dataRequestInterval);
   }, []);
 
-  const isLoading = useSelector((state) =>
-    selectAnyRequestPending(state, [settingsEditSaveDuck.select.status, settingsDisplayDuck.select.status]),
-  );
-
   return (
     <>
       <View onLayout={onLayout} style={styles.container}>
@@ -99,7 +94,6 @@ function AppBase(props) {
         <Footer />
       </View>
       <Settings isVisible />
-      <ActivityIndicatorOverlay isActive={isLoading} />
     </>
   );
 }

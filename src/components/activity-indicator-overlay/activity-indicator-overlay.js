@@ -9,11 +9,13 @@ import { AnimationSpin } from 'components/animation-spin/animation-spin';
 import { scaledValue } from 'utils/scaled-value/scaled-value';
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
+  const backgroundColor = theme.dark ? theme.colors.black : theme.colors.white;
+
   return StyleSheet.create({
     container: {
       ...StyleSheet.absoluteFill,
       alignItems: 'center',
-      backgroundColor: Color(theme.colors.background).alpha(0.5).string(),
+      backgroundColor: Color(backgroundColor).alpha(0.7).string(),
       height: theme.dimensions.height,
       justifyContent: 'center',
       zIndex: 20,
@@ -31,7 +33,7 @@ function ActivityIndicatorOverlayBase(props) {
   return (
     <View style={styles.container}>
       <AnimationSpin isAnimating isLooping>
-        <AntDesign color={theme.colors.primary} name="loading1" size={scaledValue(300)} />
+        <AntDesign color={theme.colors.primary} name="loading1" size={scaledValue(200)} />
       </AnimationSpin>
     </View>
   );

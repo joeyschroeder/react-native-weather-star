@@ -10,7 +10,7 @@ export const scaledValue = (value) => {
    * scaled proportionately;
    */
 
-  const heightConstant = 1000;
+  const heightConstant = 812;
   const scaleAmount = DIMENSIONS.HEIGHT / heightConstant;
 
   const result = value * scaleAmount;
