@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { COLOR_SCHEMES } from 'constants/color-schemes';
 import {
   closeSettingsModal,
-  selectSettingsEditModalActive,
+  settingsModalActiveDuck,
 } from 'store/settings/settings-modal-active/settings-modal-active';
 import { settingsEditDuck } from 'store/settings/settings-edit/settings-edit';
 
@@ -52,14 +52,15 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
 function SettingsBase(props) {
   const { theme } = props;
 
-  const isVisible = useSelector(selectSettingsEditModalActive);
   const dispatch = useDispatch();
+
   const onCancelPress = () => dispatch(closeSettingsModal());
 
   const styles = createStyleSheet(props);
 
-  const colorScheme = useSelector(settingsEditDuck.select.colorScheme);
   const color = useSelector(settingsEditDuck.select.color);
+  const colorScheme = useSelector(settingsEditDuck.select.colorScheme);
+  const isVisible = useSelector(settingsModalActiveDuck.select.state);
 
   return (
     <Modal animationType="fade" transparent visible={isVisible}>
