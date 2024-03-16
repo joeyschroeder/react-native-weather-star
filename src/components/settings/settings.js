@@ -11,12 +11,12 @@ import Color from 'color';
 import { withTheme } from 'components/with-theme/with-theme';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSettingsEditColor, selectSettingsEditColorScheme } from 'store/settings/settings-edit/settings-edit';
 import { COLOR_SCHEMES } from 'constants/color-schemes';
 import {
   closeSettingsModal,
   selectSettingsEditModalActive,
 } from 'store/settings/settings-modal-active/settings-modal-active';
+import { settingsEditDuck } from 'store/settings/settings-edit/settings-edit';
 
 const COLOR_SCHEME_OPTIONS = Object.values(COLOR_SCHEMES);
 
@@ -58,8 +58,8 @@ function SettingsBase(props) {
 
   const styles = createStyleSheet(props);
 
-  const colorScheme = useSelector(selectSettingsEditColorScheme);
-  const color = useSelector(selectSettingsEditColor);
+  const colorScheme = useSelector(settingsEditDuck.select.colorScheme);
+  const color = useSelector(settingsEditDuck.select.color);
 
   return (
     <Modal animationType="fade" transparent visible={isVisible}>
@@ -80,12 +80,10 @@ function SettingsBase(props) {
 }
 
 SettingsBase.propTypes = {
-  isVisible: PropTypes.bool,
   theme: PropTypes.object,
 };
 
 SettingsBase.defaultProps = {
-  isVisible: false,
   theme: THEME_DEFAULT_PROP_TYPE,
 };
 
