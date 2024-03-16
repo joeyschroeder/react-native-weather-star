@@ -5,7 +5,6 @@ import { DigitalValueWithLabel } from 'components/digital-value-with-label/digit
 import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
 import { withTheme } from 'components/with-theme/with-theme';
-import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 import { useSelector } from 'react-redux';
 import {
   selectWeatherForecastProbabilityOfPrecipitation,
@@ -13,19 +12,16 @@ import {
 } from 'store/weather/weather-forecast/weather-forecast';
 
 function CurrentPrecipSectionBase(props) {
-  const { style, theme } = props;
+  const { style } = props;
 
   const precipProbability = useSelector(selectWeatherForecastProbabilityOfPrecipitation);
   const relativeHumidity = useSelector(selectWeatherForecastRelativeHumidity);
-
-  const precipProbabilityColor = precipProbability > 25 ? theme.colors.danger : theme.colors.primary;
 
   return (
     <Section style={style}>
       <View style={{ gap: SPACER }}>
         <DigitalValueWithLabel
           append="%"
-          color={precipProbabilityColor}
           isCountingUp
           isNumber
           label="Rain Chance"
@@ -47,12 +43,10 @@ function CurrentPrecipSectionBase(props) {
 
 CurrentPrecipSectionBase.propTypes = {
   style: PropTypes.object,
-  theme: PropTypes.object,
 };
 
 CurrentPrecipSectionBase.defaultProps = {
   style: undefined,
-  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const CurrentPrecipSection = withTheme(CurrentPrecipSectionBase);

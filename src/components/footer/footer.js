@@ -43,9 +43,6 @@ function FooterBase(props) {
   const styles = createStyleSheet(props);
   const containerStyles = [styles.container, style];
 
-  const isSevere = severity === 'severe' || severity === 'extreme';
-  const severityColor = isSevere ? theme.colors.danger : theme.colors.primary;
-
   return (
     <View style={containerStyles}>
       <Section>
@@ -65,14 +62,7 @@ function FooterBase(props) {
         />
       </Section>
       <Section>
-        <DigitalValueWithLabel
-          color={severityColor}
-          isHorizontal
-          label="Severity"
-          minChars={8}
-          size={scaledValue(40)}
-          value={severity}
-        />
+        <DigitalValueWithLabel isHorizontal label="Severity" minChars={8} size={scaledValue(40)} value={severity} />
       </Section>
     </View>
   );

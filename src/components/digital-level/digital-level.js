@@ -33,7 +33,6 @@ function DigitalLevelBase(props) {
 
   const containerStyle = [styles.container, style];
   const activeSegStyle = { backgroundColor: theme.colors.primary };
-  const thresholdSegStyle = { backgroundColor: theme.colors.danger };
 
   const { value: countUpValue } = useCountUp({
     duration: 1,
@@ -48,11 +47,8 @@ function DigitalLevelBase(props) {
     let segStyle = isLast ? [styles.seg, styles.segLast] : styles.seg;
 
     const active = index < countUpValue;
-    const overThreshold = active && index > maxLevels / 2;
 
-    if (overThreshold) {
-      segStyle = [segStyle, thresholdSegStyle];
-    } else if (active) {
+    if (active) {
       segStyle = [segStyle, activeSegStyle];
     }
 

@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { DigitalLevel } from 'components/digital-level/digital-level';
 import { withTheme } from 'components/with-theme/with-theme';
-import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 import { useSelector } from 'react-redux';
 import {
   selectWeatherForecastWindDirection,
@@ -17,13 +16,10 @@ import {
 const MAX_MPH = 30;
 
 function CurrentWindSectionBase(props) {
-  const { style, theme } = props;
+  const { style } = props;
 
   const speed = useSelector(selectWeatherForecastWindSpeedMph);
   const direction = useSelector(selectWeatherForecastWindDirection);
-
-  const dangerMph = MAX_MPH / 2;
-  const speedColor = speed > dangerMph ? theme.colors.danger : theme.colors.primary;
 
   const maxLevels = 24;
   const levelValue = (speed / MAX_MPH) * maxLevels;
@@ -33,7 +29,6 @@ function CurrentWindSectionBase(props) {
       <View style={{ gap: SPACER }}>
         <DigitalLevel maxLevels={maxLevels} value={levelValue} />
         <DigitalValueWithLabel
-          color={speedColor}
           isCountingUp
           isNumber
           label="Wind MPH"
@@ -49,12 +44,10 @@ function CurrentWindSectionBase(props) {
 
 CurrentWindSectionBase.propTypes = {
   style: PropTypes.object,
-  theme: PropTypes.object,
 };
 
 CurrentWindSectionBase.defaultProps = {
   style: undefined,
-  theme: THEME_DEFAULT_PROP_TYPE,
 };
 
 export const CurrentWindSection = withTheme(CurrentWindSectionBase);

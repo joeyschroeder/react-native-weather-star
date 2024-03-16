@@ -5,7 +5,6 @@ import { DigitalValueWithLabel } from 'components/digital-value-with-label/digit
 import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { SPACER } from 'constants/spacer';
 import PropTypes from 'prop-types';
-import { convertTempToColor } from 'utils/convert-temp-to-color/convert-temp-to-color';
 import { withTheme } from 'components/with-theme/with-theme';
 import { useSelector } from 'react-redux';
 import {
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
 });
 
 export const CurrentWeatherSection = withTheme(function Base(props) {
-  const { style, theme } = props;
+  const { style } = props;
 
   const tempCurrent = useSelector(selectWeatherForecastTemperature);
   const tempHigh = useSelector(selectWeatherForecastTemperatureHigh);
@@ -37,16 +36,11 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
 
   const tempUnitFormatted = tempUnit === 'F' ? '°F' : '°C';
 
-  const tempCurrentColor = convertTempToColor(theme, tempCurrent);
-  const tempHighColor = convertTempToColor(theme, tempHigh);
-  const tempLowColor = convertTempToColor(theme, tempLow);
-
   return (
     <Section style={style}>
       <View style={styles.container}>
         <DigitalValueWithLabel
           append={tempUnitFormatted}
-          color={tempCurrentColor}
           isCountingUp
           isHorizontal
           isNumber
@@ -57,7 +51,6 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
         <View style={styles.highLowContainer}>
           <DigitalValueWithLabel
             append={tempUnitFormatted}
-            color={tempHighColor}
             isCountingUp
             isHorizontal
             isNumber
@@ -68,7 +61,6 @@ export const CurrentWeatherSection = withTheme(function Base(props) {
           />
           <DigitalValueWithLabel
             append={tempUnitFormatted}
-            color={tempLowColor}
             isCountingUp
             isHorizontal
             isNumber
