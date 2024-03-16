@@ -13,24 +13,21 @@ const COLOR_VALUES = Object.keys(COLORS).reduce((acc, key) => {
   return acc;
 }, {});
 
-const MIX_WHITE = Color(COLORS.WHITE);
-
-function combiner(colorScheme, height, isDaytime, orientation, primary, width) {
+function combiner(colorScheme, height, isDaytime, orientation, primaryKey, width) {
   const colorSchemeIsAuto = colorScheme === COLOR_SCHEMES.AUTO;
   const isDark = (colorSchemeIsAuto && !isDaytime) || colorScheme === COLOR_SCHEMES.DARK;
+  const primary = COLORS[primaryKey];
 
-  const background = isDark ? COLORS.BLACK : Color(COLORS.BLACK).mix(MIX_WHITE, 0.8).string();
-  const section = isDark ? COLORS.GREY : COLORS.WHITE;
-  const valueBackground = isDark ? COLORS.BLACK_TYPE : Color(COLORS.BLACK).mix(MIX_WHITE, 0.9).string();
-  const text = isDark ? COLORS.WHITE : COLORS.BLACK_TYPE;
-  // const text = COLORS.GREEN;
-  // const
+  const background = isDark ? COLORS.BLACK : Color(primary).darken(0.2).string();
+  const section = isDark ? COLORS.GREY : primary;
+  const valueBackground = Color(COLORS.BLACK).alpha(0.2).string();
+  const text = COLORS.WHITE;
 
   return {
     colors: {
       ...COLOR_VALUES,
       background,
-      primary: COLORS[primary],
+      primary: isDark ? primary : COLORS.WHITE,
       section,
       text,
       valueBackground,

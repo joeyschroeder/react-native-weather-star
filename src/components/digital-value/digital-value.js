@@ -26,7 +26,7 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
       opacity: 0,
     },
     shadow: {
-      opacity: 0.07,
+      opacity: 0.1,
       position: 'absolute',
     },
     text: {

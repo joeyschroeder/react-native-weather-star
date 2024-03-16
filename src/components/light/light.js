@@ -8,7 +8,7 @@ import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 function LightBase(props) {
   const { color: colorProp, isActive, size, style, theme } = props;
 
-  const color = colorProp || theme.colors.text;
+  const color = colorProp || theme.colors.primary;
 
   const backgroundColor = isActive ? color : theme.colors.valueBackground;
   const borderRadius = size / 2;

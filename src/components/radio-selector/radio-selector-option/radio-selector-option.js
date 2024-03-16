@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
 function RadioSelectorOptionBase(props) {
   const { activeColor: activeColorProp, isActive, onPress, textColor: textColorProp, theme, value } = props;
 
-  const activeColor = activeColorProp || theme.colors.danger;
-  const textColor = textColorProp || theme.colors.text;
+  const isDark = theme.dark;
+  const activeColor = activeColorProp || isDark ? theme.colors.primary : theme.colors.section;
+  const textColor = textColorProp || isDark ? theme.colors.text : theme.colors.section;
 
   const color = isActive ? textColor : activeColor;
   const textStyles = [styles.text, { color }];
