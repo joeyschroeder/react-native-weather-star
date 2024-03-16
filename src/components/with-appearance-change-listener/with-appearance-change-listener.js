@@ -1,7 +1,7 @@
 import { Appearance } from 'react-native';
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
-import { updateColorScheme } from 'store/color-scheme/color-scheme';
+import { colorSchemeDuck } from 'store/color-scheme/color-scheme';
 
 function withAppearanceChangeListenerBase(WrappedComponent) {
   function WithAppearanceChangeListener(props) {
@@ -9,10 +9,10 @@ function withAppearanceChangeListenerBase(WrappedComponent) {
 
     useEffect(() => {
       const initialValue = Appearance.getColorScheme();
-      dispatch(updateColorScheme(initialValue));
+      dispatch(colorSchemeDuck.actions.update(initialValue));
 
       Appearance.addChangeListener(({ colorScheme }) => {
-        dispatch(updateColorScheme(colorScheme));
+        dispatch(colorSchemeDuck.actions.update(colorScheme));
       });
     }, []);
 
