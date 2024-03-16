@@ -7,7 +7,7 @@ import { createSelectState } from './create-select-state/create-select-state';
 export function createDuck(config) {
   if (typeof config !== 'object') throw new Error('config is not object');
 
-  const { initialState, name, parentNames } = config;
+  const { extraReducers, extraSelectors, initialState, name, parentNames } = config;
   if (!name) throw new Error('name is undefined');
 
   const path = createPath(parentNames, name);
@@ -16,6 +16,7 @@ export function createDuck(config) {
   const selectors = createSelectors(selectState, initialState);
 
   const slice = createSlice({
+    extraReducers,
     initialState,
     name,
     reducers: createReducers(initialState),
@@ -30,6 +31,7 @@ export function createDuck(config) {
     reducer: slice.reducer,
     select: {
       ...slice.getSelectors(),
+      ...extraSelectors,
       state: selectState,
     },
   };
