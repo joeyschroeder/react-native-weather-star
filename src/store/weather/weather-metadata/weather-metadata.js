@@ -1,26 +1,22 @@
 import { getWeatherMetadataByLatitudeLongitude } from 'services/weather/weather';
-import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
+import { createAsyncDuck } from 'utils/create-duck/create-async-duck/create-async-duck';
 
-// eslint-disable-next-line import/no-unused-modules
-export const {
-  reducer: weatherMetadataReducer,
-  requestThunk: requestWeatherMetadata,
-  selectData: selectWeatherMetadata,
-  selectStatus: selectWeatherMetadataStatus,
-  slice: weatherMetadataSlice,
-} = createAsyncReducer({
+export const weatherMetadataDuck = createAsyncDuck({
+  initialState: {
+    forecastHourly: '',
+    radarStation: '',
+    relativeLocation: {
+      properties: {},
+    },
+  },
   name: 'metadata',
-  parentName: 'weather',
+  parentNames: ['weather'],
   requestOnce: true,
   requestFunc: ({ latitude, longitude }) => {
     return getWeatherMetadataByLatitudeLongitude({ latitude, longitude });
   },
 });
 
-// const selectWeatherMetadataForecast = (state) => selectWeatherMetadata(state)?.forecast;
-export const selectWeatherMetadataForecastHourly = (state) => selectWeatherMetadata(state)?.forecastHourly;
-export const selectWeatherMetadataRadarStation = (state) => selectWeatherMetadata(state)?.radarStation;
-const selectWeatherMetadataRelativeLocation = (state) => selectWeatherMetadata(state)?.relativeLocation;
-
-export const selectWeatherMetadataCity = (state) => selectWeatherMetadataRelativeLocation(state)?.properties?.city;
-export const selectWeatherMetadataState = (state) => selectWeatherMetadataRelativeLocation(state)?.properties?.state;
+export const selectWeatherMetadataCity = (state) => weatherMetadataDuck.select.relativeLocation(state).properties?.city;
+export const selectWeatherMetadataState = (state) =>
+  weatherMetadataDuck.select.relativeLocation(state).properties?.state;

@@ -10,17 +10,17 @@ import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAnyRequestRejected } from 'selectors/select-any-request-rejected/select-any-request-rejected';
 import { selectAnyRequestPending } from 'selectors/select-any-request-pending/select-any-request-pending';
-import { selectLocationStatus } from 'store/location/location';
-import { selectWeatherAlertsStatus } from 'store/weather/weather-alerts/weather-alerts';
-import { selectWeatherForecastStatus } from 'store/weather/weather-forecast/weather-forecast';
-import { selectWeatherMetadataStatus } from 'store/weather/weather-metadata/weather-metadata';
+import { weatherAlertsDuck } from 'store/weather/weather-alerts/weather-alerts';
+import { weatherMetadataDuck } from 'store/weather/weather-metadata/weather-metadata';
 import { requestWeatherByLocation } from 'thunks/request-weather-by-location/request-weather-by-location';
+import { locationDuck } from 'store/location/location';
+import { weatherForecastDuck } from 'store/weather/weather-forecast/weather-forecast';
 
 const REQUEST_SELECTORS = [
-  selectLocationStatus,
-  selectWeatherAlertsStatus,
-  selectWeatherForecastStatus,
-  selectWeatherMetadataStatus,
+  locationDuck.select.status,
+  weatherAlertsDuck.select.status,
+  weatherForecastDuck.select.status,
+  weatherMetadataDuck.select.status,
 ];
 
 function HeaderRefreshButtonBase(props) {

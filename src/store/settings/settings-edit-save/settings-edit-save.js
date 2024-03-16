@@ -1,16 +1,10 @@
 import { SETTINGS_ASYNC_STORAGE_KEY } from 'constants/settings-async-storage-key';
 import { setAsyncStorageItem } from 'services/async-storage/async-storage';
-import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
+import { createAsyncDuck } from 'utils/create-duck/create-async-duck/create-async-duck';
 
-// eslint-disable-next-line import/no-unused-modules
-export const {
-  requestThunk: requestSettingsEditSave,
-  selectData: selectSettingsEditSave,
-  selectStatus: selectSettingsEditSaveStatus,
-  slice: settingsEditSaveSlice,
-} = createAsyncReducer({
+export const settingsEditSaveDuck = createAsyncDuck({
   name: 'edit-save',
-  parentName: 'settings',
+  parentNames: ['settings'],
   requestFunc: (settings) => {
     return setAsyncStorageItem(SETTINGS_ASYNC_STORAGE_KEY, settings);
   },

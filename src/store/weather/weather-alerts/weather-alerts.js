@@ -1,30 +1,24 @@
 import { getWeatherAlertsByLatitudeLongitude } from 'services/weather/weather';
-import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
+import { createAsyncDuck } from 'utils/create-duck/create-async-duck/create-async-duck';
 
-// eslint-disable-next-line import/no-unused-modules
-export const {
-  reducer: weatherAlertsReducer,
-  requestThunk: requestWeatherAlerts,
-  selectData: selectWeatherAlerts,
-  selectStatus: selectWeatherAlertsStatus,
-  slice: weatherAlertsSlice,
-} = createAsyncReducer({
+export const weatherAlertsDuck = createAsyncDuck({
+  initialState: {
+    description: '',
+    headline: '',
+    instruction: '',
+    severity: '',
+  },
   name: 'alerts',
-  parentName: 'weather',
+  parentNames: ['weather'],
   requestFunc: ({ latitude, longitude }) => {
     return getWeatherAlertsByLatitudeLongitude({ latitude, longitude });
   },
 });
 
-const selectWeatherAlertsDescription = (state) => selectWeatherAlerts(state)?.description || '';
-const selectWeatherAlertsHeadline = (state) => selectWeatherAlerts(state)?.headline || '';
-const selectWeatherAlertsInstruction = (state) => selectWeatherAlerts(state)?.instruction || '';
-export const selectWeatherAlertsSeverity = (state) => selectWeatherAlerts(state)?.severity;
-
 export const selectWeatherAlertsConcat = (state) => {
-  const headline = selectWeatherAlertsHeadline(state);
-  const description = selectWeatherAlertsDescription(state);
-  const instruction = selectWeatherAlertsInstruction(state);
+  const headline = weatherAlertsDuck.select.headline(state);
+  const description = weatherAlertsDuck.select.description(state);
+  const instruction = weatherAlertsDuck.select.instruction(state);
 
   const concat = [headline, description, instruction].join(' ').trim();
   if (!concat) return;

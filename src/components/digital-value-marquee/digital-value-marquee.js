@@ -14,8 +14,8 @@ const getUpdatedValue = (value) => {
 export function DigitalValueMarquee(props) {
   const { maxChars, value, ...other } = props;
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
   if (!value) return <DigitalValue {...other} />;
+
   const padEnd = maxChars || 20;
   const initialValue = value.padEnd(padEnd, ' ');
 
@@ -26,7 +26,6 @@ export function DigitalValueMarquee(props) {
     return () => clearInterval(timerInterval);
   });
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return <DigitalValue maxChars={maxChars} value={marqueeValue} {...other} />;
 }
 

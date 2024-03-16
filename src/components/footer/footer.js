@@ -10,8 +10,8 @@ import { withTheme } from 'components/with-theme/with-theme';
 import { FontAwesome } from '@expo/vector-icons';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectWeatherAlertsConcat, selectWeatherAlertsSeverity } from 'store/weather/weather-alerts/weather-alerts';
 import { openSettingsModal } from 'store/settings/settings-modal-active/settings-modal-active';
+import { selectWeatherAlertsConcat, weatherAlertsDuck } from 'store/weather/weather-alerts/weather-alerts';
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
@@ -38,7 +38,7 @@ function FooterBase(props) {
   const onSettingsPress = () => dispatch(openSettingsModal());
 
   const alert = useSelector(selectWeatherAlertsConcat);
-  const severity = useSelector(selectWeatherAlertsSeverity);
+  const severity = useSelector(weatherAlertsDuck.select.severity);
 
   const styles = createStyleSheet(props);
   const containerStyles = [styles.container, style];

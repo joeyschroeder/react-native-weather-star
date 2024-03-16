@@ -1,13 +1,11 @@
 import { getLocation, getLocationForegroundPermissions } from 'services/location/location';
-import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
+import { createAsyncDuck } from 'utils/create-duck/create-async-duck/create-async-duck';
 
-// eslint-disable-next-line import/no-unused-modules
-export const {
-  requestThunk: requestLocation,
-  selectData: selectLocation,
-  selectStatus: selectLocationStatus,
-  slice: locationSlice,
-} = createAsyncReducer({
+export const locationDuck = createAsyncDuck({
+  initialState: {
+    latitude: null,
+    longitude: null,
+  },
   name: 'location',
   requestOnce: true,
   requestFunc: async () => {
@@ -15,6 +13,3 @@ export const {
     return getLocation();
   },
 });
-
-export const selectLocationLatitude = (state) => selectLocation(state)?.latitude;
-export const selectLocationLongitude = (state) => selectLocation(state)?.longitude;

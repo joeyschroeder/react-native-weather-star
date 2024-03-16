@@ -9,6 +9,7 @@ import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { withTheme } from 'components/with-theme/with-theme';
 import { DigitalValueNumeric } from 'components/digital-value-numeric/digital-value-numeric';
 import { DigitalValueMarquee } from 'components/digital-value-marquee/digital-value-marquee';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
@@ -44,11 +45,8 @@ function DigitalValueWithLabelBase(props) {
     <View style={containerStyle}>
       <Label style={labelStyle} value={label} />
       <View style={styles.valueContainer}>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {isMarquee ? <DigitalValueMarquee {...other} /> : null}
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {isNumber ? <DigitalValueNumeric {...other} /> : null}
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {!isMarquee && !isNumber ? <DigitalValue {...other} /> : null}
         {appendExists ? <Text style={styles.append}>{append}</Text> : null}
       </View>

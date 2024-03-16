@@ -42,6 +42,7 @@ module.exports = {
     'react/jsx-newline': 0,
     'react/jsx-no-literals': [0],
     'react/jsx-one-expression-per-line': [0],
+    'react/jsx-props-no-spreading': [0],
     'react/no-unused-prop-types': 1,
     'react/sort-prop-types': [2],
     'react/static-property-placement': [2, 'static public field'],

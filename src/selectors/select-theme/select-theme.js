@@ -1,13 +1,10 @@
 import { COLORS } from 'constants/colors';
 import Color from 'color';
 import { selectWeatherForecastIsDaytime } from 'store/weather/weather-forecast/weather-forecast';
-import {
-  selectSettingsDisplayColor,
-  selectSettingsDisplayColorScheme,
-} from 'store/settings/settings-display/settings-display';
 import { COLOR_SCHEMES } from 'constants/color-schemes';
 import { createSelector } from '@reduxjs/toolkit';
 import { dimensionsOrientationDuck } from 'store/dimensions-orientation/dimensions-orientation';
+import { settingsDisplayDuck } from 'store/settings/settings-display/settings-display';
 
 const COLOR_VALUES = Object.keys(COLORS).reduce((acc, key) => {
   const lowercaseKey = key.toLowerCase();
@@ -47,11 +44,11 @@ function combiner(colorScheme, height, isDaytime, orientation, primary, width) {
 
 export const selectTheme = createSelector(
   [
-    selectSettingsDisplayColorScheme,
+    settingsDisplayDuck.select.colorScheme,
     dimensionsOrientationDuck.select.height,
     selectWeatherForecastIsDaytime,
     dimensionsOrientationDuck.select.orientation,
-    selectSettingsDisplayColor,
+    settingsDisplayDuck.select.color,
     dimensionsOrientationDuck.select.width,
   ],
   combiner,

@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { FONTS } from 'constants/fonts';
 import { scaledValue } from 'utils/scaled-value/scaled-value';
 import { withTheme } from 'components/with-theme/with-theme';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({

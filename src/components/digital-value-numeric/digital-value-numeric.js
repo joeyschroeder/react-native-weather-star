@@ -13,9 +13,7 @@ const COMMON_PROPS = {
 export function DigitalValueNumeric(props) {
   const { isCountingUp, value, ...other } = props;
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
   if (value === undefined || value === null) return <DigitalValue {...COMMON_PROPS} {...other} />;
-
   let normalizedValue = value;
 
   if (isCountingUp) {
@@ -30,7 +28,6 @@ export function DigitalValueNumeric(props) {
 
   normalizedValue = normalizedValue.toString();
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
   return <DigitalValue {...COMMON_PROPS} value={normalizedValue} {...other} />;
 }
 

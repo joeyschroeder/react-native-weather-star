@@ -6,10 +6,9 @@ import { createDuck } from '../create-duck';
 import { createPath } from '../create-path/create-path';
 import { createSelectState } from '../create-select-state/create-select-state';
 
-// eslint-disable-next-line import/no-unused-modules
 export const createAsyncDuck = (config) => {
   const {
-    initialState: initialStateParam,
+    initialState: initialStateParam = {},
     name,
     parentNames,
     requestFunc: requestFuncParam,
@@ -40,7 +39,7 @@ export const createAsyncDuck = (config) => {
   const request = createAsyncThunk(`${path}/async-request`, requestFunc);
 
   const extraSelectors = Object.keys(initialState.data).reduce((accumulator, key) => {
-    accumulator[key] = (state) => selectData(state)?.[key];
+    accumulator[key] = (state) => selectData(state)?.[key] || initialState.data[key];
     return accumulator;
   }, {});
 

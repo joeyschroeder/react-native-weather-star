@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { locationSlice } from './location/location';
+import { locationDuck } from './location/location';
 import { colorSchemeDuck } from './color-scheme/color-scheme';
 import { NAME as SETTINGS, settingsReducer } from './settings/settings';
 import { NAME as WEATHER, weatherReducer } from './weather/weather';
@@ -11,6 +11,6 @@ export const STORE = configureStore({
     [WEATHER]: weatherReducer,
     [colorSchemeDuck.name]: colorSchemeDuck.reducer,
     [dimensionsOrientationDuck.name]: dimensionsOrientationDuck.reducer,
-    [locationSlice.name]: locationSlice.reducer,
+    [locationDuck.name]: locationDuck.reducer,
   },
 });

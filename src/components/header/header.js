@@ -17,8 +17,8 @@ import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 import { useSelector } from 'react-redux';
 import {
   selectWeatherMetadataCity,
-  selectWeatherMetadataRadarStation,
   selectWeatherMetadataState,
+  weatherMetadataDuck,
 } from 'store/weather/weather-metadata/weather-metadata';
 import {
   selectWeatherForecastIcon,
@@ -64,7 +64,7 @@ function HeaderBase(props) {
   const city = useSelector(selectWeatherMetadataCity);
   const icon = useSelector(selectWeatherForecastIcon);
   const lastUpdate = useSelector(selectWeatherForecastUpdateTime);
-  const radarStation = useSelector(selectWeatherMetadataRadarStation);
+  const radarStation = useSelector(weatherMetadataDuck.select.radarStation);
   const shortForecast = useSelector(selectWeatherForecastShortForecast);
   const state = useSelector(selectWeatherMetadataState);
 

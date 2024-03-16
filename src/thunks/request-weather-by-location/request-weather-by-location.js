@@ -1,19 +1,16 @@
-import { requestLocation, selectLocationLatitude, selectLocationLongitude } from 'store/location/location';
-import { requestWeatherAlerts } from 'store/weather/weather-alerts/weather-alerts';
-import { requestWeatherForecast } from 'store/weather/weather-forecast/weather-forecast';
-import {
-  requestWeatherMetadata,
-  selectWeatherMetadataForecastHourly,
-} from 'store/weather/weather-metadata/weather-metadata';
+import { locationDuck } from 'store/location/location';
+import { weatherAlertsDuck } from 'store/weather/weather-alerts/weather-alerts';
+import { weatherForecastDuck } from 'store/weather/weather-forecast/weather-forecast';
+import { weatherMetadataDuck } from 'store/weather/weather-metadata/weather-metadata';
 
 export const requestWeatherByLocation = () => async (dispatch, getState) => {
-  await dispatch(requestLocation());
-  const latitude = selectLocationLatitude(getState());
-  const longitude = selectLocationLongitude(getState());
+  await dispatch(locationDuck.request());
+  const latitude = locationDuck.select.latitude(getState());
+  const longitude = locationDuck.select.longitude(getState());
 
-  await dispatch(requestWeatherMetadata({ latitude, longitude }));
-  await dispatch(requestWeatherAlerts({ latitude, longitude }));
+  await dispatch(weatherMetadataDuck.request({ latitude, longitude }));
+  await dispatch(weatherAlertsDuck.request({ latitude, longitude }));
 
-  const weatherMetadataForecastHourly = selectWeatherMetadataForecastHourly(getState());
-  await dispatch(requestWeatherForecast(weatherMetadataForecastHourly));
+  const weatherMetadataForecastHourly = weatherMetadataDuck.select.forecastHourly(getState());
+  await dispatch(weatherForecastDuck.request(weatherMetadataForecastHourly));
 };

@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Label } from 'components/label/label';
 import { SPACER } from 'constants/spacer';
 import { withTheme } from 'components/with-theme/with-theme';
+import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({

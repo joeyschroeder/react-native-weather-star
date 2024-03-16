@@ -1,30 +1,27 @@
 import moment from 'moment';
 import { getWeatherByForecastUrl } from 'services/weather/weather';
-import { createAsyncReducer } from 'utils/create-async-reducer/create-async-reducer';
 import { formatHourlyForecastObject } from 'utils/format-hourly-forecast-object/format-hourly-forecast-object';
 import { max, min } from 'lodash';
 import { EXPO_MATERIAL_COMMUNITY_WEATHER_ICON_KEYS } from 'constants/expo-material-community-weather-icon-keys';
 import { closestMatch } from 'closest-match';
+import { createAsyncDuck } from 'utils/create-duck/create-async-duck/create-async-duck';
 
-// eslint-disable-next-line import/no-unused-modules
-export const {
-  reducer: weatherForecastReducer,
-  requestThunk: requestWeatherForecast,
-  selectData: selectWeatherForecast,
-  selectStatus: selectWeatherForecastStatus,
-  slice: weatherForecastSlice,
-} = createAsyncReducer({
+export const weatherForecastDuck = createAsyncDuck({
+  initialState: {
+    updateTime: undefined,
+    periods: [],
+  },
   name: 'forecast',
-  parentName: 'weather',
+  parentNames: ['weather'],
   requestFunc: (forecastUrl) => {
     return getWeatherByForecastUrl(forecastUrl);
   },
 });
 
-export const selectWeatherForecastUpdateTime = (state) => selectWeatherForecast(state)?.updateTime;
+export const selectWeatherForecastUpdateTime = (state) => weatherForecastDuck.select.data(state).updateTime;
 
 const selectPeriods = (state) => {
-  const periods = selectWeatherForecast(state)?.periods || [];
+  const { periods } = weatherForecastDuck.select.data(state);
   return periods.map((period) => formatHourlyForecastObject(period));
 };
 
@@ -67,8 +64,8 @@ export const selectWeatherForecastIcon = (state) => {
   if (!shortForecast) return undefined;
   const isDaytime = selectWeatherForecastIsDaytime(state);
 
-  const normalizeShortForcast = shortForecast.toLowerCase().replace(/ /g, '-');
-  const query = `weather-${!isDaytime ? 'night-' : ''}${normalizeShortForcast}`;
+  const normalizeShortForecast = shortForecast.toLowerCase().replace(/ /g, '-');
+  const query = `weather-${!isDaytime ? 'night-' : ''}${normalizeShortForecast}`;
 
   return closestMatch(query, EXPO_MATERIAL_COMMUNITY_WEATHER_ICON_KEYS);
 };
