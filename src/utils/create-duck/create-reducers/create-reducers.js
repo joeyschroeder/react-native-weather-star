@@ -1,10 +1,5 @@
 import { isInitialStatePrimitive } from '../is-initial-state-primitive/is-initial-state-primitive';
 
-// This is a utility action for update the entire state of the duck.
-const update = (state, { payload }) => {
-  return payload;
-};
-
 export function createReducers(initialState) {
   let reducers;
 
@@ -24,6 +19,7 @@ export function createReducers(initialState) {
 
   return {
     ...reducers,
-    update,
+    reset: () => initialState,
+    update: (state, { payload }) => payload,
   };
 }

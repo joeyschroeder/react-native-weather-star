@@ -33,7 +33,7 @@ function DigitalLevelBase(props) {
 
   const containerStyle = [styles.container, style];
   const activeSegStyle = { backgroundColor: theme.colors.text };
-  const thresholdSegStyle = { backgroundColor: theme.colors.danger };
+  const thresholdSegStyle = { backgroundColor: theme.colors.primary };
 
   const { value: countUpValue } = useCountUp({
     duration: 1,

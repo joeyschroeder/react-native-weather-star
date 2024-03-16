@@ -28,7 +28,7 @@ function combiner(colorScheme, height, isDaytime, orientation, primary, width) {
     colors: {
       ...COLOR_VALUES,
       background,
-      primary,
+      primary: COLORS[primary],
       section,
       text,
       valueBackground,

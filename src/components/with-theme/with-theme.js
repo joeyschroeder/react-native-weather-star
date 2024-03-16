@@ -5,7 +5,6 @@ import { selectTheme } from 'selectors/select-theme/select-theme';
 function withThemeBase(WrappedComponent) {
   function WithTheme(props) {
     const theme = useSelector(selectTheme);
-    // eslint-disable-next-line react/jsx-props-no-spreading
     return <WrappedComponent {...props} theme={theme} />;
   }
 

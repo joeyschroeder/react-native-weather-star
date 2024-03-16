@@ -44,7 +44,7 @@ function FooterBase(props) {
   const containerStyles = [styles.container, style];
 
   const isSevere = severity === 'severe' || severity === 'extreme';
-  const severityColor = isSevere ? theme.colors.danger : theme.colors.text;
+  const severityColor = isSevere ? theme.colors.primary : theme.colors.text;
 
   return (
     <View style={containerStyles}>

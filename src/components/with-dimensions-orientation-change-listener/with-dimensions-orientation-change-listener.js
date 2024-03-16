@@ -31,7 +31,6 @@ function withDimensionsOrientationChangeListenerBase(WrappedComponent) {
       });
     }, []);
 
-    // eslint-disable-next-line react/jsx-props-no-spreading
     return <WrappedComponent {...props} />;
   }
 

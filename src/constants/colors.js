@@ -10,7 +10,7 @@ const VALUES = {
   BLACK,
   BLACK_TYPE: MIX_BLACK.mix(MIX_WHITE, 0.2).string(),
   BLUE: '#00c6ff',
-  GREEN: '#00ffba',
+  GREEN: '#00dc87',
   GREY: MIX_BLACK.mix(MIX_WHITE, 0.25).string(),
   RED: '#ff0042',
   TRANSPARENT: 'transparent',

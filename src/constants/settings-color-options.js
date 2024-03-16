@@ -1,0 +1,8 @@
+import { COLORS } from './colors';
+
+export const SETTINGS_COLOR_OPTIONS = {
+  BLUE: COLORS.BLUE,
+  GREEN: COLORS.GREEN,
+  RED: COLORS.RED,
+  YELLOW: COLORS.YELLOW,
+};

@@ -12,13 +12,13 @@ import { withTheme } from 'components/with-theme/with-theme';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
 import { useDispatch, useSelector } from 'react-redux';
 import { COLOR_SCHEMES } from 'constants/color-schemes';
-import {
-  closeSettingsModal,
-  settingsModalActiveDuck,
-} from 'store/settings/settings-modal-active/settings-modal-active';
+import { settingsModalActiveDuck } from 'store/settings/settings-modal-active/settings-modal-active';
 import { settingsEditDuck } from 'store/settings/settings-edit/settings-edit';
+import { SETTINGS_COLOR_OPTIONS } from 'constants/settings-color-options';
+import { cancelEditSettings, requestSaveSettings } from 'store/settings/settings';
 
 const COLOR_SCHEME_OPTIONS = Object.values(COLOR_SCHEMES);
+const COLOR_OPTIONS = Object.keys(SETTINGS_COLOR_OPTIONS);
 
 function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
   return StyleSheet.create({
@@ -54,25 +54,39 @@ function SettingsBase(props) {
 
   const dispatch = useDispatch();
 
-  const onCancelPress = () => dispatch(closeSettingsModal());
-
-  const styles = createStyleSheet(props);
+  const handleOnToggleColor = (color) => dispatch(settingsEditDuck.actions.updateColor(color));
+  const handleOnToggleColorScheme = (colorScheme) => dispatch(settingsEditDuck.actions.updateColorScheme(colorScheme));
+  const onCancelPress = () => dispatch(cancelEditSettings());
+  const onSavePress = () => dispatch(requestSaveSettings());
 
   const color = useSelector(settingsEditDuck.select.color);
   const colorScheme = useSelector(settingsEditDuck.select.colorScheme);
   const isVisible = useSelector(settingsModalActiveDuck.select.state);
+
+  const styles = createStyleSheet(props);
 
   return (
     <Modal animationType="fade" transparent visible={isVisible}>
       <View style={styles.container}>
         <View style={styles.primary}>
           <SettingsSection label="Theme">
-            <RadioSelector options={COLOR_SCHEME_OPTIONS} style={styles.radioSelector} value={colorScheme} />
-            <RadioSelector options={['Red', 'Yellow', 'Green', 'Blue', 'White']} value={color} />
+            <RadioSelector
+              activeColor={theme.colors.primary}
+              onToggle={handleOnToggleColorScheme}
+              options={COLOR_SCHEME_OPTIONS}
+              style={styles.radioSelector}
+              value={colorScheme}
+            />
+            <RadioSelector
+              activeColor={theme.colors.primary}
+              onToggle={handleOnToggleColor}
+              options={COLOR_OPTIONS}
+              value={color}
+            />
           </SettingsSection>
           <View style={styles.actions}>
-            <BlockButton color={theme.colors.success} label="Save" style={styles.action} />
-            <BlockButton color={theme.colors.danger} label="Cancel" onPress={onCancelPress} style={styles.action} />
+            <BlockButton color={theme.colors.primary} label="Save" onPress={onSavePress} style={styles.action} />
+            <BlockButton color={theme.colors.primary} label="Cancel" onPress={onCancelPress} style={styles.action} />
           </View>
         </View>
       </View>

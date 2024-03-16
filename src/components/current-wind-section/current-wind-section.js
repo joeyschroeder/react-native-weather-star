@@ -23,7 +23,7 @@ function CurrentWindSectionBase(props) {
   const direction = useSelector(selectWeatherForecastWindDirection);
 
   const dangerMph = MAX_MPH / 2;
-  const speedColor = speed > dangerMph ? theme.colors.danger : theme.colors.text;
+  const speedColor = speed > dangerMph ? theme.colors.primary : theme.colors.text;
 
   const maxLevels = 24;
   const levelValue = (speed / MAX_MPH) * maxLevels;

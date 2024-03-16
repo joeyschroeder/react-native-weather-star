@@ -18,7 +18,7 @@ function CurrentPrecipSectionBase(props) {
   const precipProbability = useSelector(selectWeatherForecastProbabilityOfPrecipitation);
   const relativeHumidity = useSelector(selectWeatherForecastRelativeHumidity);
 
-  const precipProbabilityColor = precipProbability > 25 ? theme.colors.danger : theme.colors.text;
+  const precipProbabilityColor = precipProbability > 25 ? theme.colors.primary : theme.colors.text;
 
   return (
     <Section style={style}>

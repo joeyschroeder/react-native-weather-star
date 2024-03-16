@@ -12,12 +12,17 @@ import { compose } from 'utils/compose/compose';
 import { CurrentDateTimeSection } from 'components/current-date-time-section/current-date-time-section';
 import Constants from 'expo-constants';
 import { THEME_DEFAULT_PROP_TYPE } from 'constants/theme-default-prop-type';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { requestWeatherByLocation } from 'thunks/request-weather-by-location/request-weather-by-location';
 import { CurrentPrecipSection } from 'components/current-precip-section/current-precip-section';
 import { CurrentWindSection } from 'components/current-wind-section/current-wind-section';
 import { Footer } from 'components/footer/footer';
 import { Header } from 'components/header/header';
+import { initializeApp } from 'thunks/initialize-app/initialize-app';
+import { ActivityIndicatorOverlay } from 'components/activity-indicator-overlay/activity-indicator-overlay';
+import { selectAnyRequestPending } from 'selectors/select-any-request-pending/select-any-request-pending';
+import { settingsEditSaveDuck } from 'store/settings/settings-edit-save/settings-edit-save';
+import { settingsDisplayDuck } from 'store/settings/settings-display/settings-display';
 
 const { dataRequestIntervalMinutes } = Constants.expoConfig.extra || {};
 const DATA_REQUEST_INTERVAL = 1000 * 60 * (dataRequestIntervalMinutes || 60);
@@ -64,7 +69,7 @@ function AppBase(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(requestWeatherByLocation());
+    dispatch(initializeApp());
 
     const dataRequestInterval = setInterval(() => {
       dispatch(requestWeatherByLocation());
@@ -72,6 +77,10 @@ function AppBase(props) {
 
     return () => clearInterval(dataRequestInterval);
   }, []);
+
+  const isLoading = useSelector((state) =>
+    selectAnyRequestPending(state, [settingsEditSaveDuck.select.status, settingsDisplayDuck.select.status]),
+  );
 
   return (
     <>
@@ -90,6 +99,7 @@ function AppBase(props) {
         <Footer />
       </View>
       <Settings isVisible />
+      <ActivityIndicatorOverlay isActive={isLoading} />
     </>
   );
 }
