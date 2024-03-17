@@ -1,16 +1,10 @@
 * make sure on rotate the dimensions change, i think they are constant right now
-* make sure weather gets latest period when time changes
-* blink severity when severe
-* add babel module resolver
 * add timeout to network reqeust
 * add settings to set location versus geolocation
 * add errors
-* add settings fo color changes
 * add settings for units
 * add settings for clock
-* add settings for clock blink
 * add settings for weather refresh
-* add settings for danger levels for temp rain humidity and wind
 * add app icon
 * add intro animation
 * add splash screen
