@@ -3,6 +3,7 @@ import { createPath } from './create-path/create-path';
 import { createReducers } from './create-reducers/create-reducers';
 import { createSelectors } from './create-selectors/create-selectors';
 import { createSelectState } from './create-select-state/create-select-state';
+import { getObjectWithPropWarning } from './get-object-with-prop-warning/get-object-with-prop-warning';
 
 export function createDuck(config) {
   if (typeof config !== 'object') throw new Error('config is not object');
@@ -23,16 +24,24 @@ export function createDuck(config) {
     selectors,
   });
 
-  return {
-    actions: slice.actions,
-    initialState: slice.getInitialState(),
-    name,
-    path,
-    reducer: slice.reducer,
-    select: {
+  const actions = getObjectWithPropWarning(slice.actions, 'actions', name);
+
+  const select = getObjectWithPropWarning(
+    {
       ...slice.getSelectors(),
       ...extraSelectors,
       state: selectState,
     },
+    'select',
+    name,
+  );
+
+  return {
+    actions,
+    initialState: slice.getInitialState(),
+    name,
+    path,
+    reducer: slice.reducer,
+    select,
   };
 }

@@ -17,7 +17,7 @@ export function DigitalValueMarquee(props) {
   if (!value) return <DigitalValue {...other} />;
 
   const padEnd = maxChars || 20;
-  const initialValue = value.padEnd(padEnd, ' ');
+  const initialValue = value.padEnd(padEnd, '_');
 
   const [marqueeValue, setMarqueeValue] = useState(initialValue);
 
