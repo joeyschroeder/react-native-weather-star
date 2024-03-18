@@ -6,7 +6,7 @@ export const weatherAlertsDuck = createAsyncDuck({
     description: '',
     headline: '',
     instruction: '',
-    severity: '',
+    severity: undefined,
   },
   name: 'alerts',
   parentNames: ['weather'],
