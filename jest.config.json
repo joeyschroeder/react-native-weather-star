@@ -2,7 +2,6 @@
   "collectCoverageFrom": ["<rootDir>/src/**/*.js", "!<rootDir>/src/index.js"],
   "coverageReporters": ["lcov", "text"],
   "preset": "jest-expo",
-  "reporters": ["jest-dot-reporter"],
   "setupFiles": ["./jest.setup.js"],
   "testMatch": ["<rootDir>/src/**/?(*.)+(test).js"],
   "transformIgnorePatterns": [

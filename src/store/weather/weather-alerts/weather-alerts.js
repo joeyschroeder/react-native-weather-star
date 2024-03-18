@@ -1,13 +1,15 @@
 import { getWeatherAlertsByLatitudeLongitude } from 'services/weather/weather';
 import { createAsyncDuck } from 'utils/create-duck/create-async-duck/create-async-duck';
 
+export const INITIAL_STATE = {
+  description: '',
+  headline: '',
+  instruction: '',
+  severity: undefined,
+};
+
 export const weatherAlertsDuck = createAsyncDuck({
-  initialState: {
-    description: '',
-    headline: '',
-    instruction: '',
-    severity: undefined,
-  },
+  initialState: INITIAL_STATE,
   name: 'alerts',
   parentNames: ['weather'],
   requestFunc: ({ latitude, longitude }) => {

@@ -1,7 +1,7 @@
 import { isInitialStatePrimitive } from '../is-initial-state-primitive/is-initial-state-primitive';
 import { createSelectors } from './create-selectors';
 
-jest.mock('./is-initial-state-primitive');
+jest.mock('../is-initial-state-primitive/is-initial-state-primitive');
 
 describe('createSelectors', () => {
   it('should return undefined if initial state is primitive', () => {
