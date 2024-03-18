@@ -21,7 +21,7 @@ function createStyleSheet({ theme = THEME_DEFAULT_PROP_TYPE }) {
       alignSelf: 'stretch',
     },
     text: {
-      color: theme.dark ? theme.colors.text : theme.colors.section,
+      color: theme.colors.section,
       fontFamily: FONTS.SANS_SERIF.BOLD,
       fontSize: scaledValue(18),
       textAlign: 'center',

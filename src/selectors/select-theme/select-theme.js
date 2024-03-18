@@ -15,19 +15,29 @@ const COLOR_VALUES = Object.keys(COLORS).reduce((acc, key) => {
 
 function combiner(colorScheme, height, isDaytime, orientation, primaryKey, width) {
   const colorSchemeIsAuto = colorScheme === COLOR_SCHEMES.AUTO;
+
   const isDark = (colorSchemeIsAuto && !isDaytime) || colorScheme === COLOR_SCHEMES.DARK;
   const primary = COLORS[primaryKey];
+
+  const primaryIsWhite = primary === COLORS.WHITE;
 
   const background = isDark ? COLORS.BLACK : Color(primary).darken(0.2).string();
   const section = isDark ? COLORS.GREY : primary;
   const valueBackground = Color(COLORS.BLACK).alpha(0.2).string();
-  const text = COLORS.WHITE;
+
+  let primaryColor = isDark ? primary : COLORS.WHITE;
+  let text = COLORS.WHITE;
+
+  if (primaryIsWhite && !isDark) {
+    primaryColor = COLORS.BLACK_TYPE;
+    text = COLORS.BLACK_TYPE;
+  }
 
   return {
     colors: {
       ...COLOR_VALUES,
       background,
-      primary: isDark ? primary : COLORS.WHITE,
+      primary: primaryColor,
       section,
       text,
       valueBackground,
