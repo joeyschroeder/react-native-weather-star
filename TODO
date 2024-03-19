@@ -1,4 +1,3 @@
-* make sure on rotate the dimensions change, i think they are constant right now
 * add timeout to network reqeust
 * add settings to set location versus geolocation
 * add errors
@@ -8,8 +7,6 @@
 * add app icon
 * add intro animation
 * add splash screen
-* add sound effects
-* add music?
 
 FIX THE BUILD
 * some reason the app does not build on the EAS build servers
