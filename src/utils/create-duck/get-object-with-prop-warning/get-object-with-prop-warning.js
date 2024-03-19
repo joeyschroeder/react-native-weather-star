@@ -1,17 +1,20 @@
-export function getObjectWithPropWarning(object, objectName, duckName) {
+const IGNORED_PROPERTIES = ['toJSON', '$$typeof'];
+
+export function getObjectWithPropWarning(object = {}, objectName = '', duckName = '') {
   if (typeof object !== 'object' || object === null) throw new Error('object is not object');
   if (!objectName) throw new Error('objectName is undefined');
   if (!duckName) throw new Error('duckName is undefined');
 
   return new Proxy(object, {
     get(target, property) {
-      // eslint-disable-next-line no-prototype-builtins
-      const hasOwnProperty = target.hasOwnProperty(property);
+      if (typeof property === 'symbol') return target[property];
+      if (IGNORED_PROPERTIES.includes(property)) return target[property];
+
+      const hasOwnProperty = Object.hasOwn(target, property);
       if (hasOwnProperty) return target[property];
 
-      const availProps = Object.keys(object).sort();
-      const formattedAvailProps = availProps.map((prop) => `- ${prop}`).join('\n');
-
+      const availProps = Object.getOwnPropertyNames(object).sort();
+      const formattedAvailProps = availProps.map((prop) => `- ${JSON.stringify(prop)}`).join('\n');
       // eslint-disable-next-line no-console
       console.warn(
         `Property "${objectName}.${property}" does not exist on "${duckName}" duck.
