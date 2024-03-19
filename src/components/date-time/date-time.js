@@ -7,7 +7,6 @@ import { Time } from 'components/time/time';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
     flexDirection: 'row',
     gap: SPACER,
   },

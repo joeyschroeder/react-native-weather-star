@@ -5,7 +5,8 @@
     "privacy": "unlisted",
     "platforms": [
       "android",
-      "ios"
+      "ios",
+      "web"
     ],
     "version": "1.0.0",
     "orientation": "landscape",
